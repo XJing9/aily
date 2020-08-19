@@ -9,4 +9,8 @@ public class Test {
     public String showMain(){
         return "main";
     }
+    @RequestMapping("test")
+    public String test(){
+        return "";
+    }
 }

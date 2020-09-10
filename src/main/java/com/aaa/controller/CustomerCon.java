@@ -428,6 +428,7 @@ public class CustomerCon {
     @RequestMapping("res_insertWork")
     @ResponseBody
     public Integer res_insertWork(Work_experience work_experience){
+        System.out.println("");
         Integer count=customerDao.res_insertWork(work_experience);
         return count<1?0:1;
     }

@@ -134,6 +134,7 @@ public interface CustomerDao extends tk.mybatis.mapper.common.Mapper<Customer> {
 //    修改项目经理--查询数据
     @Select("select * from project_experience where pro_id=#{pro_id}")
     List<Map<String,Object>> res_queryByIdProject(Integer pro_id);
+    Integer test();
 
 
     @Update("update resume set res_education=#{res_education} where res_id=#{res_id}")

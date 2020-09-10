@@ -1,0 +1,1916 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页-个人会员中心-爱洛阳人才网</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="骑士CMS">
+    <meta name="copyright" content="74cms.com">
+
+    <link rel="shortcut icon" href="https://zhaopin.iluoyang.com/favicon.ico">
+    <link rel="canonical" href="https://zhaopin.iluoyang.com/../personal/index/uid/32760.html"><script src="../personal/jquery_004.js"></script>
+    <script src="../personal/htmlspecialchars.js"></script>
+    <script src="../personal/gt.js"></script><script type="text/javascript">
+    var app_spell = "1";
+    var qscms = {
+        base : "",
+        keyUrlencode:"0",
+        domain : "http://zhaopin.iluoyang.com",
+        root : "/index.php",
+        companyRepeat:"0",
+        regularMobile: /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$|16[0-9]{9}$|19[0-9]{9}$/,
+        district_level : "2",
+        smsTatus: "1",
+        captcha_open:"0",
+        varify_mobile:"0",
+        varify_suggest:"0",
+        varify_user_login:"",
+        is_login:"1",
+        default_district : "1",
+        default_district_spell : "jianxiqu",
+        subsite: "0"
+    };
+    $(function () {
+        $(".left-nav-box a").click(function(){
+            $(this).siblings().removeClass("select");
+            $(this).addClass("select");
+        })
+    })
+</script>
+    <style type="text/css">
+        #frame2 {
+            height: 40px;
+        }
+        #frame1 {
+            height: 95px;
+        }
+        #mycenter {
+            height: 3000px;
+            width: 990px;
+        }
+
+
+    </style>
+    <link href="../personal/common.css" rel="stylesheet" type="text/css">
+    <link href="../personal/../personal_ajax_dialog.css" rel="stylesheet" type="text/css">
+    <link href="../personal/../personal_index.css" rel="stylesheet" type="text/css">
+    <link href="../personal/common_ajax_dialog.css" rel="stylesheet" type="text/css">
+    <script src="../personal/jquery_006.js" type="text/javascript" language="javascript"></script>
+    <script src="../personal/jquery_010.js" type="text/javascript" language="javascript"></script>
+    <script type="text/javascript" src="../personal/6f557ceaff36b5f87598d5441e0a6ba3.js"></script></head>
+
+<body>
+<iframe id="frame2" src="../CustomerCon/topData" name="frame_top" frameborder="0" height="100%" width="100%" scrolling="auto"></iframe>
+<iframe id="frame1" src="../CustomerCon/show_head" name="frame_name" frameborder="0" height="100%" width="100%" scrolling="auto"></iframe>
+<script type="text/javascript" src="../personal/jquery_002.js"></script>
+<script type="text/javascript">
+</script>
+<div class="us-top" style="background-image: url(../personal/sebanner5.jpg);">
+</div>
+<div class="user_main">
+    <div class="index-left">
+        <div class="ph-28"></div>
+        <div class="left-logo"><a href="https://zhaopin.iluoyang.com/../personal/user_avatar.html"><img src="../personal/no_photo_female.png"></a></div>
+        <div class="ph-30"></div>
+        <div class="left-line link_gray6"><a target="_blank" href="" th:text="${session.sessionCusList[0].cus_name}"></a></div>
+        <div class="ph-25"></div>
+        <div class="sign-box">
+            <div class="clear"></div>
+        </div>
+        <div class="ph-20"></div>
+        <div class="left-nav-box">
+            <a href="../CustomerCon/showResinter?cus_type=1" class="li-nav select">
+                <div class="nav-ic index"></div>
+                <div class="nav-name">我的简历</div>
+                <div class="clear"></div>
+            </a>
+            <a th:href="@{../InvitedCon/queryInv(cus_id=${session.sessionCusList[0].cus_id})}" target="mycenter" class="li-nav ">
+                <div class="nav-ic job"></div>
+                <div class="nav-name">求职管理</div>
+                <div class="clear"></div>
+            </a>
+            <a href="../main/resInter.html" target="mycenter" class="li-nav ">
+                <div class="nav-ic att"></div>
+                <div class="nav-name">收藏&amp;关注</div>
+                <div class="clear"></div>
+            </a>
+            <a href="../main/resInter.html" target="mycenter" class="li-nav ">
+                <div class="nav-ic ser"></div>
+                <div class="nav-name">会员服务</div>
+                <div class="clear"></div>
+            </a>
+            <a href="../main/resInter.html" target="mycenter" class="li-nav ">
+                <div class="nav-ic user"></div>
+                <div class="nav-name">账号管理</div>
+                <div class="clear"></div>
+            </a>
+        </div>
+    </div>
+    <div class="index-right">
+        <iframe id="mycenter" th:src="@{../CustomerCon/personalQuery(cus_id=${session.sessionCusList[0].cus_id})}" name="mycenter" frameborder="0" height="100%" width="100%" scrolling="auto"></iframe>
+    </div>
+    <script type="text/javascript" src="../personal/jquery_002.js"></script>
+    <script type="text/javascript" src="../personal/jquery_009.js"></script>
+    <script type="text/javascript" src="../personal/jquery_003.js"></script><div class="disappear_tooltip pie_about success tip_anim remind tip_anim_close" style="left: 663.5px; top: 2421px;"><div class="icon"></div><div class="content">简历设置成功！</div></div>
+    <script type="text/javascript" src="../personal/jquery_007.js"></script>
+    <script type="text/javascript" src="../personal/jquery.js"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="/Application/Home/View/default/public/js/PIE.js"></script>
+    <script type="text/javascript">
+
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+
+    </script>
+    <script type="text/javascript" src="../personal/jquery_005.js"></script>
+    <script type="text/javascript" src="../personal/jquery_008.js"></script>
+    <script src="../personal/ajaxfileupload.js"></script>
+    <script src="../personal/qscms.js"></script>
+    <script type="text/javascript" src="../personal/jquery_002.js"></script>
+    <script type="text/javascript">
+        $('.get-money-fail-suc').css({
+            left: ($(window).width() - $('.get-money-fail-suc').outerWidth())/2,
+            top: ($(window).height() - $('.get-money-fail-suc').outerHeight())/2 + $(document).scrollTop()
+        });
+        $('.gm-fs-group .gm-fs-clo').die().live('click', function () {
+            $(this).closest('.get-money-fail-suc').remove();
+            $('.modal_backdrop').remove();
+        });
+        // 认证手机
+        $('#J_auth_mobile').click(function(){
+            var title = '修改手机';
+            var qsDialog = $(this).dialog({
+                title: title,
+                loading: true,
+                showFooter: false,
+                yes: function() {
+                    var verifycode  = $.trim($('#J_mobileWrap input[name="verifycode"]').val());
+                    if(!verifycode){
+                        disapperTooltip("remind", "请填写验证码！");
+                        return !1;
+                    }
+                    $.post("/members/verify_mobile_code.html",{verifycode:verifycode},function(result){
+                        if(result.status == 1){
+                            $('#mobileWap').html(result.data.mobile);
+                            if(result.data.points){
+                                disapperTooltip("goldremind", '验证手机号增加'+result.data.points+'积分<span class="point">+'+result.data.points+'</span>');
+                            }else{
+                                disapperTooltip('success',result.msg);
+                            }
+                            qsDialog.hide();
+                        }else{
+                            disapperTooltip('remind',result.msg);
+                        }
+                    },'json');
+                }
+            });
+            $.getJSON("/members/user_mobile.html",function(result){
+                if(result.status == 1){
+                    qsDialog.setCloseDialog(false);
+                    qsDialog.setContent(result.data);
+                    qsDialog.showFooter(true);
+                }else{
+                    qsDialog.setContent('<div class="confirm">' + result.msg + '</div>');
+                }
+            });
+        });
+        // 头像不公开
+        $('#photo_display').click(function () {
+            var pDisplay = 1;
+            if ($(this).is(":checked")) {
+                pDisplay = 2;
+            }
+            $.post("/../personal/save_photo_display.html",{photo_display:pDisplay},function(result){
+                if(result.status==1){
+                    disapperTooltip("success", result.msg);
+                }
+            },'json');
+        });
+        // 简历显示关闭
+        $('.J_privacy_btn').click(function () {
+            var objThis = $(this);
+            var pid = $(this).attr('pid');
+            if ($(this).hasClass('close')) {
+                var qsDialog = $(this).dialog({
+                    title: '提示',
+                    content: '<div style="width:340px;">简历显示后将在列表页显示以及被搜索，确定显示吗？</div>',
+                    btns: ['确定', '取消'],
+                    yes: function() {
+                        $.post("/../personal/save_resume_privacy.html",{pid:pid,display:1},function(result){
+                            if(result.status==1){
+                                objThis.removeClass('close');
+                                disapperTooltip("success", result.msg);
+                            }
+                        },'json');
+                    }
+                });
+            } else {
+                var qsDialog = $(this).dialog({
+                    title: '提示',
+                    content: '<div style="width:340px;">简历关闭后将不能显示以及被搜索，确定关闭吗？</div>',
+                    btns: ['确定', '取消'],
+                    yes: function() {
+                        $.post("/../personal/save_resume_privacy.html",{pid:pid,display:0},function(result){
+                            if(result.status==1){
+                                objThis.addClass('close');
+                                disapperTooltip("success", result.msg);
+                            }
+                        },'json');
+                    }
+                });
+            }
+        });
+        // 更换模板
+        $('.J_tpl_btn').click(function(){
+            var pid = $(this).attr('pid');
+            var qsDialog = $(this).dialog({
+                title: '更换模板',
+                loading: true,
+                showFooter: false,
+                btns: ['立即使用', '取消'],
+                yes: function() {
+                    var tpl = $('#J_tplVal').val();
+                    $.post("/../personal/set_tpl.html",{pid:pid,tpl:tpl},function(result){
+                        if(result.status == 1){
+                            disapperTooltip('success',result.msg);
+                        }else{
+                            disapperTooltip('remind',result.msg);
+                        }
+                    },'json');
+                }
+            });
+            $.getJSON("/../personal/resume_tpl.html",{pid:pid},function(result){
+                if(result.status == 1){
+                    qsDialog.setContent(result.data.html);
+                    qsDialog.showFooter(true);
+                }else{
+                    qsDialog.setContent('<div class="confirm">' + result.msg + '</div>');
+                }
+            });
+        });
+        // 取消自动刷新
+        $('.J_refresh_resume').click(function(){
+            if (confirm('你确定要取消自动刷新简历吗？')) {
+                var f = $(this),
+                    pid = $(this).attr('pid');
+                $.post("/../personal/del_refresh_resume.html", {pid: pid}, function (result) {
+                    if (result.status == 1) {
+
+                        window.location.reload();
+                    }
+                }, 'json');
+            }
+        });
+        // 取消自动投递
+        $('.J_apply_resume').click(function(){
+            if (confirm('你确定要取消委托投递吗？')) {
+                var f = $(this),
+                    resume_id = $(this).attr('resume_id');
+                $.post("/../personal/del_apply_resume.html",{resume_id:resume_id},function(result){
+                    if(result.status == 1){
+                        window.location.reload();
+                    }
+                },'json');
+            }
+        });
+        // 添加通用
+        $('.J_showitems').live('click', function(e) {
+            $('.J_itemsmenu').hide();
+            $('.items').show();
+            var $parentDom = $(this).closest('.J_itemsbox');
+            $(this).closest('.items').hide();
+            $parentDom.find('.J_itemsmenu').show();
+        });
+
+        // 取消通用
+        $('.J_closeitems').live('click', function(e) {
+            var $parentDom = $(this).closest('.J_itemsbox');
+            $(this).closest('.J_itemsmenu').hide();
+            $parentDom.find('.items').show();
+        });
+
+        var regularMobile = qscms.regularMobile; // 验证手机号正则
+        var regularEmail = /^[_\.0-9a-zA-Z-]+[_0-9a-zA-Z-]@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,3}$/; // 验证邮箱正则
+        var regularHeight = /^1[2-9][0-9]$|^2[0-2][0-9]$|^230$/; // 验证身高正则
+        var pid = $('#pid').val(); // 简历id
+
+        // 加载教育经历
+        $.getJSON("/../personal/ajax_get_education_list.html", {pid: pid}, function(data) {
+            $('#educationListBox').html(data.data.html);
+            listHoveEdit();
+            // 修改教育经历
+            $('.J_editedu').live('click', function() {
+                var thisid = $(this).closest('.J_listhover_edit').data('id');
+                $.getJSON("/../personal/edit_education.html", {pid: pid, id: thisid}, function(data) {
+                    if (data.status) {
+                        $('#school').val(data.data.school);
+                        $('#speciality').val(data.data.speciality);
+                        $('#education1').val(data.data.education);
+                        $('#education1').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.education_cn);
+                        $('#startyearEdu').val(data.data.startyear);
+                        $('#startyearEdu').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.startyear);
+                        $('#startmonthEdu').val(data.data.startmonth);
+                        $('#startmonthEdu').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.startmonth);
+                        $('#endyearEdu').val(data.data.endyear);
+                        $('#endyearEdu').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.endyear);
+                        $('#endmonthEdu').val(data.data.endmonth);
+                        $('#endmonthEdu').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.endmonth);
+                        $('[data-waitsome="education"]').find('.J_listid').val(data.data.id);
+                        if (data.data.todate==1) {
+                            $('#tonowEdu').attr('checked', !0);
+                            $('#tonowEdu').val('1');
+                            $('#tonowEdu').closest('.J_itemsmenu').find('.J_fortonow').hide();
+                        }
+                        var $parentDom = $('[data-waitsome="education"]').closest('.J_itemsbox');
+                        $('.J_itemsmenu').hide();
+                        $('.items').show();
+                        $parentDom.find('.items').hide();
+                        $parentDom.find('.J_itemsmenu').show();
+                    }
+                });
+            });
+            // 删除教育经历
+            $('.J_deledu').live('click', function() {
+                var url = "/../personal/del_education.html";
+                var thisid = $(this).closest('.J_listhover_edit').data('id');
+                var qsDialog=$(this).dialog({
+                    title: '删除教育经历',
+                    loading: true,
+                    border: false,
+                    yes: function() {
+                        $.post(url,{pid:pid,id:thisid},function(data){
+                            if (data.status) {
+                                $('#educationListBox').find('[data-id="'+thisid+'"]').remove();
+                                if (!$('#educationListBox .J_listhover_edit').length) {
+                                    $.getJSON("/../personal/ajax_get_education_list.html", {pid: pid}, function(data) {
+                                        $('#educationListBox').html(data.data.html);
+                                    });
+                                };
+                            } else {
+                                disapperTooltip("remind", "删除失败");
+                            }
+                        },'json');
+                    }
+                });
+                $.getJSON(url,{pid:pid,id:thisid},function(result){
+                    if(result.status == 1){
+                        qsDialog.setContent(result.data.html);
+                    }else{
+                        qsDialog.hide();
+                        disapperTooltip('remind',result.msg);
+                    }
+                });
+            });
+        });
+
+        // 加载工作经历
+        $.getJSON("/../personal/ajax_get_work_list.html", {pid: pid}, function(data) {
+            $('#experienceListBox').html(data.data.html);
+            listHoveEdit();
+            // 修改工作经历
+            $('.J_editexp').live('click', function() {
+                var thisid = $(this).closest('.J_listhover_edit').data('id');
+                $.getJSON("/../personal/edit_work.html", {pid: pid, id: thisid}, function(data) {
+                    if (data.status) {
+                        $('#companyname').val(data.data.companyname);
+                        $('#experienceJobname').val(data.data.jobs);
+                        $('#startyearExp').val(data.data.startyear);
+                        $('#startyearExp').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.startyear);
+                        $('#startmonthExp').val(data.data.startmonth);
+                        $('#startmonthExp').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.startmonth);
+                        $('#endyearExp').val(data.data.endyear);
+                        $('#endyearExp').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.endyear);
+                        $('#endmonthExp').val(data.data.endmonth);
+                        $('#endmonthExp').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.endmonth);
+                        $('#jobrespons').val(data.data.achievements);
+                        $('[data-waitsome="experience"]').find('.J_listid').val(data.data.id);
+                        if (data.data.todate==1) {
+                            $('#tonowExp').attr('checked', !0);
+                            $('#tonowExp').val('1');
+                            $('#tonowExp').closest('.J_itemsmenu').find('.J_fortonow').hide();
+                        }
+                        var $parentDom = $('[data-waitsome="experience"]').closest('.J_itemsbox');
+                        $('.J_itemsmenu').hide();
+                        $('.items').show();
+                        $parentDom.find('.items').hide();
+                        $parentDom.find('.J_itemsmenu').show();
+                    }
+                });
+            });
+            // 删除工作经历
+            $('.J_delexp').live('click', function() {
+                var url = "/../personal/del_work.html";
+                var thisid = $(this).closest('.J_listhover_edit').data('id');
+                var qsDialog=$(this).dialog({
+                    title: '删除工作经历',
+                    loading: true,
+                    border: false,
+                    yes: function() {
+                        $.post(url,{pid:pid,id:thisid},function(data){
+                            if (data.status) {
+                                $('#experienceListBox').find('[data-id="'+thisid+'"]').remove();
+                                if (!$('#experienceListBox .J_listhover_edit').length) {
+                                    $.getJSON("/../personal/ajax_get_work_list.html", {pid: pid}, function(data) {
+                                        $('#experienceListBox').html(data.data.html);
+                                    });
+                                }
+                            } else {
+                                disapperTooltip("remind", "删除失败");
+                            }
+                        },'json');
+                    }
+                });
+                $.getJSON(url,{pid:pid,id:thisid},function(result){
+                    if(result.status == 1){
+                        qsDialog.setContent(result.data.html);
+                    }else{
+                        qsDialog.hide();
+                        disapperTooltip('remind',result.msg);
+                    }
+                });
+            });
+        });
+
+        // 加载培训经历
+        $.getJSON("/../personal/ajax_get_training_list.html", {pid: pid}, function(data) {
+            $('#trainListBox').html(data.data.html);
+            listHoveEdit();
+            // 修改培训经历
+            $('.J_edittra').live('click', function() {
+                var thisid = $(this).closest('.J_listhover_edit').data('id');
+                $.getJSON("/../personal/edit_training.html", {pid: pid, id: thisid}, function(data) {
+                    if (data.status) {
+                        $('#agency').val(data.data.agency);
+                        $('#course').val(data.data.course);
+                        $('#startyearTra').val(data.data.startyear);
+                        $('#startyearTra').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.startyear);
+                        $('#startmonthTra').val(data.data.startmonth);
+                        $('#startmonthTra').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.startmonth);
+                        $('#endyearTra').val(data.data.endyear);
+                        $('#endyearTra').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.endyear);
+                        $('#endmonthTra').val(data.data.endmonth);
+                        $('#endmonthTra').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.endmonth);
+                        $('#description').val(data.data.description);
+                        $('[data-waitsome="train"]').find('.J_listid').val(data.data.id);
+                        if (data.data.todate==1) {
+                            $('#tonowTra').attr('checked', !0);
+                            $('#tonowTra').val('1');
+                            $('#tonowTra').closest('.J_itemsmenu').find('.J_fortonow').hide();
+                        }
+                        var $parentDom = $('[data-waitsome="train"]').closest('.J_itemsbox');
+                        $('.J_itemsmenu').hide();
+                        $('.items').show();
+                        $parentDom.find('.items').hide();
+                        $parentDom.find('.J_itemsmenu').show();
+                    }
+                });
+            });
+            // 删除培训经历
+            $('.J_deltra').live('click', function() {
+                var url = "/../personal/del_training.html";
+                var thisid = $(this).closest('.J_listhover_edit').data('id');
+                var qsDialog=$(this).dialog({
+                    title: '删除培训经历',
+                    loading: true,
+                    border: false,
+                    yes: function() {
+                        $.post(url,{pid:pid,id:thisid},function(data){
+                            if (data.status) {
+                                $('#trainListBox').find('[data-id="'+thisid+'"]').remove();
+                                if (!$('#trainListBox .J_listhover_edit').length) {
+                                    $.getJSON("/../personal/ajax_get_training_list.html", {pid: pid}, function(data) {
+                                        $('#trainListBox').html(data.data.html);
+                                    });
+                                }
+                            } else {
+                                disapperTooltip("remind", "删除失败");
+                            }
+                        },'json');
+                    }
+                });
+                $.getJSON(url,{pid:pid,id:thisid},function(result){
+                    if(result.status == 1){
+                        qsDialog.setContent(result.data.html);
+                    }else{
+                        qsDialog.hide();
+                        disapperTooltip('remind',result.msg);
+                    }
+                });
+            });
+        });
+        // 加载项目经历
+        $.getJSON("/../personal/ajax_get_project_list.html", {pid: pid}, function(data) {
+            $('#projectListBox').html(data.data.html);
+            listHoveEdit();
+            // 修改项目经历
+            $('.J_editpro').live('click', function() {
+                var thisid = $(this).closest('.J_listhover_edit').data('id');
+                $.getJSON("/../personal/edit_project.html", {pid: pid, id: thisid}, function(data) {
+                    if (data.status) {
+                        $('#projectname').val(data.data.projectname);
+                        $('#role').val(data.data.role);
+                        $('#startyearPro').val(data.data.startyear);
+                        $('#startyearPro').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.startyear);
+                        $('#startmonthPro').val(data.data.startmonth);
+                        $('#startmonthPro').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.startmonth);
+                        $('#endyearPro').val(data.data.endyear);
+                        $('#endyearPro').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.endyear);
+                        $('#endmonthPro').val(data.data.endmonth);
+                        $('#endmonthPro').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.endmonth);
+                        $('#descriptionpro').val(data.data.description);
+                        $('[data-waitsome="project"]').find('.J_listid').val(data.data.id);
+                        if (data.data.todate==1) {
+                            $('#tonowPro').attr('checked', !0);
+                            $('#tonowPro').val('1');
+                            $('#tonowPro').closest('.J_itemsmenu').find('.J_fortonow').hide();
+                        }
+                        var $parentDom = $('[data-waitsome="project"]').closest('.J_itemsbox');
+                        $('.J_itemsmenu').hide();
+                        $('.items').show();
+                        $parentDom.find('.items').hide();
+                        $parentDom.find('.J_itemsmenu').show();
+                    }
+                });
+            });
+            // 删除项目经历
+            $('.J_delpro').live('click', function() {
+                var url = "/../personal/del_project.html";
+                var thisid = $(this).closest('.J_listhover_edit').data('id');
+                var qsDialog=$(this).dialog({
+                    title: '删除项目经历',
+                    loading: true,
+                    border: false,
+                    yes: function() {
+                        $.post(url,{pid:pid,id:thisid},function(data){
+                            if (data.status) {
+                                $('#projectListBox').find('[data-id="'+thisid+'"]').remove();
+                                if (!$('#projectListBox .J_listhover_edit').length) {
+                                    $.getJSON("/../personal/ajax_get_project_list.html", {pid: pid}, function(data) {
+                                        $('#projectListBox').html(data.data.html);
+                                    });
+                                }
+                            } else {
+                                disapperTooltip("remind", "删除失败");
+                            }
+                        },'json');
+                    }
+                });
+                $.getJSON(url,{pid:pid,id:thisid},function(result){
+                    if(result.status == 1){
+                        qsDialog.setContent(result.data.html);
+                    }else{
+                        qsDialog.hide();
+                        disapperTooltip('remind',result.msg);
+                    }
+                });
+            });
+        });
+
+        // 加载语言能力
+        $.getJSON("/../personal/ajax_get_language_list.html", {pid: pid}, function(data) {
+            $('#languageListBox').html(data.data.html);
+            listHoveEdit();
+            if ($('#languageListBox div.label').length) {
+                $('#JLanguageStatus').removeClass('but_gray_70_res_add').addClass('but_gray_70_res_edit').text('修改');
+            }
+        });
+
+        // 加载获得证书
+        $.getJSON("/../personal/ajax_get_credent_list.html", {pid: pid}, function(data) {
+            $('#credentListBox').html(data.data.html);
+            listHoveEdit();
+            // 修改获得证书
+            $('.J_editcre').live('click', function() {
+                var thisid = $(this).closest('.J_listhover_edit').data('id');
+                $.getJSON("/../personal/edit_credent.html", {pid: pid, id: thisid}, function(data) {
+                    if (data.status) {
+                        $('#credent').val(data.data.name);
+                        $('#yearCredent').val(data.data.year);
+                        $('#yearCredent').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.year);
+                        $('#monthCredent').val(data.data.month);
+                        $('#monthCredent').closest('.J_listitme_parent').find('.J_listitme_text').text(data.data.month);
+                        $('[data-waitsome="credent"]').find('.J_listid').val(data.data.id);
+                        var $parentDom = $('[data-waitsome="credent"]').closest('.J_itemsbox');
+                        $('.J_itemsmenu').hide();
+                        $('.items').show();
+                        $parentDom.find('.items').hide();
+                        $parentDom.find('.J_itemsmenu').show();
+                    }
+                });
+            });
+            // 删除获得证书
+            $('.J_delcre').live('click', function() {
+                var url = "/../personal/del_credent.html";
+                var thisid = $(this).closest('.J_listhover_edit').data('id');
+                var qsDialog=$(this).dialog({
+                    title: '删除获得证书',
+                    loading: true,
+                    border: false,
+                    yes: function() {
+                        $.post(url,{pid:pid,id:thisid},function(data){
+                            if (data.status) {
+                                $('#credentListBox').find('[data-id="'+thisid+'"]').remove();
+                                if (!$('#credentListBox .J_listhover_edit').length) {
+                                    $.getJSON("/../personal/ajax_get_credent_list.html", {pid: pid}, function(data) {
+                                        $('#credentListBox').html(data.data.html);
+                                    });
+                                }
+                            } else {
+                                disapperTooltip("remind", "删除失败");
+                            }
+                        },'json');
+                    }
+                });
+                $.getJSON(url,{pid:pid,id:thisid},function(result){
+                    if(result.status == 1){
+                        qsDialog.setContent(result.data.html);
+                    }else{
+                        qsDialog.hide();
+                        disapperTooltip('remind',result.msg);
+                    }
+                });
+            });
+        });
+
+        // 特长标签
+        $('.J_taglist').die().live('click', function() {
+            var selectArr = $('.J_taglist.select');
+            if ($(this).hasClass('select')) {
+                $(this).toggleClass('select');
+            } else {
+                if (selectArr.length >= 5) {
+                    disapperTooltip("remind", "最多可选5个标签！");
+                } else {
+                    $(this).toggleClass('select');
+                }
+            }
+        });
+
+        // 判断是否有附件简历
+        if ($('#J_resumeword_box .dleft_tit').length) {
+            $('#J_has_resume_word_sub').text('修改');
+        }
+
+        //点击重命名简历标题，切换出文本框
+        $("#J_edit_title_edit").click( function () {
+            $("#J_edit_title_input_edit").show();
+            $("#J_edit_title_txt_edit").hide();
+        });
+
+        $("#J_edit_title_edit").click( function () {
+            $("#J_edit_title_input_edit").show();
+            var oval = $("#J_edit_title_input_edit").find('input[name="title"]').val();
+            $("#J_edit_title_input_edit").find('input[name="title"]').val('').focus().val(oval).addClass('input_focus');
+            $("#J_edit_title_txt_edit").hide();
+        });
+
+        // 保存简历标题
+        $('.J_save_basetitle').live('click', function(e) {
+            // 提交之前先验证
+            var titleValue = $.trim($('#J_titleinput').val());
+            if (titleValue == "") {
+                disapperTooltip("remind", "请填写简历标题");
+                return false;
+            }
+            if (titleValue != "" && titleValue.length > 12) {
+                disapperTooltip("remind", "简历标题应在1~12个字内");
+                return false;
+            }
+            // 提交表单
+            $.ajax({
+                url: "/../personal/ajax_save_title.html",
+                type: 'POST',
+                dataType: 'json',
+                data: {pid: pid, title: titleValue}
+            })
+                .done(function(data) {
+                    if (parseInt(data.status)) {
+                        disapperTooltip("success", '保存成功！');
+                        $("#J_edit_title_input_edit").hide();
+                        $("#J_edit_title_txt_edit").find('span').text($('#J_titleinput').val());
+                        $("#J_edit_title_txt_edit").show();
+                    } else {
+                        disapperTooltip("remind", data.msg);
+                    }
+                })
+                .fail(function() {
+                    disapperTooltip("remind", "更新失败请重新提交");
+                });
+        });
+
+        // 保存基本信息
+        $('.J_saveitems_baseinfo').live('click', function(e) {
+            // 提交之前先验证
+            var fullnameValue = $.trim($('#fullname').val());
+            /*var displaynameValue = $.trim($('#display_name').val());*/
+            var sexValue = $.trim($('#sex').val());
+            var emailValue = $.trim($('#email').val());
+            var residenceValue = $.trim($('#residence').val());
+            var birthdateValue = $.trim($('#birthdate').val());
+
+            var educationValue = $.trim($('#education').val());
+            var experienceValue = $.trim($('#experience').val());
+
+            var telephoneValue = $.trim($('#telephone').val());
+
+            if (fullnameValue == "") {
+                disapperTooltip("remind", "请填写姓名");
+                return false;
+            }
+            if (!(fullnameValue.match(/^[\u4e00-\u9fa5]+$/))) {
+                disapperTooltip("remind", "姓名只能为汉字");
+                return false;
+            }
+            if (sexValue == "") {
+                disapperTooltip("remind", "请选择性别");
+                return false;
+            }
+            if (birthdateValue == "") {
+                disapperTooltip("remind", "请选择出生年份");
+                return false;
+            }
+            if (residenceValue != "" && residenceValue.length > 20) {
+                disapperTooltip("remind", "现居住地应在1~20个字内");
+                return false;
+            }
+            if (educationValue == "") {
+                disapperTooltip("remind", "请选择学历");
+                return false;
+            }
+            if (experienceValue == "") {
+                disapperTooltip("remind", "请选择工作经验");
+                return false;
+            }
+            var cus_id=$("#cus_id").val();
+            var res_id=$("#res_id").val();
+            $('.J_saveitems_baseinfo').val('保存中...').addClass('btn_disabled').prop('disabled', !0);
+            // 提交表单
+            $.ajax({
+                url: "../CustomerCon/updateCus",
+                type: 'POST',
+                dataType: 'json',
+                data: {cus_id: cus_id,res_id:res_id,cus_name: fullnameValue,cus_sex: sexValue, cus_birthday: birthdateValue,cus_address: residenceValue, res_education: educationValue, cus_workyear: experienceValue,cus_email: emailValue},
+                success:function (result) {
+                    if(result!=null){
+                        disapperTooltip("remind", "修改成功");
+                        $('.J_saveitems_baseinfo').val('保存').removeClass('btn_disabled').prop('disabled', 0);
+                        /*刷新当前页面*/
+                        window.location.reload();
+                    }
+                }
+            })
+        });
+        // 保存求职意向
+        $('.J_saveitems_intention').live('click', function(e) {
+            // 提交之前先验证
+            var currentValue = $.trim($('#current').val());
+            var natureValue = $.trim($('#nature').val());
+            var tradeValue = $.trim($('#trade').val());
+            var intentionJobsValue = $.trim($('#intention_jobs_id').val());
+            var districtValue = $.trim($('#district').val());
+            var wageValue = $.trim($('#wage').val());
+            var res_id=$("#res_id_t").val();
+            if (currentValue == "") {
+                disapperTooltip("remind", "请选择目前状态");
+                return false;
+            }
+            if (natureValue == "") {
+                disapperTooltip("remind", "请选择工作性质");
+                return false;
+            }
+            if (intentionJobsValue == "") {
+                disapperTooltip("remind", "请选择期望职位");
+                return false;
+            }
+            if (districtValue == "") {
+                disapperTooltip("remind", "请选择工作地区");
+                return false;
+            }
+            if (wageValue == "") {
+                disapperTooltip("remind", "请选择期望薪资");
+                return false;
+            }
+            $('.J_saveitems_intention').prop('disabled', !0);
+            // 提交表单
+            $.ajax({
+                url: "../resumeCon/updateRes",
+                type: 'POST',
+                dataType: 'text',
+                data: {res_id: res_id, res_jobstate: currentValue, res_workcategory: natureValue,
+                    res_industry: tradeValue, res_job: intentionJobsValue, res_workaddress: districtValue,
+                    res_pay: wageValue},
+                success:function (result) {
+                    if(result!=null){
+                        disapperTooltip("remind", "修改成功");
+                        $('.J_saveitems_baseinfo').val('保存').removeClass('btn_disabled').prop('disabled', 0);
+                        /*刷新当前页面*/
+                        window.location.reload();
+                    }
+                }
+            })
+        });
+
+        // 添加之前先清空
+        $('#J_clearinput_edu').live('click', function(event) {
+            // 清空表单
+            $('#school').val('');
+            $('#speciality').val('');
+            $('#education1').val('');
+            $('#education1').closest('.J_listitme_parent').find('.J_listitme_text').text('请选择');
+            $('#startyearEdu').val('');
+            $('#startyearEdu').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+            $('#startmonthEdu').val('');
+            $('#startmonthEdu').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+            $('#endyearEdu').val('');
+            $('#endyearEdu').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+            $('#endmonthEdu').val('');
+            $('#endmonthEdu').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+            $('[data-waitsome="education"]').find('.J_listid').val('');
+            $('#tonowEdu').attr('checked', false);
+            $('#tonowEdu').val('');
+            $('#tonowEdu').closest('.J_itemsmenu').find('.J_fortonow').show();
+        });
+
+        // 添加教育经历 保存
+        $('.J_saveitems_education').live('click', function(e) {
+            // 提交之前先验证
+            var schoolValue = $.trim($('#school').val());
+            var specialityValue = $.trim($('#speciality').val());
+            var education1Value = $.trim($('#education1').val());
+            var startyearEduValue = $.trim($('#startyearEdu').val());
+            var startmonthEduValue = $.trim($('#startmonthEdu').val());
+            var endyearEduValue = $.trim($('#endyearEdu').val());
+            var endmonthEduValue = $.trim($('#endmonthEdu').val());
+            var todateEduValue = $.trim($('#tonowEdu').val());
+            var listidValue = $.trim($('[data-waitsome="education"]').find('.J_listid').val());
+            if (schoolValue == "") {
+                disapperTooltip("remind", "请填写学校名称");
+                return false;
+            }
+            if (specialityValue == "") {
+                disapperTooltip("remind", "请填写专业名称");
+                return false;
+            }
+            if (education1Value == "") {
+                disapperTooltip("remind", "请选择学历");
+                return false;
+            }
+            if (startyearEduValue == "") {
+                disapperTooltip("remind", "请选择就读开始时间");
+                return false;
+            }
+            if (startmonthEduValue == "") {
+                disapperTooltip("remind", "请选择就读开始月份");
+                return false;
+            }
+            if (!parseInt(todateEduValue)) { // 不选择至今才验证结束时间
+                if (endyearEduValue == "") {
+                    disapperTooltip("remind", "请选择就读结束时间");
+                    return false;
+                }
+                if (endmonthEduValue == "") {
+                    disapperTooltip("remind", "请选择就读结束月份");
+                    return false;
+                }
+                if (wrongTime(startyearEduValue, startmonthEduValue, endyearEduValue, endmonthEduValue)) {
+                    disapperTooltip("remind", "结束时间应大于开始时间");
+                    return false;
+                }
+            }
+            $('.J_saveitems_education').prop('disabled', !0);
+            // 提交表单
+            $.ajax({
+                url: "/../personal/save_education.html",
+                type: 'POST',
+                dataType: 'json',
+                data: {id:listidValue, pid: pid, school: schoolValue, speciality: specialityValue, education: education1Value, startyear: startyearEduValue, startmonth: startmonthEduValue, endyear: endyearEduValue, endmonth: endmonthEduValue, todate: todateEduValue}
+
+            })
+                .done(function(data) {
+                    if (parseInt(data.status)) {
+                        if (listidValue == "") {
+                            if ($('#educationListBox .J_listhover_edit').length) {
+                                $('#educationListBox').append(data.data.html);
+                            } else {
+                                $('#educationListBox').html(data.data.html);
+                            }
+                        } else {
+                            $('#educationListBox').find('[data-id="'+listidValue+'"]').replaceWith(data.data.html);
+                        }
+                        listHoveEdit();
+
+                        // 关闭操作框
+                        var $parentDom = $('.J_saveitems_education').closest('.J_itemsbox');
+                        $('.J_saveitems_education').closest('.J_itemsmenu').hide();
+                        $parentDom.find('.items').show();
+                        // 清空表单
+                        $('#school').val('');
+                        $('#speciality').val('');
+                        $('#education1').val('');
+                        $('#education1').closest('.J_listitme_parent').find('.J_listitme_text').text('请选择');
+                        $('#startyearEdu').val('');
+                        $('#startyearEdu').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+                        $('#startmonthEdu').val('');
+                        $('#startmonthEdu').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+                        $('#endyearEdu').val('');
+                        $('#endyearEdu').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+                        $('#endmonthEdu').val('');
+                        $('#endmonthEdu').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+                        $('[data-waitsome="education"]').find('.J_listid').val('');
+                        $('#tonowEdu').attr('checked', false);
+                        $('#tonowEdu').val('');
+                        $('#tonowEdu').closest('.J_itemsmenu').find('.J_fortonow').show();
+                        check_complete_percent_allowance();
+                    } else {
+                        disapperTooltip("remind", data.msg);
+                    }
+                    $('.J_saveitems_education').prop('disabled', 0);
+                })
+                .fail(function() {
+                    disapperTooltip("remind", "更新失败请重新提交");
+                    $('.J_saveitems_education').prop('disabled', !0);
+                });
+        });
+
+        // 添加之前先清空
+        $('#J_clearinput_exp').live('click', function(event) {
+            // 清空表单
+            $('#companyname').val('');
+            $('#experienceJobname').val('');
+            $('#startyearExp').val('');
+            $('#startyearExp').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+            $('#startmonthExp').val('');
+            $('#startmonthExp').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+            $('#endyearExp').val('');
+            $('#endyearExp').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+            $('#endmonthExp').val('');
+            $('#endmonthExp').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+            $('#jobrespons').val('');
+            $('[data-waitsome="experience"]').find('.J_listid').val('');
+            $('#tonowExp').attr('checked', false);
+            $('#tonowExp').val('');
+            $('#tonowExp').closest('.J_itemsmenu').find('.J_fortonow').show();
+        });
+
+        // 添加工作经历 保存
+        $('.J_saveitems_experience').live('click', function(e) {
+            // 提交之前先验证
+            var f = $(this);
+            var companynameValue = $.trim($('#companyname').val());
+            var experiencenameValue = $.trim($('#experienceJobname').val());
+            var startyearExpValue = $.trim($('#startyearExp').val());
+            var startmonthExpValue = $.trim($('#startmonthExp').val());
+            var endyearExpValue = $.trim($('#endyearExp').val());
+            var endmonthExpValue = $.trim($('#endmonthExp').val());
+            var todateExpValue = $.trim($('#tonowExp').val());
+            var jobresponsValue = $.trim($('#jobrespons').val());
+            var listidValue = $.trim($('[data-waitsome="experience"]').find('.J_listid').val());
+            if (companynameValue == "") {
+                disapperTooltip("remind", "请填写公司名称");
+                return false;
+            }
+            if (experiencenameValue == "") {
+                disapperTooltip("remind", "请填写职位名称");
+                return false;
+            }
+            if (startyearExpValue == "") {
+                disapperTooltip("remind", "请选择任职开始时间");
+                return false;
+            }
+            if (startmonthExpValue == "") {
+                disapperTooltip("remind", "请选择任职开始月份");
+                return false;
+            }
+            if (!parseInt(todateExpValue)) {
+                if (endyearExpValue == "") {
+                    disapperTooltip("remind", "请选择任职结束时间");
+                    return false;
+                }
+                if (endmonthExpValue == "") {
+                    disapperTooltip("remind", "请选择任职结束月份");
+                    return false;
+                }
+                if (wrongTime(startyearExpValue, startmonthExpValue, endyearExpValue, endmonthExpValue)) {
+                    disapperTooltip("remind", "结束时间应大于开始时间");
+                    return false;
+                }
+            }
+            if (jobresponsValue == "") {
+                disapperTooltip("remind", "请填写工作职责");
+                return false;
+            }
+            f.attr('disabled',true);
+            // 提交表单
+            $.ajax({
+                url: "/../personal/save_work.html",
+                type: 'POST',
+                dataType: 'json',
+                data: {id: listidValue, pid: pid, companyname: companynameValue, jobs: experiencenameValue, startyear: startyearExpValue, startmonth: startmonthExpValue, endyear: endyearExpValue, endmonth: endmonthExpValue, todate: todateExpValue, achievements: jobresponsValue}
+
+            })
+                .done(function(data) {
+                    if (parseInt(data.status)) {
+                        if (listidValue == "") {
+                            if ($('#experienceListBox .J_listhover_edit').length) {
+                                $('#experienceListBox').append(data.data.html);
+                            } else {
+                                $('#experienceListBox').html(data.data.html);
+                            }
+                        } else {
+                            $('#experienceListBox').find('[data-id="'+listidValue+'"]').replaceWith(data.data.html);
+                        }
+                        listHoveEdit();
+
+                        // 关闭操作框
+                        var $parentDom = $('.J_saveitems_experience').closest('.J_itemsbox');
+                        $('.J_saveitems_experience').closest('.J_itemsmenu').hide();
+                        $parentDom.find('.items').show();
+                        // 清空表单
+                        $('#companyname').val('');
+                        $('#experienceJobname').val('');
+                        $('#startyearExp').val('');
+                        $('#startyearExp').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+                        $('#startmonthExp').val('');
+                        $('#startmonthExp').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+                        $('#endyearExp').val('');
+                        $('#endyearExp').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+                        $('#endmonthExp').val('');
+                        $('#endmonthExp').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+                        $('#jobrespons').val('');
+                        $('[data-waitsome="experience"]').find('.J_listid').val('');
+                        $('#tonowExp').attr('checked', false);
+                        $('#tonowExp').val('');
+                        $('#tonowExp').closest('.J_itemsmenu').find('.J_fortonow').show();
+                        check_complete_percent_allowance();
+                    } else {
+                        disapperTooltip("remind", data.msg);
+                    }
+                    f.attr('disabled',false);
+                })
+                .fail(function() {
+                    disapperTooltip("remind", "更新失败请重新提交");
+                    f.attr('disabled',false);
+                });
+        });
+        // 项目添加之前先清空
+        $('#J_clearinput_pro').live('click', function(event) {
+            $('#projectname').val('');
+            $('#role').val('');
+            $('#startyearPro').val('');
+            $('#startyearPro').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+            $('#startmonthPro').val('');
+            $('#startmonthPro').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+            $('#endyearPro').val('');
+            $('#endyearPro').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+            $('#endmonthPro').val('');
+            $('#endmonthPro').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+            $('#descriptionpro').val('');
+            $('[data-waitsome="project"]').find('.J_listid').val('');
+            $('#tonowPro').attr('checked', false);
+            $('#tonowPro').val('');
+            $('#tonowPro').closest('.J_itemsmenu').find('.J_fortonow').show();
+        });
+
+        // 添加项目经历 保存
+        $('.J_saveitems_project').live('click', function(e) {
+            // 提交之前先验证
+            var projectnameValue = $.trim($('#projectname').val());
+            var roleValue = $.trim($('#role').val());
+            var startyearProValue = $.trim($('#startyearPro').val());
+            var startmonthProValue = $.trim($('#startmonthPro').val());
+            var endyearProValue = $.trim($('#endyearPro').val());
+            var endmonthProValue = $.trim($('#endmonthPro').val());
+            var todateProValue = $.trim($('#tonowPro').val());
+            var descriptionproValue = $.trim($('#descriptionpro').val());
+            var listidValue = $.trim($('[data-waitsome="project"]').find('.J_listid').val());
+            if (projectnameValue == "") {
+                disapperTooltip("remind", "请填写项目名称");
+                return false;
+            }
+            if (roleValue == "") {
+                disapperTooltip("remind", "请填写担任角色");
+                return false;
+            }
+            if (startyearProValue == "") {
+                disapperTooltip("remind", "请选择项目开始时间");
+                return false;
+            }
+            if (startmonthProValue == "") {
+                disapperTooltip("remind", "请选择项目开始月份");
+                return false;
+            }
+            if (!parseInt(todateProValue)) {
+                if (endyearProValue == "") {
+                    disapperTooltip("remind", "请选择项目结束时间");
+                    return false;
+                }
+                if (endmonthProValue == "") {
+                    disapperTooltip("remind", "请选择项目结束月份");
+                    return false;
+                }
+                if (wrongTime(startyearProValue, startmonthProValue, endyearProValue, endmonthProValue)) {
+                    disapperTooltip("remind", "结束时间应大于开始时间");
+                    return false;
+                }
+            }
+            if (descriptionproValue == "") {
+                disapperTooltip("remind", "请填写项目描述");
+                return false;
+            }
+            $('.J_saveitems_project').prop('disabled', !0);
+            // 提交表单
+            $.ajax({
+                url: "/../personal/save_project.html",
+                type: 'POST',
+                dataType: 'json',
+                data: {id: listidValue, pid: pid, projectname: projectnameValue, role: roleValue, startyear: startyearProValue, startmonth: startmonthProValue, endyear: endyearProValue, endmonth: endmonthProValue, todate: todateProValue, description: descriptionproValue}
+
+            })
+                .done(function(data) {
+                    if (parseInt(data.status)) {
+                        if (listidValue == "") {
+                            if ($('#projectListBox .J_listhover_edit').length) {
+                                $('#projectListBox').append(data.data.html);
+                            } else {
+                                $('#projectListBox').html(data.data.html);
+                            }
+                        } else {
+                            $('#projectListBox').find('[data-id="'+listidValue+'"]').replaceWith(data.data.html);
+                        }
+                        listHoveEdit();
+
+                        // 关闭操作框
+                        var $parentDom = $('.J_saveitems_project').closest('.J_itemsbox');
+                        $('.J_saveitems_project').closest('.J_itemsmenu').hide();
+                        $parentDom.find('.items').show();
+                        $('#projectname').val('');
+                        $('#role').val('');
+                        $('#startyearPro').val('');
+                        $('#startyearPro').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+                        $('#startmonthPro').val('');
+                        $('#startmonthPro').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+                        $('#endyearPro').val('');
+                        $('#endyearPro').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+                        $('#endmonthPro').val('');
+                        $('#endmonthPro').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+                        $('#descriptionpro').val('');
+                        $('[data-waitsome="PROJ"]').find('.J_listid').val('');
+                        $('#tonowPro').attr('checked', false);
+                        $('#tonowPro').val('');
+                        $('#tonowPro').closest('.J_itemsmenu').find('.J_fortonow').show();
+                        check_complete_percent_allowance();
+                    } else {
+                        disapperTooltip("remind", data.msg);
+                    }
+                    $('.J_saveitems_project').prop('disabled', 0);
+                })
+                .fail(function() {
+                    disapperTooltip("remind", "更新失败请重新提交");
+                    $('.J_saveitems_project').prop('disabled', 0);
+                });
+        });
+        // 添加之前先清空
+        $('#J_clearinput_tra').live('click', function(event) {
+            $('#agency').val('');
+            $('#course').val('');
+            $('#startyearTra').val('');
+            $('#startyearTra').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+            $('#startmonthTra').val('');
+            $('#startmonthTra').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+            $('#endyearTra').val('');
+            $('#endyearTra').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+            $('#endmonthTra').val('');
+            $('#endmonthTra').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+            $('#description').val('');
+            $('[data-waitsome="train"]').find('.J_listid').val('');
+            $('#tonowTra').attr('checked', false);
+            $('#tonowTra').val('');
+            $('#tonowTra').closest('.J_itemsmenu').find('.J_fortonow').show();
+        });
+        // 添加培训经历 保存
+        $('.J_saveitems_train').live('click', function(e) {
+            // 提交之前先验证
+            var agencyValue = $.trim($('#agency').val());
+            var courseValue = $.trim($('#course').val());
+            var startyearTraValue = $.trim($('#startyearTra').val());
+            var startmonthTraValue = $.trim($('#startmonthTra').val());
+            var endyearTraValue = $.trim($('#endyearTra').val());
+            var endmonthTraValue = $.trim($('#endmonthTra').val());
+            var todateTraValue = $.trim($('#tonowTra').val());
+            var descriptionValue = $.trim($('#description').val());
+            var listidValue = $.trim($('[data-waitsome="train"]').find('.J_listid').val());
+            if (agencyValue == "") {
+                disapperTooltip("remind", "请填写培训机构名称");
+                return false;
+            }
+            if (courseValue == "") {
+                disapperTooltip("remind", "请填写培训课程");
+                return false;
+            }
+            if (startyearTraValue == "") {
+                disapperTooltip("remind", "请选择培训开始时间");
+                return false;
+            }
+            if (startmonthTraValue == "") {
+                disapperTooltip("remind", "请选择培训开始月份");
+                return false;
+            }
+            if (!parseInt(todateTraValue)) {
+                if (endyearTraValue == "") {
+                    disapperTooltip("remind", "请选择培训结束时间");
+                    return false;
+                }
+                if (endmonthTraValue == "") {
+                    disapperTooltip("remind", "请选择培训结束月份");
+                    return false;
+                }
+                if (wrongTime(startyearTraValue, startmonthTraValue, endyearTraValue, endmonthTraValue)) {
+                    disapperTooltip("remind", "结束时间应大于开始时间");
+                    return false;
+                }
+            }
+            if (descriptionValue == "") {
+                disapperTooltip("remind", "请填写培训内容");
+                return false;
+            }
+            $('.J_saveitems_train').prop('disabled', !0);
+            // 提交表单
+            $.ajax({
+                url: "/../personal/save_training.html",
+                type: 'POST',
+                dataType: 'json',
+                data: {id: listidValue, pid: pid, agency: agencyValue, course: courseValue, startyear: startyearTraValue, startmonth: startmonthTraValue, endyear: endyearTraValue, endmonth: endmonthTraValue, todate: todateTraValue, description: descriptionValue}
+
+            })
+                .done(function(data) {
+                    if (parseInt(data.status)) {
+                        if (listidValue == "") {
+                            if ($('#trainListBox .J_listhover_edit').length) {
+                                $('#trainListBox').append(data.data.html);
+                            } else {
+                                $('#trainListBox').html(data.data.html);
+                            }
+                        } else {
+                            $('#trainListBox').find('[data-id="'+listidValue+'"]').replaceWith(data.data.html);
+                        }
+                        listHoveEdit();
+
+                        // 关闭操作框
+                        var $parentDom = $('.J_saveitems_train').closest('.J_itemsbox');
+                        $('.J_saveitems_train').closest('.J_itemsmenu').hide();
+                        $parentDom.find('.items').show();
+                        $('#agency').val('');
+                        $('#course').val('');
+                        $('#startyearTra').val('');
+                        $('#startyearTra').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+                        $('#startmonthTra').val('');
+                        $('#startmonthTra').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+                        $('#endyearTra').val('');
+                        $('#endyearTra').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+                        $('#endmonthTra').val('');
+                        $('#endmonthTra').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+                        $('#description').val('');
+                        $('[data-waitsome="train"]').find('.J_listid').val('');
+                        $('#tonowTra').attr('checked', false);
+                        $('#tonowTra').val('');
+                        $('#tonowTra').closest('.J_itemsmenu').find('.J_fortonow').show();
+                        check_complete_percent_allowance();
+                    } else {
+                        disapperTooltip("remind", data.msg);
+                    }
+                    $('.J_saveitems_train').prop('disabled', 0);
+                })
+                .fail(function() {
+                    disapperTooltip("remind", "更新失败请重新提交");
+                    $('.J_saveitems_train').prop('disabled', 0);
+                });
+        });
+
+        // 修改语言能力
+        $('.J_showitems_edit').live('click', function(e) {
+            $.getJSON("/../personal/edit_language.html", {pid: pid}, function(data) {
+                if (data.status) {
+                    $('#ajaxEditLanguageListBox').html(data.data.html);
+                    $('.J_itemsmenu').hide();
+                    $('.items').show();
+                    var $parentDom = $('.J_showitems_edit').closest('.J_itemsbox');
+                    $('.J_showitems_edit').closest('.items').hide();
+                    $parentDom.find('.J_itemsmenu').show();
+
+                    // 删除语言能力
+                    $('.J_dellanguage').click(function() {
+                        if ($('#ajaxEditLanguageListBox .J_listhover_edit').length > 1) {
+                            $(this).closest('.J_listhover_edit').remove();
+                        } else if ($('#ajaxEditLanguageListBox .J_listhover_edit').length == 1) {
+                            $('#J-for-last-del').val('1');
+                            $(this).closest('.J_listhover_edit').data('id','0');
+                            $(this).closest('.J_listhover_edit').find('.J_listitme_text').eq(0).text('选择语种');
+                            $(this).closest('.J_listhover_edit').find('.J_listitme_text').eq(1).text('熟悉程度');
+                            $(this).closest('.J_listhover_edit').find('.J_listitme_code').val('');
+                            $('#JLanguageStatus').removeClass('but_gray_70_res_edit').addClass('but_gray_70_res_add').text('添加');
+                        }
+                    });
+
+                    // 新增一项
+                    $('.J_addlanguage').click(function() {
+                        var existingLength = $('#ajaxEditLanguageListBox .J_listhover_edit').length;
+                        if (existingLength < 6) {
+                            var $last = $('#ajaxEditLanguageListBox .J_listhover_edit').last();
+                            var $obj = $last.clone(true);
+                            $obj.data('id','0');
+                            $obj.find('.J_listitme_text').eq(0).text('选择语种');
+                            $obj.find('.J_listitme_text').eq(1).text('熟悉程度');
+                            $obj.find('.J_listitme_code').val('');
+                            $obj.insertAfter($last);
+                        } else {
+                            disapperTooltip("remind", "最多可添加6种语言");
+                        }
+                    });
+                }
+            });
+        });
+
+        // 添加语言能力 保存
+        $('.J_saveitems_language').live('click', function(e) {
+            // 提交之前先验证
+            var switchReq = true;
+            var remindType;
+            var languageArray = new Array();
+            var levelArray = new Array();
+            $('[data-waitsome="language"] .J_listitme_code').each(function(index, el) {
+                if ($.trim($(this).val()) == '') {
+                    switchReq = false;
+                    if ($(this).attr('name') == 'language') {
+                        remindType = 0;
+                    } else {
+                        remindType = 1;
+                    }
+                    return false;
+                } else {
+                    if ($(this).attr('name') == 'language') {
+                        languageArray.push($.trim($(this).val()));
+                    } else {
+                        levelArray.push($.trim($(this).val()));
+                    }
+
+                }
+            });
+
+            // 去除重复
+            var sortArray = languageArray.sort();
+            for (var i = 0; i < sortArray.length; i++) {
+                if (sortArray[i] == sortArray[i+1]) {
+                    disapperTooltip("remind", "不能重复选择");
+                    return false;
+                }
+            }
+
+            if (!eval($('#J-for-last-del').val())) {
+                if (!switchReq) {
+                    if (remindType) {
+                        disapperTooltip("remind", "请选择熟悉程度");
+                    } else {
+                        disapperTooltip("remind", "请选择语种");
+                    }
+                    return false;
+                }
+            }
+            $('.J_saveitems_language').prop('disabled', !0);
+            // 提交表单
+            $.ajax({
+                url: "/../personal/save_language.html",
+                type: 'POST',
+                dataType: 'json',
+                data: {pid: pid, language: languageArray, level: levelArray}
+
+            })
+                .done(function(data) {
+                    if (parseInt(data.status)) {
+                        $('#languageListBox').html(data.data.html);
+                        listHoveEdit();
+
+                        // 关闭操作框
+                        var $parentDom = $('.J_saveitems_language').closest('.J_itemsbox');
+                        $('.J_saveitems_language').closest('.J_itemsmenu').hide();
+                        $parentDom.find('.items').show();
+                        $('#J-for-last-del').val('0');
+                        if (languageArray.length) {
+                            $('#JLanguageStatus').removeClass('but_gray_70_res_add').addClass('but_gray_70_res_edit').text('修改');
+                        } else {
+                            $('#JLanguageStatus').removeClass('but_gray_70_res_edit').addClass('but_gray_70_res_add').text('添加');
+                        }
+                        check_complete_percent_allowance();
+                    } else {
+                        disapperTooltip("remind", data.msg);
+                    }
+                    $('.J_saveitems_language').prop('disabled', 0);
+                })
+                .fail(function() {
+                    disapperTooltip("remind", "更新失败请重新提交");
+                    $('.J_saveitems_language').prop('disabled', 0);
+                });
+        });
+
+        // 添加之前先清空
+        $('#J_clearinput_cre').live('click', function(event) {
+            $('#credent').val('');
+            $('#yearCredent').val('');
+            $('#yearCredent').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+            $('#monthCredent').val('');
+            $('#monthCredent').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+            $('[data-waitsome="credent"]').find('.J_listid').val('');
+        });
+
+        // 添加获得证书 保存
+        $('.J_saveitems_credent').live('click', function(e) {
+            // 提交之前先验证
+            var credentValue = $.trim($('#credent').val());
+            var yearCredentValue = $.trim($('#yearCredent').val());
+            var monthCredentValue = $.trim($('#monthCredent').val());
+            var listidValue = $.trim($('[data-waitsome="credent"]').find('.J_listid').val());
+            if (credentValue == "") {
+                disapperTooltip("remind", "请填写证书名称");
+                return false;
+            }
+            if (yearCredentValue == "") {
+                disapperTooltip("remind", "请选择获得证书年份");
+                return false;
+            }
+            if (monthCredentValue == "") {
+                disapperTooltip("remind", "请选择获得证书月份");
+                return false;
+            }
+            if (!listidValue) {
+                // 添加证书数量限制
+                if ($('#credentListBox .J_listhover_edit').length >= 6) {
+                    disapperTooltip("remind", "最多可以添加6份证书");
+                    return false;
+                }
+            }
+            $('.J_saveitems_credent').prop('disabled', !0);
+            // 提交表单
+            $.ajax({
+                url: "/../personal/save_credent.html",
+                type: 'POST',
+                dataType: 'json',
+                data: {id: listidValue, pid: pid, name: credentValue, year: yearCredentValue, month: monthCredentValue}
+            })
+                .done(function(data) {
+                    if (parseInt(data.status)) {
+                        if (listidValue == "") {
+                            if ($('#credentListBox .J_listhover_edit').length) {
+                                $('#credentListBox').append(data.data.html);
+                            } else {
+                                $('#credentListBox').html(data.data.html);
+                            }
+                        } else {
+                            $('#credentListBox').find('[data-id="'+listidValue+'"]').replaceWith(data.data.html);
+                        }
+                        listHoveEdit();
+
+                        // 关闭操作框
+                        var $parentDom = $('.J_saveitems_credent').closest('.J_itemsbox');
+                        $('.J_saveitems_credent').closest('.J_itemsmenu').hide();
+                        $parentDom.find('.items').show();
+                        $('#credent').val('');
+                        $('#yearCredent').val('');
+                        $('#yearCredent').closest('.J_listitme_parent').find('.J_listitme_text').text('年份');
+                        $('#monthCredent').val('');
+                        $('#monthCredent').closest('.J_listitme_parent').find('.J_listitme_text').text('月份');
+                        $('[data-waitsome="credent"]').find('.J_listid').val('');
+                        check_complete_percent_allowance();
+                    } else {
+                        disapperTooltip("remind", data.msg);
+                    }
+                    $('.J_saveitems_credent').prop('disabled', 0);
+                })
+                .fail(function() {
+                    disapperTooltip("remind", "更新失败请重新提交");
+                    $('.J_saveitems_credent').prop('disabled', 0);
+                });
+        });
+
+        // 添加自我描述 保存
+        $('.J_saveitems_specialty').live('click', function(e) {
+            // 提交之前先验证
+            var specialtyValue = $.trim($('#specialty').val());
+            if (specialtyValue == "") {
+                disapperTooltip("remind", "请填写自我描述");
+                return false;
+            }
+            $('.J_saveitems_specialty').prop('disabled', !0);
+            // 提交表单
+            $.ajax({
+                url: "/../personal/ajax_save_specialty.html",
+                type: 'POST',
+                dataType: 'json',
+                data: {pid: pid, specialty: specialtyValue}
+            })
+                .done(function(data) {
+                    if (parseInt(data.status)) {
+                        var htmlVal = $('#specialty').val();
+                        $('.specialty_box').removeClass('empty font_gray9').addClass('describe font_gray6').text(htmlVal);
+                        // 关闭操作框
+                        var $parentDom = $('.J_saveitems_specialty').closest('.J_itemsbox');
+                        $('.J_saveitems_specialty').closest('.J_itemsmenu').hide();
+                        $parentDom.find('.items').show();
+                        check_complete_percent_allowance();
+                    } else {
+                        disapperTooltip("remind", data.msg);
+                    }
+                    $('.J_saveitems_specialty').prop('disabled', 0);
+                })
+                .fail(function() {
+                    disapperTooltip("remind", "更新失败请重新提交");
+                    $('.J_saveitems_specialty').prop('disabled', 0);
+                });
+        });
+
+        // 添加特长标签 保存
+        $('.J_saveitems_tag').die().live('click', function(e) {
+            var tagListArray = $('.J_taglist.select');
+            var tagvalueArray = new Array();
+            var tagcnvalueArray = new Array();
+            if (tagListArray.length) {
+                $.each(tagListArray, function(index, val) {
+                    if($(this).data('code')){
+                        tagvalueArray.push($(this).data('code'));
+                    }else{
+                        tagcnvalueArray.push($(this).data('title'));
+                    }
+                });
+            } else {
+                disapperTooltip("remind", "请选择特长标签");
+                return false;
+            }
+            $('.J_saveitems_tag').prop('disabled', !0);
+            // 提交表单
+            $.ajax({
+                url: "/../personal/ajax_save_tag.html",
+                type: 'POST',
+                dataType: 'json',
+                data: {pid: pid, tag: tagvalueArray, tag_cn:tagcnvalueArray}
+            })
+                .done(function(data) {
+                    if (parseInt(data.status)) {
+                        var htmlPrevTag = '';
+                        $.each(tagListArray, function(index, val) {
+                            var typeNum = parseInt($(this).data('type'));
+                            if (typeNum) {
+                                htmlPrevTag += '<div class="label_speciality sys">' + $(this).data('title') + '</div>';
+                            } else {
+                                htmlPrevTag += '<div class="label_speciality">' + $(this).data('title') + '</div>';
+                            }
+                        });
+                        $('#tagListBox').html(htmlPrevTag);
+                        listHoveEdit();
+
+                        // 关闭操作框
+                        var $parentDom = $('.J_saveitems_tag').closest('.J_itemsbox');
+                        $('.J_saveitems_tag').closest('.J_itemsmenu').hide();
+                        $parentDom.find('.items').show();
+                        check_complete_percent_allowance();
+                    } else {
+                        disapperTooltip("remind", data.msg);
+                    }
+                    $('.J_saveitems_tag').prop('disabled', 0);
+                })
+                .fail(function() {
+                    disapperTooltip("remind", "更新失败请重新提交");
+                    $('.J_saveitems_tag').prop('disabled', 0);
+                });
+        });
+
+        // 自定义标签
+        $('#J_add_selftag').die().live('click', function() {
+            var tagValue = $.trim($('input[name="selftag"]').val());
+            var isRepeat = false;
+            if (tagValue == '') {
+                disapperTooltip("remind", "您忘记填写亮点啦，不超过8个字！");
+                return false;
+            }
+            if (tagValue.length > 8) {
+                disapperTooltip("remind", "自定义标签不能超过8个字！");
+                return false;
+            }
+            $('.J_taglist').each(function(index, el) {
+                if (tagValue == $(this).data('title')) {
+                    isRepeat = true;
+                }
+            })
+            if (isRepeat) {
+                disapperTooltip("remind", "填写的亮点已经存在了哦！");
+                return false;
+            }
+            var slefTagHtml = '<div class="sp_label J_hoverbut nowrap J_taglist" data-code="" data-title="'+tagValue+'" data-type="0">'+tagValue+'<div class="choose"></div></div>';
+            $('#ajaxtagListBox').append(slefTagHtml);
+        });
+
+        // 点击显示上传图片
+        $('.J_showitems_saveimg').live('click', function(e) {
+            var groupLength = $('#J_resumeimg_box .J_resumeimg_group').length;
+            if (groupLength >= 6) {
+                disapperTooltip("remind", '最多可以上传6张');
+            } else {
+                $('.J_itemsmenu').hide();
+                $('.items').show();
+                var $parentDom = $('.J_showitems_saveimg').closest('.J_itemsbox');
+                $('.J_showitems_saveimg').closest('.items').hide();
+                $parentDom.find('.J_itemsmenu').show();
+            }
+        });
+
+        // 删除作品/照片
+        $('.J_resumeimg_del').die().live('click', function(e) {
+            var thisGroup = $(this).closest('.J_resumeimg_group');
+            var imgIdCode = thisGroup.data('code');
+            var url = "/../personal/ajax_resume_img_del.html";
+            var qsDialog = $(this).dialog({
+                title: '删除照片/作品',
+                loading: true,
+                border: false,
+                footer: false
+            });
+            $.getJSON(url, function (result) {
+                if (result.status == 1) {
+                    qsDialog.hide();
+                    var qsDialogSon = $(this).dialog({
+                        title: '删除照片/作品',
+                        content: result.data.html,
+                        border: false,
+                        yes: function () {
+                            $.post(url, {id: imgIdCode}, function(data) {
+                                if (data.status) {
+                                    $('#J_resumeimg_box').find('[data-code="'+imgIdCode+'"]').remove();
+                                    if (!$('#J_resumeimg_box .J_resumeimg_group').length) {
+                                        $('#J_resumeimg_box').html('<div class="empty font_gray9">最多上传6张，每张最大800KB,支持jpg/gif/bmp/png格式，建议上传清晰自然生活照，或者您的专业代表作品。</div>');
+                                        // 更改右侧菜单对应的状态
+                                        $('[data-forsome="resumeimg"]').removeClass('ok').text('添加');
+                                        $('[data-forsome="resumeimg"]').parent().prev().removeClass('ok');
+                                        // 更改右侧简历完整度
+                                        refreshResumePercent();
+                                    }
+                                } else {
+                                    disapperTooltip("remind", "删除失败");
+                                }
+                            },'json');
+                        }
+                    });
+                } else {
+                    qsDialog.hide();
+                    disapperTooltip('remind', result.msg);
+                }
+            });
+
+        });
+        $('.J_scan_img').click(function() {
+            $.ajax({
+                url: "/../personal/ajax_resume_img_scan.html",
+                type: 'POST',
+                dataType: 'json',
+                data: {pid: pid}
+            }).done(function(data) {
+                if (eval(data.status)) {
+                    scanimg_time=setInterval(waiting_img_scan,5000);
+                } else {
+                    disapperTooltip("remind", data.msg);
+                }
+            })
+        });
+
+        // 上传作品/照片
+        $.upload('#resume_img',{type:'resume_img',pid: pid},function(result){
+            if(result.status == 1){
+                // 提交之前先验证
+                var imgValue = result.data.img;
+                var srcValue = result.data.path;
+                var codeValue = result.data.id;
+                // 提交表单
+                $.ajax({
+                    url: "/../personal/ajax_resume_attach.html",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {pid: pid, id: codeValue, img: imgValue}
+                })
+                    .done(function(data) {
+                        if (parseInt(data.status)) {
+                            var htmlImg = '';
+                            htmlImg += [
+                                '<div class="plist J_resumeimg_group" data-code="'+data.data+'" data-img="'+imgValue+'">',
+                                '<div class="bg J_hoverbut">',
+                                '<div class="pic"><img src="'+srcValue+'" alt="" /></div>',
+                                '<div class="audit font_yellow">等待审核</div>',
+                                '<div class="edit J_resumeimg_edit"></div>',
+                                '<div class="picdel J_resumeimg_del"><a href="javascript:;">删除</a></div>',
+                                '<div class="clear"></div>',
+                                '</div>',
+                                '</div>'
+                            ].join('');
+                            var groupLength = $('#J_resumeimg_box .J_resumeimg_group').length;
+                            if (groupLength) {
+                                var isAppend = true;
+                                $('#J_resumeimg_box .J_resumeimg_group').each(function(index, el) {
+                                    if ($(this).data('code') == codeValue) {
+                                        isAppend = false;
+                                    }
+                                });
+                                if (isAppend) {
+                                    $('#J_resumeimg_box').append(htmlImg);
+                                } else {
+                                    $('#J_resumeimg_box').find('[data-code="'+codeValue+'"]').replaceWith(htmlImg);
+                                }
+                            } else {
+                                $('#J_resumeimg_box').html(htmlImg);
+                            }
+
+                            // 关闭操作框
+                            var $parentDom = $('#resume_img').closest('.J_itemsbox');
+                            $('#resume_img').closest('.J_itemsmenu').hide();
+                            $parentDom.find('.items').show();
+                            check_complete_percent_allowance();
+                        } else {
+                            disapperTooltip("remind", data.msg);
+                        }
+                    })
+                    .fail(function() {
+                        disapperTooltip("remind", "更新失败请重新提交");
+                    });
+            }else{
+                disapperTooltip("remind", result.msg);
+            }
+        });
+
+        // 上传附件简历
+        $.upload('#word_resume',{type:'word_resume',pid: pid},function(result){
+            if(result.status == 1){
+                var htmlWord = '';
+                htmlWord += [
+                    '<div class="dleft_tit link_gray6 substring">'+result.data.name+'</div>',
+                    '<div class="dtime">上传于：'+result.data.time+'</div>',
+                    '<div class="ddown link_yellow">',
+                    '<a href="javascript:;" class="J_resumeword_update">更换</a>&nbsp;&nbsp;&nbsp;',
+                    '<a href="'+result.data.path+'">下载</a>&nbsp;&nbsp;&nbsp;',
+                    '<a href="javascript:;" class="J_resumeword_del">删除</a>',
+                    '</div>',
+                    '<div class="clear"></div>'
+                ].join('');
+                $('#J_resumeword_box').html(htmlWord);
+                $('#J_has_resume_word_sub').text('修改');
+                // 关闭操作框
+                var $parentDom = $('#word_resume').closest('.J_itemsbox');
+                $('#word_resume').closest('.J_itemsmenu').hide();
+                $parentDom.find('.items').show();
+                check_complete_percent_allowance();
+            }else{
+                disapperTooltip("remind", result.msg);
+            }
+        });
+
+        // 更换附件简历
+        $('.J_resumeword_update').die().live('click', function(e) {
+            $('.J_itemsmenu').hide();
+            $('.items').show();
+            var $parentDom = $(this).closest('.J_itemsbox');
+            $(this).closest('.items').hide();
+            $parentDom.find('.J_itemsmenu').show();
+        });
+
+        // 删除附件简历
+        $('.J_resumeword_del').die().live('click', function(e) {
+            var thisObj = $(this);
+            var qsDialog = $(this).dialog({
+                title: '删除附件简历',
+                loading: true,
+                border: false,
+                yes: function () {
+                    var thisGroup = thisObj.closest('.J_resumeimg_group');
+                    var imgIdCode = thisGroup.data('code');
+                    $.getJSON("/../personal/ajax_word_del.html", {pid: pid}, function(data) {
+                        if (data.status) {
+                            $('#J_resumeword_box').html('<div class="empty font_gray9">请上传doc/docx/pdf格式的附件(文件大小2M以内)</div>');
+                            if (!$('#J_resumeword_box .dleft_tit').length) {
+                                // 更改右侧菜单对应的状态
+                                $('[data-forsome="resumeword"]').removeClass('ok').text('添加');
+                                $('[data-forsome="resumeword"]').parent().prev().removeClass('ok');
+                                // 更改右侧简历完整度
+                                refreshResumePercent();
+                                $('#J_has_resume_word_sub').text('上传');
+                            };
+                        } else {
+                            disapperTooltip("remind", "删除失败");
+                        }
+                    });
+                }
+            });
+            $.getJSON("/../personal/ajax_word_del.html",{warning:1}, function (result) {
+                if (result.status == 1) {
+                    qsDialog.setContent(result.data.html);
+                } else {
+                    qsDialog.hide();
+                    disapperTooltip('remind', result.msg);
+                }
+            });
+        });
+
+        // 至今
+        $('.J_tonow').live('click', function(e) {
+            if ($(this).is(':checked')) {
+                $(this).val('1');
+            } else {
+                $(this).val('0');
+            }
+            $(this).closest('.J_itemsmenu').find('.J_fortonow').toggle();
+        });
+
+        // 判断结束时间是否大于开始时间
+        function wrongTime(sYear, sMonth, eYear, eMonth) {
+            if (parseInt(sYear) > parseInt(eYear)) {
+                return true;
+            } else {
+                if (parseInt(sYear) == parseInt(eYear)) {
+                    if (parseInt(sMonth) >= parseInt(eMonth)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        // 列表滑过显示删除和编辑选项
+        function listHoveEdit() {
+            $('.J_listhover_edit').hover(function() {
+                $(this).find(".editbox").show();
+            }, function() {
+                $(this).find(".editbox").hide();
+            });
+        }
+        var qrcode_bind_time,
+            waiting_weixin_bind = function(){
+                $.getJSON("/home/members/waiting_weixin_bind.html");
+            };
+        function check_complete_percent_allowance(){
+            if(eval("0")==1){
+                $.getJSON("/../personal/check_complete_percent_allowance.html",function(result){
+                    if(result.status==1){
+                        $('body').append('<div class="modal_backdrop"></div>');
+                        $('.get-money-fail-suc').show();
+                        $('.get-money-fail-suc .cash-line .cl-big').html(result.data);
+                    }else if(result.status==2){
+                        var qsDialogBind = $('.apply_allowance').dialog({
+                            title: '绑定微信',
+                            content: result.data,
+                            btnNum: 3,
+                            btns: ['我已绑定', '取消', '不再提示'],
+                            yes:function(){
+                                clearInterval(qrcode_bind_time);
+                                $.getJSON("/../personal/check_complete_percent_allowance.html",function(t_r){
+                                    if(t_r.status==1){
+                                        qsDialogBind.hide();
+                                        $('body').append('<div class="modal_backdrop"></div>');
+                                        $('.get-money-fail-suc').show();
+                                        $('.get-money-fail-suc .cash-line .cl-big').html(t_r.data);
+                                    }else{
+                                        disapperTooltip('remind',t_r.msg);
+                                        return false;
+                                    }
+                                });
+                            },
+                            other:function() {
+                                clearInterval(qrcode_bind_time);
+                            },
+                            cancel:function(){
+                                clearInterval(qrcode_bind_time);
+                                $.getJSON("/../personal/check_complete_percent_allowance_nolonger_notice.html");
+                            }
+                        });
+                        qsDialogBind.setCloseDialog(false);
+                        clearInterval(qrcode_bind_time);
+                        qrcode_bind_time=setInterval(waiting_weixin_bind,5000);
+                    }
+                });
+            }
+        }
+        $(document).ready(function(){
+            check_complete_percent_allowance();
+        });    	$('#J_auto_apply').click(function(){
+            $.post("/../personal/resume_auto_apply.html",$('#J_auto_apply_form').serialize(),function(result){
+                if(result.status==1){
+                    disapperTooltip('success',result.msg);
+                }else{
+                    disapperTooltip('remind',result.msg);
+                }
+            },'json');
+        });
+    </script><input type="file" name="resume_img" style="position: absolute; margin: -5px 0px 0px -175px; padding: 0px; width: 220px; height: 30px; font-size: 14px; opacity: 0; cursor: pointer; display: none; z-index: 2147483583;"><input type="file" name="word_resume" style="position: absolute; margin: -5px 0px 0px -175px; padding: 0px; width: 220px; height: 30px; font-size: 14px; opacity: 0; cursor: pointer; display: none; z-index: 2147483583;">
+</div>
+</body>
+</html>

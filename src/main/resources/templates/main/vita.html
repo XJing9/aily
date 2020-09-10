@@ -1,0 +1,905 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>王先生的个人简历-爱洛阳人才网</title>
+	<meta name="keywords" content="王先生,男,全职,洛龙周边,5K~10K/月,硕士,药剂师,临床研究/协调,公务员/事业单位,储备干部">
+	<meta name="description" content="我的简历20200710,王先生,本人王兵兵，男，25岁，中共党员。2020年7月毕业于河南科技大学，取得医学硕士学位，在校期间多次获得硕士学业一等奖学金。担任班长以及研究生党支部组织委员一职。荣获校级优秀研究生，优秀研究生干部称号。性格热情开朗，为人诚实谦虚，有责任心，善于思考。">
+	<meta name="author" content="骑士CMS">
+	<meta name="copyright" content="74cms.com">
+	<link rel="shortcut icon" href="https://zhaopin.iluoyang.com/favicon.ico">
+	<link rel="canonical" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=resume&amp;a=resume_show&amp;id=25427"><script src="../../vita/hm.js"></script><script src="../vita/jquery_005.js"></script>
+	<!--bootstrap-->
+	<script type="text/javascript" src="../personal/jquery-1.10.2.min.js"></script>
+	<link rel="stylesheet" href="../bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css"/>
+	<script src="../bootstrap/js/bootstrap.js"></script>
+	<!--结束-->
+	<script src="../vita/htmlspecialchars.js"></script>
+	<script src="../vita/gt.js"></script><script type="text/javascript">
+	$(function () {
+		$(".J_downbtn").click(function () {
+			var res_id=$("#res_id").val();
+		})
+	})
+</script>
+	<style type="text/css">
+		#frame2 {
+			height: 40px;
+		}
+		#frame {
+			height: 95px;
+		}
+	</style>
+	<link href="../vita/common.css" rel="stylesheet" type="text/css">
+	<link href="../vita/common_ajax_dialog.css" rel="stylesheet" type="text/css">
+	<link href="../vita/resume.css" rel="stylesheet" type="text/css">
+	<style media="print" type="text/css">
+		.noprint{visibility:hidden}
+		.addMg{
+			color:black
+		}
+
+		div.items:nth-child(2) > div:nth-child(1) {
+			padding-bottom: 45px;
+		}
+		.t5 {
+			padding-bottom: 45px;
+		}
+		.t2 {
+			padding-bottom: 45px;
+		}
+		.t3 {
+			padding-bottom: 45px;
+		}
+		.t11 {
+			padding-bottom: 45px;
+		}
+
+	</style>
+	<script type="text/javascript" src="../vita/jquery_003.js"></script>
+	<script src="../layer/layer.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		// 先获取到子页面的window对象，然后在调用
+		window.onload = function() {
+			var ifra = document.getElementById("frame1");
+			ifra.contentWindow.document.getElementById("zrc").style.color="#1787fb";
+		}
+
+		$(function () {
+			/*$("#queryPos").click(function () {
+				var cus_id=$("#cus_id").val();
+				$.ajax({
+					url: "../vitaCon/queryPos",
+					dataType: "json",
+					type: "post",
+					data: {cus_id:cus_id}
+				})
+			})*/
+
+			//选中地址信息
+			/*var int_id=0;
+			$(".addMg").click(function () {
+				$(this).siblings().css("border","1px solid #7d7d7d");
+				$(this).css("border","1px solid blue");
+				int_id=$(this).children("input").val();
+			});*/
+
+			/*显示选取的地址信息*/
+			/*$("#addButton").click(function () {
+				$.ajax({
+					url: "../vitaCon/queryAddId",
+					dataType: "json",
+					type: "post",
+					data: {int_id:int_id},
+					success:function (result) {
+						$("#showAdd").empty();
+						if(result!=null){
+							$("#showAdd").append("<div class=\"txt\" style=\"border:1px solid #8F8F8F;width:568px\">\n" +
+									"\t\t\t\t\t\t\t<input type=\"hidden\" id=\"int_id_m\" value='"+result[0].int_id+"'/>\n" +
+									"\t\t\t\t\t\t\t<div class=\"for_address substring\">联系人: "+result[0].int_name+"</div>\n" +
+									"\t\t\t\t\t\t\t<div class=\"for_address substring\">手机号: "+result[0].int_phone+"</div>\n" +
+									"\t\t\t\t\t\t\t<div class=\"for_address substring\">邮箱: "+result[0].int_email+"</div>\n" +
+									"\t\t\t\t\t\t\t<div class=\"for_address substring\">地址: "+result[0].int_reladdress+"</div>\n" +
+									"\t\t\t\t\t\t\t<div class=\"clear\"></div>\n" +
+									"\t\t\t\t\t\t</div>")
+
+						}
+					}
+				})
+			})*/
+
+			//选中职位信息
+			/*var iss_id=0;
+			$(".jobsli").click(function () {
+				$(this).siblings().css("border","1px solid #7d7d7d");
+				$(this).css("border","1px solid blue");
+				iss_id=$(this).children("input").val();
+			});*/
+
+			/*显示选取的职位信息*/
+			/*$("#posButton").click(function () {
+				$.ajax({
+					url: "../vitaCon/queryPosId",
+					dataType: "json",
+					type: "post",
+					data: {iss_id:iss_id},
+					success:function (result) {
+						$("#showPos").empty();
+						if(result!=null){
+							$("#showPos").append("<div class=\"txt\" style=\"border:1px solid #8F8F8F;width:568px\">\n" +
+									"\t\t\t\t\t\t\t<input type=\"hidden\" id=\"iss_id_m\" value='"+result[0].iss_id+"'/>\n" +
+									"\t\t\t\t\t\t\t<div class=\"for_address substring\">职位名称: "+result[0].iss_name+"  ["+result[0].iss_count+"人]</div>\n" +
+									"\t\t\t\t\t\t\t<div class=\"for_address substring\">薪资: "+result[0].iss_pay+"</div>\n" +
+									"\t\t\t\t\t\t\t<div class=\"for_address substring\">工作地点: "+result[0].iss_address+"</div>\n" +
+									"\t\t\t\t\t\t\t<div class=\"for_address substring\">经验学历: "+result[0].iss_experience+" | "+result[0].iss_education+"</div>\n" +
+									"\t\t\t\t\t\t\t<div class=\"clear\"></div>\n" +
+									"\t\t\t\t\t\t</div>")
+
+						}
+					}
+				})
+			})*/
+			/*提交面试邀请*/
+			$("#subResInv").click(function () {
+				var iss_id=$("#iss_id_m").val();
+				var int_id=$("#int_id_m").val();
+				var res_id=$("#res_id").val();
+				/*查重*/
+				$.ajax({
+					url: "../InvitedCon/checkRep",
+					dataType: "json",
+					type: "post",
+					data: {iss_id:iss_id,res_id:res_id},
+					success:function (result) {
+						if(result>=1){
+							disapperTooltip('success', "邀请过了哦！");
+						}else{
+							$.ajax({
+								url: "../InvitedCon/insertInv",
+								dataType: "json",
+								type: "post",
+								data: {iss_id:iss_id,int_id:int_id,res_id:res_id},
+								success:function (result) {
+									if(result>=1){
+										disapperTooltip('success', "邀请成功");
+									}
+								}
+							})
+						}
+					}
+				})
+			})
+			/*覆盖改变边框颜色*/
+			/*$(".jobsli").hover(
+				function () {
+					$(this).css("border","1px solid blue");
+				},
+				function () {
+					$(this).css("border","1px solid #7d7d7d");
+				}
+			);*/
+		})
+		$(function () {
+			/*$("#sel_jilian_1 option").click(function () {
+				$("#sel_jilian_2").empty();
+				$("#sel_jilian_3").empty();
+				var indu_id=$(this).val();
+				$.ajax({
+					url: "../IndustryCon/queryInd",
+					dataType: "json",
+					type: "post",
+					data: {indu_id:indu_id},
+					success:function (result) {
+						for (var i=0;i<result.length+1;i++)
+						{
+							$("#sel_jilian_2").append("<option onclick='queryPos(this)' value='"+result[i].ind_id+"'>"+result[i].ind_name+"</option>");
+						}
+					}
+				})
+			})*/
+			/*
+			* 获取当前企业的职位信息
+			* */
+			$("#queryPos").click(function () {
+				var cus_id=$("#cus_id").val();
+				$("#posModal").empty();
+				/*先判断当前企业是否发布招聘信息*/
+				$.ajax({
+					url:"../vitaCon/inv_checkQueryPos",
+					dataType:"text",
+					type:"post",
+					data:{cus_id:cus_id},
+					success:function (result) {
+						if(result!="defeat"){
+							$.ajax({
+								url:"../vitaCon/queryPos",
+								dataType:"json",
+								type:"post",
+								data:{cus_id:cus_id},
+								success:function (result2) {
+									for (var i=0;i<result2.length;i++){
+										$("#posModal").append("<div class=\"modal-body\" id=\"posModelData\" style=\"width:870px;\">\n" +
+												"\t\t<div class=\"txt addMg\" onmouseover='mouseover(this)' onmouseout='mouseout(this)'onclick='clickShowPosData(this)' style=\"border:1px solid #8F8F8F;width:568px\">\n" +
+												"\t\t\t<span></span>\n" +
+												"\t\t\t<input type=\"hidden\" id=\"int_id_a\" value='"+result2[i].iss_id+"'/>\n" +
+												"\t\t\t<div class=\"for_address substring\">职位名称:"+result2[i].iss_name+"</div>\n" +
+												"\t\t\t<div class=\"for_address substring\">薪资:"+result2[i].iss_pay+"</div>\n" +
+												"\t\t\t<div class=\"for_address substring\">工作地点:"+result2[i].iss_address+"</div>\n" +
+												"\t\t\t<div class=\"for_address substring\">经历学历:"+result2[i].iss_experience+" | "+result2[i].iss_education+"</div>\n" +
+												"\t\t\t<div class=\"clear\"></div>\n" +
+												"\t\t</div>\n" +
+												"\t</div>")
+										/*$("#posModal").append("<div>hhhh</div>")*/
+									}
+								}
+							})
+							layer.open({
+								type:1,//类型
+								area:['680px','450px'],//定义宽和高
+								title:'请选择职位信息',//题目
+								shadeClose:false,//点击遮罩层关闭
+								content: $('#posModal') //打开的内容
+							});
+						}else{
+							disapperTooltip('remind', '请先发布职位信息');
+						}
+					}
+				})
+			})
+
+			/*
+			* 获取企业面试地址信息
+			* */
+			$("#btnAdd").click(function () {
+				$("#addModel").empty();
+				var cus_id=$("#cus_id").val();
+				$.ajax({
+					url: "../resumeCon/inv_address",
+					dataType: "text",
+					type: "post",
+					data: {cus_id:cus_id},
+					success:function (result) {
+						if(result!='defeat'){
+							$.ajax({
+								url: "../resumeCon/inv_addressData",
+								dataType: "json",
+								type: "post",
+								data: {cus_id:cus_id},
+								success:function (result2) {
+									for(var i=0;i<result2.length;i++){
+										$("#addModel").append("<div class=\"modal-body\" id=\"addModelData\" style=\"width:870px;\">\n" +
+												"\t\t<div class=\"txt addMg\" onmouseover='mouseover(this)' onmouseout='mouseout(this)' onclick='clickShowData(this)' style=\"border:1px solid #8F8F8F;width:568px\">\n" +
+												"\t\t\t<span></span>\n" +
+												"\t\t\t<input type=\"hidden\" id=\"int_id_a\" value='"+result2[i].int_id+"'/>\n" +
+												"\t\t\t<div class=\"for_address substring\">联系人:"+result2[i].int_name+"</div>\n" +
+												"\t\t\t<div class=\"for_address substring\">手机号:"+result2[i].int_phone+"</div>\n" +
+												"\t\t\t<div class=\"for_address substring\">邮箱:"+result2[i].int_email+"</div>\n" +
+												"\t\t\t<div class=\"for_address substring\">面试地址:"+result2[i].int_reladdress+"</div>\n" +
+												"\t\t\t<div class=\"clear\"></div>\n" +
+												"\t\t</div>\n" +
+												"\t</div>")
+									}
+								}
+							})
+							layer.open({
+								type:1,//类型
+								area:['680px','450px'],//定义宽和高
+								title:'请选择面试地址',//题目
+								shadeClose:false,//点击遮罩层关闭
+								content: $('#addModel') //打开的内容
+							});
+						}else{
+							layer.confirm('前往个人中心添加地址信息?', {
+								btn: ['立即前往','不了']
+							}, function(index, layero){
+								//按钮【按钮一】的回调
+								//location.href="../CustomerCon/showResinter?cus_type=1"
+							},function (index) {
+								layer.closeAll();
+							})
+						}
+					}
+				})
+			})
+
+			/*
+			* 获取默认企业地址
+			* */
+			/*$("#initModel").click(function () {
+				var cus_id=$("#cus_id").val();
+				$.ajax({
+					url: "../resumeCon/inv_address_m",
+					dataType: "json",
+					type: "post",
+					data: {cus_id:cus_id},
+					success:function (result) {
+						alert(result);
+					}
+				})
+			})*/
+		})
+		/*
+		* 覆盖面试地址信息，边框颜色该改变
+		* */
+		function mouseover(obj) {
+			$(obj).css("border","1px solid blue");
+		}
+		function mouseout(obj) {
+			$(obj).css("border","1px solid #8F8F8F");
+		}
+		/*
+		* 选中地址，显示到 面试邀请 模态框中
+		* */
+		function clickShowData(obj){
+			var int_id=$(obj).children("input").val();
+			$("#showAdd").empty();
+			$.ajax({
+				url: "../resumeCon/inv_queryIdAddData",
+				dataType: "json",
+				type: "post",
+				data: {int_id:int_id},
+				success:function (result) {
+					for(var i=0;i<result.length;i++){
+						$("#showAdd").append("<div class=\"modal-body\" id=\"addModelData\" style=\"width:870px;\"><div class=\"txt\" style=\"border:1px solid #8F8F8F;width:568px\">\n" +
+								"\t\t\t\t\t\t\t<span></span>\n" +
+								"\t\t\t\t\t\t\t<input type=\"hidden\" id=\"int_id_m\" value='"+result[i].int_id+"'/>\n" +
+								"\t\t\t\t\t\t\t<div class=\"for_address substring\" >联系人:"+result[i].int_name+"</div>\n" +
+								"\t\t\t\t\t\t\t<div class=\"for_address substring\" >手机号:"+result[i].int_phone+"</div>\n" +
+								"\t\t\t\t\t\t\t<div class=\"for_address substring\">邮箱:"+result[i].int_email+"</div>\n" +
+								"\t\t\t\t\t\t\t<div class=\"for_address substring\">面试地址:"+result[i].int_reladdress+"</div>\n" +
+								"\t\t\t\t\t\t\t<div class=\"clear\"></div>\n" +
+								"\t\t\t\t\t\t</div></div>")
+					}
+					layer.closeAll();
+				}
+			})
+		}
+		/*
+		* 选取职位信息,显示到 面试邀请 模态框中
+		* */
+		function clickShowPosData(obj){
+			var iss_id=$(obj).children("input").val();
+			$("#showPos").empty();
+			$.ajax({
+				url: "../vitaCon/queryPosId",
+				dataType: "json",
+				type: "post",
+				data: {iss_id:iss_id},
+				success:function (result) {
+					$("#showPos").append("<div class=\"modal-body\" id=\"addModelData\" style=\"width:870px;\">\n" +
+							"\t\t<div class=\"txt addMg\"style=\"border:1px solid #8F8F8F;width:568px\">\n" +
+							"\t\t\t<span></span>\n" +
+							"\t\t\t<input type=\"hidden\" id=\"iss_id_m\" value='"+result[0].iss_id+"'/>\n" +
+							"\t\t\t<div class=\"for_address substring\">职位名称:"+result[0].iss_name+"</div>\n" +
+							"\t\t\t<div class=\"for_address substring\">薪资:"+result[0].iss_pay+"</div>\n" +
+							"\t\t\t<div class=\"for_address substring\">工作地点:"+result[0].iss_address+"</div>\n" +
+							"\t\t\t<div class=\"for_address substring\">经验学历:"+result[0].iss_experience+"|"+result[0].iss_education+"</div>\n" +
+							"\t\t\t<div class=\"clear\"></div>\n" +
+							"\t\t</div>\n" +
+							"\t</div>");
+					layer.closeAll();
+				}
+			})
+		}
+
+		/*function queryPos(obj) {
+			$("#sel_jilian_3").empty();
+			var ind_id=$(obj).val();
+			$.ajax({
+				url: "../PosCon/queryPos",
+				dataType: "json",
+				type: "post",
+				data: {ind_id:ind_id},
+				success:function (result) {
+					for (var i=0;i<result.length+1;i++)
+					{
+						$("#sel_jilian_3").append("<option value='"+result[i].pos_id+"'>"+result[i].pos_name+"</option>");
+					}
+				}
+			})
+		}*/
+	</script>
+	<link rel="stylesheet" href="../vita/laydate.css" id="layuicss-laydate"></head>
+<body th:each="v:${vitaQuery}">
+<input type="hidden" id="cus_id" th:value="${session.sessionCusList[0].cus_id}"/>
+<input type="hidden" id="res_id" th:value="${v.res_id}"/>
+<iframe id="frame2" src="../CustomerCon/topData" name="frame_top" frameborder="0" height="100%" width="100%" scrolling="auto"></iframe>
+<iframe id="frame1" src="../CustomerCon/show_head" name="frame_name" frameborder="0" height="100%" width="100%" scrolling="auto"></iframe>
+<!--面试邀请模态框开始-->
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			 <!--模态框头部-->
+			<div class="modal-header">
+				<h4 class="modal-title">面试邀请</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<span class="title J_modal_title"></span>
+				<a href="javascript:;" class="close J_dismiss_modal"></a>
+			</div>
+			 <!--模态框主体-->
+			<div class="modal-body">
+				<div class="input-group">
+					<button class="btn btn-default" id="queryPos" type="button">选择职位</button>
+					<div class="input-group" id="showPos">
+
+					</div>
+				</div>
+				<div class="input-group">
+					<button class="btn btn-default" type="button" id="btnAdd">选择地址</button>
+					<div class="input-group" id="showAdd">
+
+					</div>
+				</div>
+			</div>
+			 <!--模态框底部-->
+			<div class="modal-footer">
+				<button type="button" id="subResInv" class="btn btn-primary" data-dismiss="modal">确定</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!--面试邀请模态框结束-->
+<!--职位模态框开始-->
+<div id="posModal" style="display: none">
+
+</div>
+<!--职位模态框结束-->
+
+<!--地址选择开始-->
+<div id="addModel" style="display: none">
+	<!--<div class="modal-body" id="addModelData" style="width:870px;">
+		<div class="txt addMg"style="border:1px solid #8F8F8F;width:568px">
+			<span></span>
+			<input type="hidden" id="int_id_a"/>
+			<div class="for_address substring">联系人:xxx</div>
+			<div class="for_address substring">手机号:xxx</div>
+			<div class="for_address substring">邮箱:xxx</div>
+			<div class="for_address substring">面试地址:xxx</div>
+			<div class="clear"></div>
+		</div>
+	</div>-->
+</div>
+<!--地址选选择结束-->
+
+</div>
+<div class="new-search-box" style="background-image: url(../vita/sebanner5.jpg);">
+
+</div>
+<div class="rshow new" id="content">
+	<div class="l">
+		<div class="main">
+			<!--基本资料 -->
+			<div class="info">
+				<div class="inl">
+					<div class="pic"><img src="../vita/no_photo_male.png"></div>
+				</div>
+				<div class="inr">
+					<div class="rtime" th:text="${v.res_time}">更新时间：2020-07-10</div>
+					<div class="name_box">
+						<div class="name" th:text="${v.cus_truename}">王先生</div>
+						<div class="clear"></div>
+					</div>
+					<div class="txt" th:text="${v.cus_sex}+'&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;'+${v.cus_birthday}+'&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;'+${v.res_education}+'&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;'
+			+${v.cus_workyear}+'工作经验'">
+						男<span>|</span>
+						25岁<span>|</span>
+						硕士<span>|</span>
+						1年以下工作经验
+						<span>|</span>身高175CM	      <span>|</span>未婚	      	      </div>
+					<!--如果有标签就显示 -->
+					<div class="txt">
+						<div class="for_address substring" th:text="'现居地:&nbsp;&nbsp;&nbsp;'+${v.cus_address}">现居住：河南省洛阳市洛龙区</div>
+						<div class="for_address substring" th:text="'手机号:&nbsp;&nbsp;&nbsp;'+${v.cus_phone}">现居住：河南省洛阳市洛龙区</div>
+						<div class="for_address substring" th:text="'邮箱:&nbsp;&nbsp;&nbsp;'+${v.cus_email}">现居住：河南省洛阳市洛龙区</div>
+						<div class="clear"></div>
+					</div>
+					<div class="lab">
+						<div class="las" th:each="s:${v.speList}" th:text="${s.spe_name}">形象好</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<!--求职意向 -->
+			<div class="items">
+				<div class="tit" style="padding-bottom: 45px;">求职意向</div>
+				<div class="intention">
+					<span style="color: black" th:text="'期望职业&nbsp;:&nbsp;&nbsp;&nbsp;'+${v.res_job}"> 期望职位：</span><br>
+					<span style="color: black" th:text="'期望行业&nbsp;:&nbsp;&nbsp;&nbsp;'+${v.res_industry}"> 期望行业：</span><br>
+					<span style="color: black" th:text="'期望薪资&nbsp;:&nbsp;&nbsp;&nbsp;'+${v.res_pay}+'&nbsp;&nbsp;|&nbsp;&nbsp;'+${v.res_workaddress}"> 期望薪资：</span><br>
+					<span style="color: black" th:text="'求职状态&nbsp;:&nbsp;&nbsp;&nbsp;'+${v.res_jobstate}"> 求职状态：</span><br>
+				</div>
+				<div class="contact">
+					<div class="it tel"><!--<img src="../vita/index_003.png"></div>	<div class="it email"><img src="../vita/index.png">--></div>
+					<div class="J_downbtn downbtn" url="" id="initModel" data-toggle="modal" data-target="#myModal">面试邀请</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!--自我描述 -->
+			<div class="items">
+				<div class="tit t5" style="padding-bottom: 45px;">自我描述</div>
+				<div class="evaluate" th:text="${v.cus_introduce}">本人王兵兵，男，25岁，中共党员。2020年7月毕业于河南科技大学，取得医学硕士学位，在校期间多次获得硕士学业一等奖学金。担任班长以及研究生党支部组织委员一职。荣获校级优秀研究生，优秀研究生干部称号。性格热情开朗，为人诚实谦虚，有责任心，善于思考。</div>
+			</div><!--教育经历 -->
+			<div class="items">
+				<div class="tit t2" style="padding-bottom: 45px;">教育经历</div>
+				<div class="edu" th:each="e:${v.eduList}">
+					<div class="td1" th:text="${e.edu_actiontime}+'&nbsp;至&nbsp;'+${e.edu_graduatetime}" style="color: #8F8F8F ">
+						2017-9
+						至 2020-7 <br/>
+						<span class="cout"></span>
+					</div>
+					<div class="td2 font_blue" th:text="${e.edu_education}+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+${e.edu_schoolname}+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+${e.edu_majorname}">硕士<span>|</span>河南科技大学<span>|</span>药理学</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!--工作经历-->
+			<div class="items">
+				<div class="tit t3" style="padding-bottom: 45px;">工作经历<!--<span>(TA工作了5年2个月，共做了1份工作)</span>--></div>
+				<div class="jobs" th:each="w:${v.worList}">
+					<div class="td1" th:utext="${w.wor_action}+'&nbsp;至&nbsp;'+${w.wor_dimission}">
+						2014-7
+						至 2019-9		<br>
+						<!--<span class="cout">[5年2个月]</span>-->
+					</div>
+					<div class="td2">
+			<span class="font_blue" th:text="${w.wor_workname}">
+				运维工程师
+			</span>
+						<span class="line">|</span>
+						<span class="font_blue" th:text="${w.wor_companyname}">洛阳恒佰世网络技术有限公司</span>
+						<div class="txt" th:utext="'工作职责:&nbsp;'+${w.wor_workduty}">
+							<strong>工作职责：</strong>
+							公司web服务器维护工作，常见web网站部署及搭建
+							负责监控集群状态以及实现集群高可用
+							数据库的日常维护及数据同步
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!--项目经历 -->
+			<div class="items" th:each="w:${v.worList}">
+				<div class="tit t11" style="padding-bottom: 45px;">项目经历</div>
+				<div class="project" th:each="p:${w.proList}">
+					<div class="td1" th:text="${p.pro_action}+'&nbsp;至&nbsp;'+${p.pro_finish}">
+						2015-1
+						至 2015-5		<br>
+						<!--<span class="cout">[4个月]</span>-->
+					</div>
+					<div class="td2">
+						<span class="font_blue" th:text="${p.pro_name}">搭建服务器高可用集群以及监控服务器</span><span class="line">|</span>
+						<span class="font_blue" th:text="${p.pro_role}">部署lvs-dr集群，实现zabbix监控</span>
+						<span class="line">|</span>
+						<span class="font_blue" th:text="${w.wor_companyname}"></span>
+						<div class="txt" th:text="'项目描述:&nbsp;'+${p.pro_describe}"><strong>项目描述：</strong>1.部署三台nginx服务器，二台lvs调度器，一台zabbix监控服务器
+							2.使用lvs-dr模式，wrr算法实现nginx服务器集群配置
+							3.分别在两台lvs调度服务器安装keepalived，实现集群高可用
+							4.分别在web服务器，lvs调度服务器上安装zabbix agent。zabbix服务器上安装zabbix server，通过写脚本，改配置文件，修改网页页面实现自动监控，自动发现，自动报警</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!--获得证书 -->
+			<div class="items">
+				<div class="tit t6">获得证书</div>
+				<div class="certificate" th:each="c:${v.cerList}">
+					<div class="cer" th:text="${c.cer_time}+'&nbsp;&nbsp;'+${c.cer_name}">
+						<!--<span>2015-10</span>
+                        机动车C1驾驶证-->
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div><!--语言能力 -->
+			<div class="items">
+				<div class="tit t7">语言能力</div>
+				<div class="language" th:each="l:${v.lanList}">
+					<div class="lang" style="color: #1d84c9" th:text="${l.lan_name}+'&nbsp;&nbsp;'+${l.lan_degree}">
+						<!--<span>英语</span>
+                        熟练-->
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div> <!--简历项目结束 -->
+		</div>
+	</div>
+	<div id="navRight" class="noprint sticky">
+		<div class="r">
+			<div class="main">
+				<div class="code">
+					<img src="../vita/index_002.png">
+				</div>
+				<div class="J_downbtn downbtn" url="" data-toggle="modal" data-target="#myModal">面试邀请</div>		  <div class="split"><div class="txt">操作</div></div>
+				<div class="cbtn favor">加入人才库</div>
+				<div class="cbtn" onclick="javascript:window.print();">打印简历</div>
+				<div id="resume_doc" class="cbtn">导出Word简历</div>
+				<div class="cbtn" id="report">投诉简历</div>		</div>
+			<iframe id="exportResumeIframe" style="display:none;"></iframe>
+		</div>
+	</div>
+	<!--左侧批量-->
+	<div class="clear"></div>
+</div>
+<div class="down_resum_confirm_box"></div>
+<div class="noprint">
+	<div class="footer_min" id="footer">
+		<div class="links link_gray6">
+			<a target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=index&amp;a=index">网站首页</a>
+
+			|   <a target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=10&amp;type_id=1">服务条款</a>|   <a target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=9&amp;type_id=1">隐私声明</a>|   <a target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=7&amp;type_id=1">联系我们</a>|   <a target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=6&amp;type_id=1">推广合作</a>|   <a target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=1&amp;type_id=1">网站介绍</a>	|   <a target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=suggest&amp;a=index">意见建议</a>
+		</div>
+		<div class="txt">
+
+			联系地址：洛阳市涧西区龙裕路1号国家大学科技园3号楼B座5层      联系电话：15515361075<br>
+
+			©2017 洛阳魅力网络信息服务有限公司 版权所有     <a href="http://www.beian.miit.gov.cn/" target="_blank">豫ICP备14000715号-1</a>		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?8066e845122dbe9036ea4784109213e2";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+
+		</div>
+	</div>
+
+	<div class="">
+		<div class=""></div>
+	</div>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="/Application/Home/View/default/public/js/PIE.js"></script>
+	<script type="text/javascript">
+		(function($){
+			$.pie = function(name, v){
+				// 如果没有加载 PIE 则直接终止
+				if (! PIE) return false;
+				// 是否 jQuery 对象或者选择器名称
+				var obj = typeof name == 'object' ? name : $(name);
+				// 指定运行插件的 IE 浏览器版本
+				var version = 9;
+				// 未指定则默认使用 ie10 以下全兼容模式
+				if (typeof v != 'number' && v < 9) {
+					version = v;
+				}
+				// 可对指定的多个 jQuery 对象进行样式兼容
+				if ($.browser.msie && obj.size() > 0) {
+					if ($.browser.version*1 <= version*1) {
+						obj.each(function(){
+							PIE.attach(this);
+						});
+					}
+				}
+			}
+		})(jQuery);
+		if ($.browser.msie) {
+			$.pie('.pie_about');
+		};
+	</script>
+	<![endif]-->
+	<script type="text/javascript" src="../vita/jquery_004.js"></script>
+	<div class="floatmenu">
+		<div class="item mobile">
+			<a class="blk"></a>
+			<div class="popover">
+				<div class="popover-bd">
+					<label class="wx">企业微信</label>
+					<span class="img-qrcode img-qrcode-wechat"><img src="../vita/5d23e2f8425a1.png" alt=""></span>
+				</div>
+				<div class="popover-arr"></div>
+			</div>  </div>  <div class="item ask">
+		<a class="blk" target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=suggest&amp;a=index"></a>
+	</div>
+		<div id="backtop" class="item backtop" style=""><a class="blk"></a></div>
+	</div>
+	<script language="JavaScript">
+
+		var global = {
+			h:$(window).height(),
+			st: $(window).scrollTop(),
+			backTop:function(){
+				global.st > (global.h*0.5) ? $("#backtop").show() : $("#backtop").hide();
+			}
+		}
+		$('#backtop').on('click',function(){
+			$("html,body").animate({"scrollTop":0},500);
+		});
+		global.backTop();
+		$(window).scroll(function(){
+			global.h = $(window).height();
+			global.st = $(window).scrollTop();
+			global.backTop();
+		});
+		$(window).resize(function(){
+			global.h = $(window).height();
+			global.st = $(window).scrollTop();
+			global.backTop();
+		});
+	</script>
+</div><div class="disappear_tooltip pie_about" style="left: 719.5px; top: 329px;"><div class="icon"></div><div class="content"></div></div>
+<script type="text/javascript" src="../vita/jquery_003.js"></script>
+<script type="text/javascript" src="../vita/jquery_006.js"></script>
+<script type="text/javascript" src="../vita/jquery.js"></script>
+<script type="text/javascript" src="../vita/laydate.js"></script>
+<script type="text/javascript" src="../vita/jquery_002.js"></script>
+<script type="text/javascript" src="../vita/jquery_007.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		// 导出简历
+		function exportResume() {
+			var exportResumeUrl = "/resume/resume_doc/id/25427.html";
+			document.getElementById('exportResumeIframe').src = exportResumeUrl;
+		}
+		// 右侧固定侧边栏
+		$('#navRight').stickySidebar({
+			sidebarTopMargin: 0,
+			footerThreshold: 100
+		});
+
+		var isVisitor = "32760";
+		// 点击显示作品大图
+		$('.J_for_bigimg').die().live('click', function(event) {
+			var src = $(this).data('src');
+			var qsDialog = $(this).dialog({
+				title: '照片作品',
+				innerPadding: false,
+				border: false,
+				content: '<div style="max-width: 900px;max-height: 600px;"><img style="max-width: 900px;max-height: 600px;min-width: 200px;min-height: 200px;" src="'+src+'" /></div>',
+				showFooter: false
+			});
+		});
+		$('#resume_doc').click(function(){
+			if(!isVisitor){
+				$.getJSON("/ajax_common/ajax_login.html", function(result){
+					if(result.status==1){
+						var qsDialogSon = $(this).dialog({
+							header: false,
+							content: result.data.html,
+							footer: false,
+							border: false
+						});
+						qsDialogSon.setInnerPadding(false);
+					}else{
+						qsDialog.hide();
+						disapperTooltip('remind',result.msg);
+					}
+				});
+				return !1;
+			}else{
+				exportResume();
+			}
+		});
+
+		// 加入人才库
+		$(".favor").die().live('click',function(){
+			var url = "/ajax_company/resume_favor.html";
+			var rid = "25427";
+			if ((isVisitor > 0)) {
+				$.getJSON(url,{rid:rid},function(result){
+					if(result.status==1){
+						disapperTooltip('success',result.msg);
+					} else {
+						if(result.msg=='请登录企业帐号！'){
+							var qsDialogSec = $(this).dialog({
+								title: '账号切换',
+								content: '<div style="width:300px;text-align:center;">您当前账号为个人，是否切换为企业？</div>',
+								yes: function () {
+									var url = "/members/switch_utype/utype/1.html";
+									location.href = url;
+								},
+								footer: true,
+								header: true,
+								border: false
+							});
+							return false;
+						}else{
+							var qsDialog = $(this).dialog({
+								loading: true,
+								footer: false,
+								header: false,
+								border: false,
+								backdrop: false
+							});
+							qsDialog.hide();
+							disapperTooltip('remind',result.msg);
+						}
+					}
+				});
+			} else {
+				var qsDialog = $(this).dialog({
+					loading: true,
+					footer: false,
+					header: false,
+					border: false,
+					backdrop: false
+				});
+				var loginUrl = "/ajax_common/ajax_login.html";
+				$.getJSON(loginUrl, function(result){
+					if(result.status==1){
+						qsDialog.hide();
+						var qsDialogSon = $(this).dialog({
+							header: false,
+							content: result.data.html,
+							footer: false,
+							border: false
+						});
+						qsDialogSon.setInnerPadding(false);
+					} else {
+						qsDialog.hide();
+						disapperTooltip('remind',result.msg);
+					}
+				});
+			}
+		});
+
+		// 投诉简历
+		$("#report").die().live('click', function(){
+			var resume_id = "25427";
+			var url = "/ajax_company/report_resume.html";
+			var qsDialog = $(this).dialog({
+				loading: true,
+				footer: false,
+				header: false,
+				border: false,
+				backdrop: false
+			});
+			$.getJSON(url,{resume_id:resume_id},function(result){
+				if(result.status==1){
+					qsDialog.hide();
+					var qsDialogSon = $(this).dialog({
+						title:'举报简历',
+						content: result.data,
+						footer: false
+					});
+				} else {
+					if (eval(result.dialog)) {
+						var loginUrl = "/ajax_common/ajax_login.html";
+						$.getJSON(loginUrl, function(result){
+							if(result.status==1){
+								qsDialog.hide();
+								var qsDialogSon = $(this).dialog({
+									header: false,
+									content: result.data.html,
+									footer: false,
+									border: false
+								});
+								qsDialogSon.setInnerPadding(false);
+							} else {
+								qsDialog.hide();
+								disapperTooltip('remind',result.msg);
+							}
+						});
+					} else {
+						if(result.msg=='请登录企业帐号！'){
+							qsDialog.hide();
+							var qsDialogSec = $(this).dialog({
+								title: '账号切换',
+								content: '<div style="width:300px;text-align:center;">您当前账号为个人，是否切换为企业？</div>',
+								yes: function () {
+									var url = "/members/switch_utype/utype/1.html";
+									location.href = url;
+								},
+								footer: true,
+								header: true,
+								border: false
+							});
+							return false;
+						}else{
+							qsDialog.hide();
+							disapperTooltip('remind',result.msg);
+						}
+					}
+				}
+			});
+		});
+	});
+</script>
+
+</body></html>

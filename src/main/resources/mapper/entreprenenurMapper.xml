@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.EntrepreneurDao">
+    <select id="positionQuery" resultType="map" parameterType="com.aaa.entity.Issue_position">
+        select en.ent_id,en.ent_name,en.ent_nature,ind.ind_name,en.ent_url,en.ent_scale,a.are_name,iss.*
+            from entreprenenur en
+            join issue_position iss
+            on en.ent_id=iss.ent_id
+            join area a
+            on a.are_id=en.are_id
+            join industry ind
+            on ind.ind_id=en.ind_id
+            <where>
+                and iss.iss_state=0 and en.ent_state=1
+                <if test="pos_id!=null and pos_id!=''">
+                    and iss.pos_id=#{pos_id}
+                </if>
+            </where>
+    </select>
+</mapper>

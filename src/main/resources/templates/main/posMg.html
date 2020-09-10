@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>收到的面试邀请-个人会员中心-爱洛阳人才网</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="骑士CMS">
+<meta name="copyright" content="74cms.com">
+<link rel="shortcut icon" href="https://zhaopin.iluoyang.com/favicon.ico">
+<link rel="canonical" href="https://zhaopin.iluoyang.com/personal/jobs_interview.html"><script src="../resInter/jquery_005.js"></script>
+<script src="../resInter/htmlspecialchars.js"></script>
+<script src="../resInter/gt.js"></script><script type="text/javascript">
+	var app_spell = "1";
+	var qscms = {
+		base : "",
+		keyUrlencode:"0",
+		domain : "http://zhaopin.iluoyang.com",
+		root : "/index.php",
+		companyRepeat:"0",
+		regularMobile: /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$|16[0-9]{9}$|19[0-9]{9}$/,
+		district_level : "2",
+		smsTatus: "1",
+		captcha_open:"0",
+		varify_mobile:"0",
+		varify_suggest:"0",
+        varify_user_login:"",
+		is_login:"1",
+		default_district : "1",
+		default_district_spell : "jianxiqu",
+        subsite: "0"
+	};
+    /*ie兼容 Promise*/
+    isIE();
+    function isIE() {
+        if ( !! window.ActiveXObject || "ActiveXObject" in window) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "/Application/Home/View/default/public/js/bluebird.js";
+            document.getElementsByTagName('head')[0].appendChild(script);
+        }
+    }
+    /*ie兼容 Promise end*/
+	$(function(){
+	    if (eval(qscms.subsite)) {
+	        // 开启分站
+            $.getJSON("/home/ajax_common/get_sub_header_min.html",function(result){
+                if(eval(result.status) === 1){
+                    $('#J_header_sub').html(result.data.html);
+                }
+            });
+        } else {
+            $.getJSON("/home/ajax_common/get_header_min.html",function(result){
+                if(eval(result.status) === 1){
+                    $('#J_header').html(result.data.html);
+                }
+            });
+        }
+	})
+	// 验证码统一处理
+	function qsCaptchaHandler(passCallback) {
+		var callBackArr = new Array();
+		$.ajax({
+			url: qscms.root + '?m=Home&c=captcha&t=' + (new Date()).getTime(),
+			type: 'get',
+			dataType: 'json',
+			success: function(config) {
+				if (config.verify_type == 'vaptcha') {
+					// 手势验证码
+					vaptcha({
+					    vid: config.vid,
+					    type: 'invisible',
+					    scene: 1,
+					    https: config.https,
+					    offline_server:qscms.root+'?m=Home&c=captcha&a=vaptcha_outage',
+					}).then(function (vaptchaObj) {
+					    obj = vaptchaObj;
+					    vaptchaObj.listen('pass', function() {
+							callBackArr['token'] = vaptchaObj.getToken();
+							passCallback(callBackArr);
+						});
+					    vaptchaObj.listen('close', function() {});
+					    vaptchaObj.validate();
+					});
+				} else if (config.verify_type == 'tencent') {
+					// 腾讯云验证码
+					var TCaptchaObj = new TencentCaptcha(config.vid, function(res) {
+						if(res.ret === 0){
+							callBackArr['Ticket'] = res.ticket;
+							callBackArr['Randstr'] = res.randstr;
+							passCallback(callBackArr);
+						}
+					});
+					TCaptchaObj.show();
+				} else {
+					// 极验
+					initGeetest({
+					    gt: config.gt,
+					    challenge: config.challenge,
+					    offline: !config.success,
+					    new_captcha: config.new_captcha,
+					    product: 'bind',
+						https: true
+					}, function(captchaObj) {
+					    captchaObj.appendTo("#pop");
+					    captchaObj.onSuccess(function() {
+							var captChaResult = captchaObj.getValidate();
+							callBackArr['geetest_challenge'] = captChaResult.geetest_challenge;
+							callBackArr['geetest_validate'] = captChaResult.geetest_validate;
+							callBackArr['geetest_seccode'] = captChaResult.geetest_seccode;
+							if ($('.J_gee_cha')) {
+								$('.J_gee_cha').val(captChaResult.geetest_challenge);
+								$('.J_gee_val').val(captChaResult.geetest_validate);
+								$('.J_gee_sec').val(captChaResult.geetest_seccode);
+							}
+					        passCallback(callBackArr);
+					    })
+					    captchaObj.onReady(function() {
+					        captchaObj.verify();
+					    });
+					    $('#btnCheck').on('click', function() {
+					        captchaObj.verify();
+					    })
+					    window.captchaObj = captchaObj;
+					});
+				}
+			}
+		})
+	}
+</script>
+		<link href="../resInter/common.css" rel="stylesheet" type="text/css">
+		<link href="../resInter/personal_job.css" rel="stylesheet" type="text/css">
+		<link href="../resInter/personal_ajax_dialog.css" rel="stylesheet" type="text/css">
+		<script src="../resInter/jquery_002.js" type="text/javascript" language="javascript"></script>
+	</head>
+	<body>
+
+<script>
+    // 搜索
+    $('#ajax_search_location').submit(function(){
+        var nowKeyValue = $.trim($('input[name="key"]').val());
+        var orgKeyValue = $.trim($('input[name="key"]').data('original'));
+        if(nowKeyValue.length && nowKeyValue.length<2){
+            disapperTooltip("remind",'关健字长度需大于2个字！');
+            return !1;
+        }
+        if (!(nowKeyValue == orgKeyValue)) {
+            $('.J_forclear').val('');
+        }
+        $('input[name="key"]').val(htmlspecialchars($('input[name="key"]').val()));
+        var post_data = $('#ajax_search_location').serialize();
+        if(qscms.keyUrlencode==1){
+            post_data = encodeURI(post_data);
+        }
+        $.post($('#ajax_search_location').attr('action'),post_data,function(result){
+            window.location=result.data;
+        },'json');
+        return false;
+    });
+    // 签到
+    $('#J_sign_in').click(function(){
+        var f = $(this);
+        $.getJSON("/members/sign_in.html",function(result){
+            if(result.status == 1){
+                disapperTooltip("goldremind", '每天签到增加'+result.data+'积分<span class="point">+'+result.data+'</span>');
+                f.addClass('gr').text('已签到');
+                $(".J_points_num").html(parseInt($(".J_points_num").html())+parseInt(result.data));
+            }else{
+                disapperTooltip('remind',result.msg);
+            }
+        });
+    });
+</script>
+			<div class="mainbox">
+				<!--职位切换卡 -->
+				<div class="tab">
+					<a class="li select" >面试邀请</a>
+					<a class="li J_hoverbut" th:href="@{../Entrepreneur/ent_applyInter(ent_id=${session.sessionCusList[0].ent_id})}" target="frame_entData">面试申请</a>
+					<a class="li J_hoverbut" th:href="@{../IssCon/iss_queryPos(ent_id=${session.sessionCusList[0].ent_id})}" target="frame_entData">发布职位</a>
+					<a class="li J_hoverbut" href="https://zhaopin.iluoyang.com/personal/attention_jobs.html"></a>
+					<a class="li J_hoverbut" th:href="@{../Entrepreneur/ent_queryAdd(ent_id=${session.sessionCusList[0].ent_id})}" target="frame_entData">面试地址管理</a>
+					<div class="clear"></div>
+				</div>
+				<!--切换卡结束 -->
+
+				<!--<div class="resume_tip">
+					<div class="tiptit">小提示</div>
+					<div class="tiptxt link_blue">
+						招聘过程中企业无权收取任何费用，求职者请加强自我保护，避免上当受骗！
+					</div>
+				</div>-->
+
+				<div class="interview_list_th">
+					<div class="th1">邀请的职位</div>
+					<div class="th2">邀请的用户</div>
+					<div class="th3">
+						邀请反馈
+					</div>
+					<div class="th4">
+						不限时间
+					</div>
+					<div class="th5">操作</div>
+					<div class="clear"></div>
+				</div>
+				<div class="interview_list_th">
+				</div>
+				<div class="res_empty link_blue" th:if="entList==null">
+					目前您暂未邀请任何简历参加面试，想要尽快招到人才，建议你主动邀请面试！<br>海量人才任你选。立即
+					<a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=index" target="_blank">邀请面试</a>
+				</div>
+				<form id="form1" action="/personal/del_jobs_apply.html" method="post" class="J_allListBox">
+					<div class="apply_jobs_list J_hoverbut" th:if="${entList!=null}" th:each="e:${entList}">
+						<div class="td1 link_blue substring">
+							<input class="J_allList" name="y_id[]" type="checkbox" value="21415">
+							&nbsp;<a th:href="@{../IssCon/IssQuery(iss_id=${e.iss_id})}" target="_blank" th:text="${e.iss_name}"></a>
+						</div>
+						<div class="td2 link_gray6 substring">
+							<a th:href="@{/vitaCon/vitaQuery(cus_id=${e.cus_id})}" target="_blank" th:text="${e.res_job}+'&nbsp;&nbsp;'+${e.cus_truename}"></a>
+						</div>
+						<div class="td3 n" th:text="${e.inv_state==1?'未处理':'已接受'}"></div>
+						<div class="td4" th:text="${e.inv_time}">2020-09-03</div>
+						<div class="td5">
+							<a href="javascript:;" url="/personal/del_jobs_apply/y_id/21415.html" class="but2 J_hoverbut delete"></a>
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="apply_jobs_list_but">
+						<div class="td1">
+							<input class="J_allSelected" type="checkbox">
+						</div>
+						<div class="td2">
+							<div class="but_gray_80_32 J_hoverbut delall">删除</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</form>
+				<div class="qspage">
+					<a class="unable">上一页</a>
+					<span class="current">1</span>
+					<a class="unable">下一页</a>
+				</div>
+			<!--</div>
+			<div class="clear"></div>-->
+					<!--<div class="interview_list_th">
+						<div class="th2">公司名称</div>
+						<div class="th3">
+							<div class="input_100_30_div J_hoverinput J_dropdown J_listitme_parent">
+								<span class="J_listitme_text">查看状态</span>
+							</div>
+						</div>
+						<div class="th4">
+							<div class="input_100_30_div J_hoverinput J_dropdown J_listitme_parent">
+								<span class="J_listitme_text">不限时间</span>
+							</div>
+						</div>
+						<div class="th5">操作</div>
+						<div class="clear"></div>
+				</div>-->
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="user_foot font_gray9" id="footer">©2017 洛阳魅力网络信息服务有限公司 版权所有</div>
+<div class="floatmenu">
+<div class="item mobile">
+    <a class="blk"></a>
+        <div class="popover">
+      <div class="popover-bd">
+        <label class="wx">企业微信</label>
+        <span class="img-qrcode img-qrcode-wechat"><img src="../resInter/5d23e2f8425a1.png" alt=""></span>
+      </div>
+      <div class="popover-arr"></div>
+    </div>  </div>  <div class="item ask">
+    <a class="blk" target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=suggest&amp;a=index"></a>
+  </div>
+  <div id="backtop" class="item backtop" style="display: none;"><a class="blk"></a></div>
+</div>
+<script type="text/javascript" src="../resInter/jquery_003.js"></script>
+<script type="text/javascript" src="../resInter/jquery_007.js"></script>
+<script type="text/javascript" src="../resInter/jquery_004.js"></script><div class="disappear_tooltip pie_about" style="left: 719.5px; top: 329px;"><div class="icon"></div><div class="content"></div></div>
+<script type="text/javascript" src="../resInter/jquery_006.js"></script>
+<script type="text/javascript" src="../resInter/jquery.js"></script>
+<!--[if lt IE 9]>
+	<script type="text/javascript" src="/Application/Home/View/default/public/js/PIE.js"></script>
+  <script type="text/javascript">
+    (function($){
+        $.pie = function(name, v){
+            // 如果没有加载 PIE 则直接终止
+            if (! PIE) return false;
+            // 是否 jQuery 对象或者选择器名称
+            var obj = typeof name == 'object' ? name : $(name);
+            // 指定运行插件的 IE 浏览器版本
+            var version = 9;
+            // 未指定则默认使用 ie10 以下全兼容模式
+            if (typeof v != 'number' && v < 9) {
+                version = v;
+            }
+            // 可对指定的多个 jQuery 对象进行样式兼容
+            if ($.browser.msie && obj.size() > 0) {
+                if ($.browser.version*1 <= version*1) {
+                    obj.each(function(){
+                        PIE.attach(this);
+                    });
+                }
+            }
+        }
+    })(jQuery);
+    if ($.browser.msie) {
+      $.pie('.pie_about');
+    };
+  </script>
+<![endif]-->
+<script type="text/javascript">
+	var global = {
+    h:$(window).height(),
+    st: $(window).scrollTop(),
+    backTop:function(){
+      global.st > (global.h*0.5) ? $("#backtop").show() : $("#backtop").hide();
+    }
+  }
+  $('#backtop').on('click',function(){
+    $("html,body").animate({"scrollTop":0},500);
+  });
+  global.backTop();
+  $(window).scroll(function(){
+      global.h = $(window).height();
+      global.st = $(window).scrollTop();
+      global.backTop();
+  });
+  $(window).resize(function(){
+      global.h = $(window).height();
+      global.st = $(window).scrollTop();
+      global.backTop();
+  })
+  // 强制手机认证
+  </script>
+		<script type="text/javascript" src="../resInter/jquery_006.js"></script>
+		<script type="text/javascript" src="../resInter/jquery.js"></script>
+		<script type="text/javascript" src="../resInter/jquery_008.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#delall").click(function() {
+					var listCheckedArray = $(".J_allListBox .J_allList:checked");
+					if (listCheckedArray.length) {
+						var url = $("#form1").attr("action");
+						var qsDialog = $(this).dialog({
+							title: "删除面试邀请",
+							loading: true,
+							border: false,
+							yes: function() {
+								$("#form1").submit();
+							}
+						});
+						$.getJSON(url, function(result) {
+							if (result.status == 1) {
+								qsDialog.setContent(result.data.html);
+							} else {
+								disapperTooltip("remind", result.msg);
+							}
+						});
+					} else {
+						disapperTooltip("remind", "请选择要删除的记录");
+					}
+				});
+				$(".del").click(function() {
+					var url = $(this).attr("url");
+					var qsDialog = $(this).dialog({
+						title: "删除面试邀请",
+						loading: true,
+						border: false,
+						yes: function() {
+							window.location.href = url;
+						}
+					});
+					$.getJSON(url, function(result) {
+						if (result.status == 1) {
+							qsDialog.setContent(result.data.html);
+						} else {
+							disapperTooltip("remind", result.msg);
+						}
+					});
+				});
+				$(".set_interview").click(function() {
+					$.post(
+						"/personal/set_interview.html",
+						$("#form1").serialize(),
+						function(result) {
+							if (result.status == 1) {
+								$("#form1 .J_allList:checked")
+									.closest(".interview_list")
+									.find(".td3")
+									.html("已查看")
+									.removeClass("n");
+								disapperTooltip("success", result.msg);
+							} else {
+								disapperTooltip("remind", result.msg);
+							}
+						},
+						"json"
+					);
+				});
+				$(".J_interviewDetails").click(function() {
+					var obj = $(this);
+					var id = $(this).attr("did");
+					var qsDialog = $(this).dialog({
+						title: "面试详情",
+						loading: true,
+						showFooter: false
+					});
+					$.getJSON(
+						"/personal/ajax_interview_detail.html",
+						{ id: id },
+						function(result) {
+							if (result.status == 1) {
+								obj
+									.closest(".interview_list")
+									.find(".td3")
+									.removeClass("n");
+								obj
+									.closest(".interview_list")
+									.find(".td3")
+									.text("已查看");
+								qsDialog.setContent(result.data);
+								qsDialog.showFooter(true);
+							} else {
+								qsDialog.setContent(
+									'<div class="confirm">' + result.msg + "</div>"
+								);
+							}
+						}
+					);
+				});
+			});
+		</script>
+	
+</body></html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>已申请的职位-个人会员中心-爱洛阳人才网</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="骑士CMS">
+	<meta name="copyright" content="74cms.com">
+	<link rel="shortcut icon" href="https://zhaopin.iluoyang.com/favicon.ico">
+	<link rel="canonical" href="https://zhaopin.iluoyang.com/personal/jobs_apply.html"><script src="../jobApp/jquery_004.js"></script>
+	<script src="../jobApp/htmlspecialchars.js"></script>
+	<script src="../jobApp/gt.js"></script><script type="text/javascript">
+
+</script>
+	<link href="../jobApp/common.css" rel="stylesheet" type="text/css">
+	<link href="../jobApp/personal_job.css" rel="stylesheet" type="text/css">
+	<link href="../jobApp/personal_ajax_dialog.css" rel="stylesheet" type="text/css">
+	<script src="../jobApp/jquery_002.js" type="text/javascript" language="javascript"></script>
+	<script src="../layer/layer.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+	$(function () {
+		$("#insertPosBtn").click(function () {
+			//alert("hh")
+			layer.open({
+				type:1,//类型
+				area:['680px','720px'],//定义宽和高
+				title:'请填写职位信息',//题目
+				shadeClose:true,//点击遮罩层关闭
+				content: $('#addPosModel') //打开的内容
+			});
+		});
+		/*显示职位信息*/
+		$("#showmodal_jobs").click(function () {
+			$.ajax({
+				url: "../IndustrysCon/queryAllInd",
+				dataType: "json",
+				type: "post",
+				success:function (result) {
+					for(var i=1;i<result.length;i++){
+						$("#indusData").append("<li class=\"J_list_jobs_parent\"><input type='hidden' value='"+result[i].indu_id+"'/><label onclick='clickIndData(this)'>"+result[i].indu_name+"</label></li>\n" +
+								"                    ")
+					}
+				}
+			})
+			layer.open({
+				type:1,//类型
+				area:['680px','450px'],//定义宽和高
+				title:'请选择期望的职位',//题目
+				shadeClose:false,//点击遮罩层关闭
+				content: $('#posAllModel') //打开的内容
+			});
+		})
+		/*显示下拉列表*/
+		$(".w518").click(function () {
+			$(this).siblings(".J_dropdown_menu").css("display","block");
+		});
+		/*进行赋值操作*/
+		$(".J_listitme").click(function () {
+			$(this).parents(".J_dropdown_menu").siblings(".w518").val($(this).html());
+			$(this).parents(".J_dropdown_menu").css("display","none");
+		})
+		//添加职位信息
+		$("#insertAddBtn").click(function () {
+			var iss_name=$("#iss_name").val();
+			var pos_id=$("#pos_id").val();
+			var iss_worknature=$("#iss_worknature").val();
+			var iss_count=$("#iss_count").val();
+
+			var iss_department=$("#iss_department").val();
+			var iss_education=$("#iss_education").val();
+			var iss_experience=$("#iss_experience").val();
+			var iss_address=$("#iss_address").val();
+			var iss_describe=$("#iss_describe").val();
+
+			var iss_age1=$("#iss_age1").val();
+			var iss_age2=$("#iss_age2").val();
+			var iss_age=iss_age1+'岁-'+iss_age2+'岁';
+			var ent_id=$("#ent_id").val();
+			var iss_linkman=$("#iss_linkman").val();
+			var iss_phone=$("#iss_phone").val();
+			var iss_pay=$("#iss_pay").val();
+
+			$.ajax({
+				url:"../IssCon/iss_insertPos",
+				dataType:"text",
+				type:"post",
+				data:{iss_name:iss_name,pos_id:pos_id,iss_worknature:iss_worknature,iss_count:iss_count,
+				iss_department:iss_department,iss_education:iss_education,iss_experience:iss_experience,
+				iss_address:iss_address,iss_describe:iss_describe,iss_age:iss_age,ent_id:ent_id,iss_linkman:iss_linkman,iss_phone:iss_phone,iss_pay:iss_pay},
+				success:function (result) {
+					disapperTooltip('remind', "添加成功");
+					layer.closeAll();
+					location.href="../IssCon/iss_queryPos?ent_id="+ent_id;
+				}
+			});
+		})
+
+	//	显示详情页面
+		$(".posDetailBtn").click(function () {
+			var ent_id=$("#ent_id").val();
+			var iss_id=$(this).siblings("input").val();
+			$.ajax({
+				url: "../IssCon/iss_queryDetailPos",
+				dataType: "text",
+				type: "post",
+				data:{iss_id:iss_id}
+			});
+			layer.open({
+				type:1,//类型
+				offset: '60px',
+				area:['680px','450px'],//定义宽和高
+				title:'职位详情',//题目
+				shadeClose:false,//点击遮罩层关闭
+				content: $('#posDetailModel'), //打开的内容
+				cancel: function(){
+					//右上角关闭回调
+					location.href="../IssCon/iss_queryPos?ent_id="+ent_id;
+					//return false 开启该代码可禁止点击该按钮关闭
+				}
+			});
+		})
+	//	上架，下架
+		$(".updateStateBtn").click(function () {
+			var ent_id=$("#ent_id").val();
+			var iss_id=$(this).siblings("input").val();
+			var iss_state=$(this).siblings(".iss_state").val();
+			$.ajax({
+				url: "../IssCon/iss_updateState",
+				dataType: "text",
+				type: "post",
+				data:{iss_id:iss_id,iss_state:iss_state},
+				success:function (result) {
+					if(result<1){
+						disapperTooltip('remind', "修改失败，请重试");
+					}else{
+						location.href="../IssCon/iss_queryPos?ent_id="+ent_id;
+					}
+				}
+			})
+		})
+	});
+	/*
+        * 点击行业类型，显示行业信息
+        * */
+	function clickIndData(obj){
+		$("#indData").empty();
+		$("#posDataId").empty();
+		$(obj).parent("li").siblings().removeClass("current");
+		$(obj).parent("li").addClass("current");
+		$(obj).parent("li").siblings().removeClass("current");
+		var indu_id=$(obj).siblings("input").val();
+		//
+		$.ajax({
+			url: "../IndustryCon/queryInd",
+			dataType: "json",
+			type: "post",
+			data:{indu_id:indu_id},
+			success:function (result) {
+				for(var i=1;i<result.length;i++){
+					$("#indData").append("<li class=\"J_list_jobs_parent1\"><input type='hidden' value='"+result[i].ind_id+"'><label onclick='posIdData(this)'>"+result[i].ind_name+"</label></li>")
+				}
+			}
+		})
+	}
+	/*赋值*/
+	function clickPosData(obj){
+		$("#showmodal_trade").val($(obj).siblings("#ind_id").val());
+		//赋值内容
+		$(".J_resuletitle_trade").html($(obj).html());
+		layer.closeAll();
+	}
+	/*
+    * 点击行业显示对应职位信息
+    * */
+	function posIdData(obj){
+		$("#posDataId").empty();
+		$(obj).parent("li").siblings().removeClass("current");
+		$(obj).parent("li").addClass("current");
+		var ind_id=$(obj).siblings("input").val();
+		$.ajax({
+			url: "../IndustryCon/posDataAll",
+			dataType: "json",
+			type: "post",
+			data:{ind_id:ind_id},
+			success:function (result) {
+				for(var i=1;i<result.length;i++){
+					$("#posDataId").append("<li><input type='hidden' value='"+result[i].pos_id+"'/><label onclick='addPosData(this)'>"+result[i].pos_name+"</label></li>")
+				}
+			}
+		})
+	}
+	/*
+    * 点击职位，赋值文本框
+    * */
+	function addPosData(obj){
+		/*赋值id*/
+		$("#pos_id").val($(obj).siblings("input").val());
+		$("#pos_text").val($(obj).html());
+		layer.close(layer.index);
+	}
+</script>
+<input type="hidden" id="ent_id" th:value="${session.sessionCusList[0].ent_id}"/>
+<!--详情页面开始-->
+<div id="posDetailModel" style="display:none">
+	<div class="items" th:if="${session.posDelList!=null}">
+		<div class="intention" th:each="p:${session.posDelList}">
+			<span style="color: black;font-size:18px;">学历要求：<span style="color: #7d7d7d;font-size:15px;" th:text="${p.iss_education}"></span></span><br>
+			<span style="color: black;font-size:18px;">经验要求： <span style="color: #7d7d7d;font-size:15px;" th:text="${p.iss_experience}"></span></span><br>
+			<span style="color: black;font-size:18px;">年龄要求：<span style="color: #7d7d7d;font-size:15px;" th:text="${p.iss_age}"></span> </span><br>
+			<span style="color: black;font-size:18px;">工作地点：<span style="color: #7d7d7d;font-size:15px;" th:text="${p.iss_address}"></span></span><br>
+			<span style="color: black;font-size:18px;">聘请薪资：<span style="color: #7d7d7d;font-size:15px;" th:text="${p.iss_pay}"></span> </span><br>
+			<span style="color: black;font-size:18px;">发布时间：<span style="color: #7d7d7d;font-size:15px;" th:text="${p.iss_time}"></span> </span><br>
+			<span style="color: black;font-size:18px;">'联系人<span style="color: #7d7d7d;font-size:15px;" th:text="${p.iss_linkman}"></span>： </span><br>
+			<span style="color: black;font-size:18px;">联系方式：<span style="color: #7d7d7d;font-size:15px;" th:text="${p.iss_phone}"></span></span><br>
+			<span style="color: black;font-size:18px;">职位描述：<span style="color: #7d7d7d;font-size:15px;" th:text="${p.iss_describe}"></span> </span><br>
+		</div>
+	</div>
+</div>
+<!--结束-->
+<!--职位模态框开始-->
+<div id="posAllModel" style="display: none;">
+	<div class="modal_body">
+		<div class="J_modal_content">
+			<div class="modal_body_box modal_body_box2">
+				<div class="item">
+					<ul class="list_nav" style="display: block;" id="indusData">
+					</ul>
+				</div>
+				<div class="item">
+					<ul class="list_nav J_list_jobs_group1" id="indData" style="display: block;">
+					</ul>
+				</div>
+				<div class="item">
+					<ul class="list_nav J_list_jobs_group2" id="posDataId" style="display: block;">
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--职位模态框结束-->
+<!--发布职位模态框 开始-->
+<div id="addPosModel" style="display: none;text-align: center;">
+	<!--<div id="left"></div>
+	<div id="right"></div>-->
+	<div class="profile_wrap">
+		<div class="basic_form J_focus pos_rel">
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring">
+						<div class="item_val">
+							发布人：<input style="width: 190px;" id="iss_linkman" type="text" class="input_205_34 w518" placeholder="请输入职位名称">
+						</div>
+					</div>
+					<input type="hidden" name="companyname" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring">
+						<div class="item_val">
+							手机号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：<input style="width: 190px;" id="iss_phone" type="text" class="input_205_34 w518" placeholder="请输入职位名称">
+						</div>
+					</div>
+					<input type="hidden" name="companyname" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring">
+						<div class="item_val">
+							职位名称：<input style="width: 190px;" id="iss_name" type="text" class="input_205_34 w518" placeholder="请输入职位名称">
+						</div>
+					</div>
+					<input type="hidden" name="companyname" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring" title="aaaa">
+						<div class="item_val" id="showmodal_jobs">
+							职位类型：<input style="width: 190px;" id="pos_text" type="text" class="input_205_34 w518" placeholder="请选择职位类型">
+							<input type="hidden" id="pos_id"/>
+						</div>
+					</div>
+					<input type="hidden" name="short_name" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring">
+						<div class="item_val">
+							工作性质：<input style="width: 190px;" id="iss_worknature" type="text" class="input_205_34 w518" value="全职">
+							<div class="dropdowbox8 J_dropdown_menu" style="display:none;">
+								<div class="dropdow_inner8" style="margin-right: 205px;margin-top: 102px;width: 200px;">
+									<ul class="nav_box">
+										<li><a class="J_listitme" href="javascript:;" data-code="国企">全职</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="私营">兼职</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="合资">实习</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" name="short_name" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring" title="aaaa">
+						<div class="item_val">
+							招聘人数：<input style="width: 190px;" id="iss_count" type="text" class="input_205_34 w518" placeholder="请输入企业简称">
+						</div>
+					</div>
+					<input type="hidden" name="short_name" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring" title="aaaa">
+						<div class="item_val">
+							薪资：<input style="width: 190px;" id="iss_pay" type="text" class="input_205_34 w518" placeholder="请输入企业简称">
+						</div>
+					</div>
+					<input type="hidden" name="short_name" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring" title="aaaa">
+						<div class="item_val">
+							招聘部门：<input style="width: 190px;" id="iss_department" type="text" class="input_205_34 w518" placeholder="请输入招聘部门">
+
+						</div>
+					</div>
+					<input type="hidden" name="short_name" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring" title="aaaa">
+						<div class="item_val">
+							学历要求：<input style="width: 190px;" id="iss_education" type="text" class="input_205_34 w518" value="初中">
+							<div class="dropdowbox4 J_dropdown_menu" style="display: none">
+								<div class="dropdow_inner4" style="margin-top: 253px;margin-left: 275px;width: 200px;">
+									<ul class="nav_box">
+										<li><a class="J_listitme" href="javascript:;" data-code="初中">初中</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="高中">高中</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="中技">中技</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="中专">中专</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="大专">大专</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="本科">本科</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="硕士">硕士</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="博士">博士</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="博后">博后</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="不限">不限</a></li>                    </ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--<input type="hidden" name="short_name" value="aaaa">-->
+				</div>
+				<div class="clear"></div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring" title="aaaa">
+						<div class="item_val">
+							工作经验：<input style="width: 190px;" id="iss_experience" type="text" class="input_205_34 w518" placeholder="请输入企业简称">
+							<div class="dropdowbox4 J_dropdown_menu" style="display: none">
+								<div class="dropdow_inner4" style="margin-left: 275px;margin-top: 420px;width: 200px;">
+									<ul class="nav_box">
+										<li><a class="J_listitme" href="javascript:;" data-code="不限">不限</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="1年以下">1年以下</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="1-2年">1-2年</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="3-5年">3-5年</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="6-7年">6-7年</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="8-10年">8-10年</a></li>
+										<li><a class="J_listitme" href="javascript:;" data-code="10年以上">10年以上</a></li>                    </ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" name="short_name" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring" title="aaaa">
+						<div class="item_val">
+							年龄要求：<input style="width: 50px;" id="iss_age1" type="text" class="input_205_34 w518">岁-
+							<input style="width: 50px;" id="iss_age2" type="text" class="input_205_34 w518">岁
+						</div>
+					</div>
+					<input type="hidden" name="short_name" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="item">
+			<div class="item_val">
+				<div class="line_substring" title="aaaa">
+					<div class="item_val">
+						工作地点：<input style="width: 190px;" id="iss_address" type="text" class="input_205_34 w518" placeholder="请输入企业简称">
+					</div>
+					</div>
+					<input type="hidden" name="short_name" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<!--<div class="item">
+				<div class="item_val">
+					<div class="line_substring" title="aaaa">
+						<div class="item_val">
+							职位福利：<input style="width: 190px;" id="wef_id" type="text" class="input_205_34 w518" placeholder="请输入企业简称">
+						</div>
+					</div>
+					<input type="hidden" name="short_name" value="aaaa">
+					</div>
+				<div class="clear"></div>
+			</div>-->
+		&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="item">
+				<div class="item_val">
+					<div class="line_substring" title="aaaa">
+						<div class="item_val">
+							职位描述：<input style="width: 190px;" id="iss_describe" type="text" class="input_205_34 w518" placeholder="请输入企业简称">
+						</div>
+					</div>
+					<input type="hidden" name="short_name" value="aaaa">
+				</div>
+				<div class="clear"></div>
+			</div>
+			<input type="button" id="insertAddBtn" style="margin-left: 225px;margin-top: 20px;" class="btn_blue J_hoverbut btn_115_38" value="保存"/>
+		</div>
+	</div>
+</div>
+<!--结束-->
+<div class="mainbox">
+	<!--职位切换卡 -->
+	<div class="tab">
+		<a class="li J_hoverbut" th:href="@{../Entrepreneur/ent_invInterview(ent_id=${session.sessionCusList[0].ent_id})}" target="frame_entData">面试邀请</a>
+		<a class="li J_hoverbut" th:href="@{../Entrepreneur/ent_applyInter(ent_id=${session.sessionCusList[0].ent_id})}" target="frame_entData">面试申请</a>
+		<a class="li select">发布职位</a>
+		<a class="li J_hoverbut" href="https://zhaopin.iluoyang.com/personal/attention_jobs.html"></a>
+		<a class="li J_hoverbut" th:href="@{../Entrepreneur/ent_queryAdd(ent_id=${session.sessionCusList[0].ent_id})}" target="frame_entData">面试地址管理</a>
+		<div class="clear"></div>
+	</div>
+	<!--切换卡结束 -->
+
+	<div class="resume_tip">
+		<!--<div class="tiptit">小提示</div>
+		<div class="tiptxt link_blue">
+			如果投递简历后7天内没有得到反馈，说明你获得面试机会的几率很低！
+		</div>-->
+	</div>
+
+	<div class="apply_jobs_list_th">
+		<div class="th3">职位名称</div>
+		<div class="th3">所属行业</div>
+		<div class="th3">工作性质</div>
+		<div class="th3">招聘人数</div>
+		<div class="th4" color="blue">详情</div>
+		<div class="th5">状态</div>
+		<!--<div class="th5">学历要求</div>
+		<div class="th5">工作经验</div>
+		<div class="th5">年龄要求</div>
+		<div class="th5">工作地点</div>
+		<div class="th5">职位描述</div>-->
+
+		<div class="clear"></div>
+	</div>
+	<form id="form1" action="/personal/del_jobs_apply.html" method="post" class="J_allListBox">
+		<div class="apply_jobs_list J_hoverbut" th:if="${issList!=null}" th:each="i:${issList}">
+			<div class="td3 link_blue substring">
+				<!--<input class="J_allList" name="y_id[]" type="checkbox" th:value="${i.iss_id}">-->
+				&nbsp;<a th:href="@{../IssCon/IssQuery(iss_id=${i.iss_id})}" target="_blank" th:text="${i.iss_name}"></a>
+			</div>
+			<div class="td3" th:text="${i.pos_name}"></div>
+			<div class="td3 n" th:text="${i.iss_worknature}"></div>
+			<div class="td3" th:text="${i.iss_count}"></div>
+			<input type="hidden" th:value="${i.iss_id}"/>
+			<div class="td3 posDetailBtn" style="color:darkred;cursor:pointer">详情</div>
+			<div class="td5 but_gray_80_32 updateStateBtn" th:text="${i.iss_state==0?'已上架':'已下架'}"></div>
+			<input type="hidden" class="iss_state" th:value="${i.iss_state}"/>
+			<div class="td5">
+				<a href="javascript:;" url="/personal/del_jobs_apply/y_id/21415.html" class="but2 J_hoverbut delete"></a>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="apply_jobs_list_but">
+			<!--<div class="td1">
+				<input class="J_allSelected" type="checkbox">
+			</div>-->
+			<!--<div class="td2">
+				<div class="but_gray_80_32 J_hoverbut delall">删除</div>
+			</div>-->
+			<div class="td2">
+				<div class="but_gray_80_32" id="insertPosBtn">发布职位</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</form>
+	<div class="qspage"> <a class="unable">上一页</a>  <span class="current">1</span> <a class="unable">下一页</a>  </div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="user_foot font_gray9" id="footer">©2017 洛阳魅力网络信息服务有限公司 版权所有</div>
+<div class="floatmenu">
+	<div class="item mobile">
+		<a class="blk"></a>
+		<div class="popover">
+			<div class="popover-bd">
+				<label class="wx">企业微信</label>
+				<span class="img-qrcode img-qrcode-wechat"><img src="../jobApp/5d23e2f8425a1.png" alt=""></span>
+			</div>
+			<div class="popover-arr"></div>
+		</div>  </div>  <div class="item ask">
+	<a class="blk" target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=suggest&amp;a=index"></a>
+</div>
+	<div id="backtop" class="item backtop" style="display: none;"><a class="blk"></a></div>
+</div>
+<script type="text/javascript" src="../jobApp/jquery_003.js"></script>
+<script type="text/javascript" src="../jobApp/jquery_007.js"></script>
+<script type="text/javascript" src="../jobApp/jquery_006.js"></script><div class="disappear_tooltip pie_about" style="left: 719.5px; top: 329px;"><div class="icon"></div><div class="content"></div></div>
+<script type="text/javascript" src="../jobApp/jquery_005.js"></script>
+<script type="text/javascript" src="../jobApp/jquery.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/Application/Home/View/default/public/js/PIE.js"></script>
+
+<![endif]-->
+
+<script type="text/javascript" src="../jobApp/jquery_008.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		//删除
+		/*$(".delall").live("click", function() {
+			var chk_value='';
+			var ent_id=$("#ent_id").val();
+			$(".J_allListBox .J_allList:checked").each(function () {
+				chk_value=chk_value+$(this).val()+",";
+			});
+			var str =chk_value.substring(0,chk_value.length-1);
+			if(str.length < 1){
+				disapperTooltip('remind', "请先选择要删除的职位");
+			}else{
+				layer.confirm('确定要删除？', {
+					btn: ['确定', '取消'] //可以无限个按钮
+				}, function(index, layero){
+					//确定 的回调
+					$.ajax({
+						url: "../IssCon/iss_deletePos",
+						dataType: "text",
+						type: "post",
+						data:{iss_id:str},
+						success:function (result) {
+							layer.closeAll();
+							location.href="../IssCon/iss_queryPos?ent_id="+ent_id;
+						}
+					})
+				}, function(index){
+					//取消 的回调
+					layer.closeAll();
+				});
+			}
+		});*/
+	});
+</script>
+
+</body></html>

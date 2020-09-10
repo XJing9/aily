@@ -1,0 +1,1173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>招聘列表-爱洛阳人才网</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="骑士CMS">
+<meta name="copyright" content="74cms.com">
+<link rel="shortcut icon" href="https://zhaopin.iluoyang.com/favicon.ico">
+<script src="invite/hm.js"></script><script src="invite/jquery_006.js"></script>
+<script src="invite/htmlspecialchars.js"></script>
+<script src="invite/gt.js"></script><script type="text/javascript">
+	var app_spell = "1";
+	var qscms = {
+		base : "",
+		keyUrlencode:"0",
+		domain : "http://zhaopin.iluoyang.com",
+		root : "/index.php",
+		companyRepeat:"0",
+		regularMobile: /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$|16[0-9]{9}$|19[0-9]{9}$/,
+		district_level : "2",
+		smsTatus: "1",
+		captcha_open:"0",
+		varify_mobile:"0",
+		varify_suggest:"0",
+        varify_user_login:"",
+		is_login:"1",
+		default_district : "1",
+		default_district_spell : "jianxiqu",
+        subsite: "0"
+	};
+</script>
+	<link href="invite/common.css" rel="stylesheet" type="text/css">
+	<link href="invite/common_ajax_dialog.css" rel="stylesheet" type="text/css">
+	<link href="invite/jobs.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+		#frame2 {
+			height: 40px;
+		}
+		#frame1 {
+			 height: 95px;
+		 }
+
+	</style>
+	<script src="invite/jquery_003.js" type="text/javascript" language="javascript"></script>
+	<script type="text/javascript" src="invite/6f557ceaff36b5f87598d5441e0a6ba3.js"></script>	</head>
+<body>
+<iframe id="frame2" src="../CustomerCon/topData" name="frame_top" frameborder="0" height="100%" width="100%" scrolling="auto"></iframe>
+<iframe id="frame1" src="../CustomerCon/show_head" name="frame_name" frameborder="0" height="100%" width="100%" scrolling="auto"></iframe>
+<script type="text/javascript" src="invite/jquery_004.js"></script>
+<script type="text/javascript">
+	// 先获取到子页面的window对象，然后在调用
+	window.onload = function() {
+		var ifra = document.getElementById("frame1");
+		ifra.contentWindow.document.getElementById("zgz").style.color="#1787fb";
+	}
+</script>
+<!--搜索 -->
+<div class="new-search-box" style="background-image: url(invite/images/sebanner2.jpg);">
+    <div class="ns-main">
+        <div class="main-sty">
+                            <div class="sty-cell J_sli_jc select" data-type="full">全文<div class="sty-aow"></div></div>                        <div class="sty-cell J_sli_jc " data-type="company">搜企业<div class="sty-aow"></div></div>
+                        <div class="clear"></div>
+        </div>
+        <div class="main-sip">
+            <div class="ip-group">
+                <form id="ajax_search_location" action="/ajax_common/ajax_search_location/type/QS_jobslist.html" method="get">
+                    <div class="ip-box"><input type="text" name="key" id="autoKeyInput" data-original="" placeholder="请输入关键字" autocomplete="off"></div>
+                    <div class="for-border"></div>
+                    <div class="ip-city" data-toggle="funCityModal" data-title="请选择地区" data-multiple="false" data-maximum="0" data-width="630">选择地区</div>
+                    <input type="hidden" name="search_type" value="">
+                    <input id="searchCityModalCode" type="hidden" name="citycategory" value="">
+					<input id="recoverSearchCityModalCode" type="hidden" name="" value="">
+                    <input type="hidden" name="jobcategory" value="">
+                    <input class="J_forclear" type="hidden" name="jobtag" value="">
+                    <input class="J_forclear" type="hidden" name="wage" value="">
+                    <input class="J_forclear" type="hidden" name="trade" value="">
+                    <input class="J_forclear" type="hidden" name="scale" value="">
+                    <input class="J_forclear" type="hidden" name="nature" value="">
+                    <input class="J_forclear" type="hidden" name="education" value="">
+                    <input class="J_forclear" type="hidden" name="experience" value="">
+                    <input class="J_forclear" type="hidden" name="settr" value="">
+                    <input type="hidden" name="lng" id="lng" value="">
+                    <input type="hidden" name="lat" id="lat" value="">
+                    <input type="hidden" name="ldLng" id="ldLng" value="">
+                    <input type="hidden" name="ldLat" id="ldLat" value="">
+                    <input type="hidden" name="ruLng" id="ruLng" value="">
+                    <input type="hidden" name="ruLat" id="ruLat" value="">
+                    <div class="ip-btn"><input type="submit" class="sobut J_hoverbut" value="找工作"></div>
+                </form>
+            </div>
+            <div class="ip-txt link_white J_sub_s"><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=index">分类搜索</a></div>
+            <div class="ip-txt J_map_some link_white">
+                <div class="cur-map-pos" title=""></div>
+                <a class="for-div" href="javascript:;" id="popupBox">地图找工作</a>
+                <a class="map-clear" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=jobs_list">清除</a>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="so_condition J_so_condition">
+        	<div class="lefttit">地标地段</div>
+		<div class="rs">
+			<div onclick="javascript:location.href='/jobs/jobs_list/citycategory/jianxiqu.html'" class="li ">全涧西</div>
+			<div onclick="javascript:location.href='/jobs/jobs_list/citycategory/wandaguangchang1.html'" class="li ">万达广场</div><div onclick="javascript:location.href='/jobs/jobs_list/citycategory/shanghaishichang.html'" class="li ">上海市场</div><div onclick="javascript:location.href='/jobs/jobs_list/citycategory/guangzhoushichang.html'" class="li ">广州市场</div><div onclick="javascript:location.href='/jobs/jobs_list/citycategory/lianmenglu.html'" class="li ">联盟路</div><div onclick="javascript:location.href='/jobs/jobs_list/citycategory/luopugongyuan.html'" class="li ">洛浦公园</div><div onclick="javascript:location.href='/jobs/jobs_list/citycategory/xiyuangongyuan.html'" class="li ">西苑公园</div><div onclick="javascript:location.href='/jobs/jobs_list/citycategory/mudangongyuan.html'" class="li ">牡丹公园</div><div onclick="javascript:location.href='/jobs/jobs_list/citycategory/mudanguangchang.html'" class="li ">牡丹广场</div><div onclick="javascript:location.href='/jobs/jobs_list/citycategory/nanchanglu.html'" class="li ">南昌路</div><div onclick="javascript:location.href='/jobs/jobs_list/citycategory/tianjinlu.html'" class="li ">天津路</div><div onclick="javascript:location.href='/jobs/jobs_list/citycategory/jianxizhoubian.html'" class="li ">涧西周边</div>			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>	<div class="lefttit">职位薪资</div>
+	<div class="rs">
+				<div onclick="javascript:location.href='/jobs/jobs_list.html'" class="li select">不限</div>
+		<div onclick="javascript:location.href='/jobs/jobs_list/wage/56.html'" class="li ">1K~1.5K/月</div><div onclick="javascript:location.href='/jobs/jobs_list/wage/57.html'" class="li ">1.5K~2K/月</div><div onclick="javascript:location.href='/jobs/jobs_list/wage/58.html'" class="li ">2K~3K/月</div><div onclick="javascript:location.href='/jobs/jobs_list/wage/59.html'" class="li ">3K~5K/月</div><div onclick="javascript:location.href='/jobs/jobs_list/wage/60.html'" class="li ">5K~10K/月</div><div onclick="javascript:location.href='/jobs/jobs_list/wage/61.html'" class="li ">10K以上/月</div><div onclick="javascript:location.href='/jobs/jobs_list/wage/316.html'" class="li ">薪资面议</div>		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+	<div class="lefttit">职位亮点</div>
+	<div class="rs">
+				<div onclick="javascript:location.href='/jobs/jobs_list.html'" class="li select">不限</div>
+		<div onclick="javascript:location.href='/jobs/jobs_list/jobtag/145.html'" class="li ">五险一金</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/146.html'" class="li ">包吃</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/147.html'" class="li ">包住</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/148.html'" class="li ">每周双休</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/149.html'" class="li ">年底双薪</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/150.html'" class="li ">房补</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/151.html'" class="li ">话补</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/152.html'" class="li ">交补</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/153.html'" class="li ">饭补</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/154.html'" class="li ">加班补助</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/313.html'" class="li ">就近安排工作</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/314.html'" class="li ">每月发放奖金</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/315.html'" class="li ">员工生日会</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/317.html'" class="li ">五险</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/318.html'" class="li ">节假日福利</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/319.html'" class="li ">带薪年假</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/320.html'" class="li ">团建旅游</div><div onclick="javascript:location.href='/jobs/jobs_list/jobtag/321.html'" class="li ">带薪培训</div>		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+  
+	<div class="lefttit">更多筛选</div>
+	<div class="rs">
+		<div class="bli J_dropdown">
+						<span class="txt" title="所属行业">所属行业</span>
+			<div class="dropdowbox_searchtrade J_dropdown_menu">
+	            <div class="dropdow_inner_searchtrade">
+	                <ul class="nav_box">
+	                	<li onclick="javascript:location.href='/jobs/jobs_list/trade/1.html'" class="" data-code="1" title="财务/审计">财务/审计</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/2.html'" class="" data-code="2" title="金融/银行">金融/银行</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/3.html'" class="" data-code="3" title="保险">保险</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/4.html'" class="" data-code="4" title="信托/拍卖">信托/拍卖</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/5.html'" class="" data-code="5" title="教育/科研/培训">教育/科研/培训</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/6.html'" class="" data-code="6" title="中介/专业服务">中介/专业服务</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/7.html'" class="" data-code="7" title="人力资源服务">人力资源服务</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/8.html'" class="" data-code="8" title="医疗/保健/卫生/美容">医疗/保健/卫生/美容</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/9.html'" class="" data-code="9" title="娱乐休闲/餐饮/服务">娱乐休闲/餐饮/服务</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/10.html'" class="" data-code="10" title="旅游/酒店">旅游/酒店</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/11.html'" class="" data-code="11" title="交通/运输/物流">交通/运输/物流</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/12.html'" class="" data-code="12" title="汽车/摩托车">汽车/摩托车</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/13.html'" class="" data-code="13" title="互联网/电子商务">互联网/电子商务</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/14.html'" class="" data-code="14" title="计算机软件">计算机软件</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/15.html'" class="" data-code="15" title="计算机硬件">计算机硬件</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/16.html'" class="" data-code="16" title="游戏">游戏</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/17.html'" class="" data-code="17" title="贸易/进出口">贸易/进出口</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/18.html'" class="" data-code="18" title="办公用品及设备">办公用品及设备</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/19.html'" class="" data-code="19" title="批发/零售">批发/零售</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/20.html'" class="" data-code="20" title="服装/纺织/皮革">服装/纺织/皮革</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/21.html'" class="" data-code="21" title="陶瓷/卫浴">陶瓷/卫浴</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/22.html'" class="" data-code="22" title="家具/灯饰">家具/灯饰</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/23.html'" class="" data-code="23" title="快速消费品（食品/饮料等）">快速消费品（食品/饮料等）</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/24.html'" class="" data-code="24" title="耐用消费品（家具/家电等）">耐用消费品（家具/家电等）</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/25.html'" class="" data-code="25" title="租赁服务">租赁服务</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/26.html'" class="" data-code="26" title="房地产/物业管理">房地产/物业管理</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/27.html'" class="" data-code="27" title="建筑/建材">建筑/建材</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/28.html'" class="" data-code="28" title="家居/室内设计/装潢">家居/室内设计/装潢</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/29.html'" class="" data-code="29" title="钢铁/机械/设备/重工">钢铁/机械/设备/重工</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/30.html'" class="" data-code="30" title="出版/印刷/造纸">出版/印刷/造纸</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/31.html'" class="" data-code="31" title="原材料和加工">原材料和加工</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/32.html'" class="" data-code="32" title="生物/制药/医疗器械">生物/制药/医疗器械</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/33.html'" class="" data-code="33" title="通信电信">通信电信</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/34.html'" class="" data-code="34" title="IT服务/系统集成">IT服务/系统集成</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/35.html'" class="" data-code="35" title="电子技术/半导体/集成电路">电子技术/半导体/集成电路</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/36.html'" class="" data-code="36" title="仪器仪表/工业自动化">仪器仪表/工业自动化</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/37.html'" class="" data-code="37" title="广告/创意">广告/创意</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/38.html'" class="" data-code="38" title="公关/市场推广/会展">公关/市场推广/会展</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/39.html'" class="" data-code="39" title="文体/影视/艺术">文体/影视/艺术</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/40.html'" class="" data-code="40" title="媒体传播">媒体传播</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/41.html'" class="" data-code="41" title="化工/采掘/冶炼">化工/采掘/冶炼</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/42.html'" class="" data-code="42" title="能源（电力/水利/矿产）">能源（电力/水利/矿产）</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/43.html'" class="" data-code="43" title="环保">环保</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/44.html'" class="" data-code="44" title="航天/航空">航天/航空</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/45.html'" class="" data-code="45" title="政府/非盈利机构">政府/非盈利机构</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/306.html'" class="" data-code="306" title="农林牧渔">农林牧渔</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/307.html'" class="" data-code="307" title="多元化集团">多元化集团</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/308.html'" class="" data-code="308" title="检测/认证">检测/认证</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/309.html'" class="" data-code="309" title="法律/法务">法律/法务</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/310.html'" class="" data-code="310" title="咨询/顾问">咨询/顾问</li><li onclick="javascript:location.href='/jobs/jobs_list/trade/311.html'" class="" data-code="311" title="其他行业">其他行业</li>						<div class="clear"></div>
+	                </ul>
+	            </div>
+	        </div>
+			<div class="clear"></div>
+		</div>
+		<div class="bli J_dropdown">
+			<span>企业规模</span>
+						<div class="dropdowbox_noa J_dropdown_menu">
+	            <div class="dropdow_inner_noa">
+	                <ul class="nav_box">
+	                	<li onclick="javascript:location.href='/jobs/jobs_list/scale/80.html'" class="" data-code="80">1-49人</li><li onclick="javascript:location.href='/jobs/jobs_list/scale/81.html'" class="" data-code="81">50-99人</li><li onclick="javascript:location.href='/jobs/jobs_list/scale/82.html'" class="" data-code="82">100-499人</li><li onclick="javascript:location.href='/jobs/jobs_list/scale/83.html'" class="" data-code="83">500-999人</li><li onclick="javascript:location.href='/jobs/jobs_list/scale/312.html'" class="" data-code="312">1000人以上</li>	                </ul>
+	            </div>
+	        </div>
+	        <div class="clear"></div>
+		</div>
+		<div class="bli J_dropdown">
+			<span>工作性质</span>
+						<div class="dropdowbox_noa J_dropdown_menu">
+	            <div class="dropdow_inner_noa">
+	                <ul class="nav_box">
+	                	<li onclick="javascript:location.href='/jobs/jobs_list/nature/62.html'" class="" data-code="62">全职</li><li onclick="javascript:location.href='/jobs/jobs_list/nature/63.html'" class="" data-code="63">兼职</li><li onclick="javascript:location.href='/jobs/jobs_list/nature/64.html'" class="" data-code="64">实习</li>	                </ul>
+	            </div>
+	        </div>
+			<div class="clear"></div>
+		</div>
+		<div class="bli J_dropdown">
+			<span>学历要求</span>
+						<div class="dropdowbox_noa J_dropdown_menu">
+	            <div class="dropdow_inner_noa">
+	                <ul class="nav_box">
+	                	<li onclick="javascript:location.href='/jobs/jobs_list/education/65.html'" class="" data-code="65">初中</li><li onclick="javascript:location.href='/jobs/jobs_list/education/66.html'" class="" data-code="66">高中</li><li onclick="javascript:location.href='/jobs/jobs_list/education/67.html'" class="" data-code="67">中技</li><li onclick="javascript:location.href='/jobs/jobs_list/education/68.html'" class="" data-code="68">中专</li><li onclick="javascript:location.href='/jobs/jobs_list/education/69.html'" class="" data-code="69">大专</li><li onclick="javascript:location.href='/jobs/jobs_list/education/70.html'" class="" data-code="70">本科</li><li onclick="javascript:location.href='/jobs/jobs_list/education/71.html'" class="" data-code="71">硕士</li><li onclick="javascript:location.href='/jobs/jobs_list/education/72.html'" class="" data-code="72">博士</li><li onclick="javascript:location.href='/jobs/jobs_list/education/73.html'" class="" data-code="73">博后</li><li onclick="javascript:location.href='/jobs/jobs_list/education/301.html'" class="" data-code="301">不限</li>	                </ul>
+	            </div>
+	        </div>
+			<div class="clear"></div>
+		</div>
+		<div class="bli J_dropdown">
+			<span>工作经验</span>
+						<div class="dropdowbox_noa J_dropdown_menu">
+	            <div class="dropdow_inner_noa">
+	                <ul class="nav_box">
+	                	<li onclick="javascript:location.href='/jobs/jobs_list/experience/74.html'" class="" data-code="74">不限</li><li onclick="javascript:location.href='/jobs/jobs_list/experience/75.html'" class="" data-code="75">1年以下</li><li onclick="javascript:location.href='/jobs/jobs_list/experience/76.html'" class="" data-code="76">1-2年</li><li onclick="javascript:location.href='/jobs/jobs_list/experience/77.html'" class="" data-code="77">3-5年</li><li onclick="javascript:location.href='/jobs/jobs_list/experience/78.html'" class="" data-code="78">6-7年</li><li onclick="javascript:location.href='/jobs/jobs_list/experience/79.html'" class="" data-code="79">8-10年</li><li onclick="javascript:location.href='/jobs/jobs_list/experience/305.html'" class="" data-code="305">10年以上</li>	                </ul>
+	            </div>
+	        </div>
+			<div class="clear"></div>
+		</div>
+		<div class="bli J_dropdown">
+			<span>更新时间</span>
+			<div class="dropdowbox_noa J_dropdown_menu">
+	            <div class="dropdow_inner_noa">
+	                <ul class="nav_box">
+	                	<li onclick="javascript:location.href='/jobs/jobs_list/settr/3.html'" class="" data-code="3">3天内</li>
+	                	<li onclick="javascript:location.href='/jobs/jobs_list/settr/7.html'" class="" data-code="7">7天内</li>
+	                	<li onclick="javascript:location.href='/jobs/jobs_list/settr/15.html'" class="" data-code="15">15天内</li>
+	                	<li onclick="javascript:location.href='/jobs/jobs_list/settr/30.html'" class="" data-code="30">30天内</li>
+	                </ul>
+	            </div>
+	        </div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+
+	<!--已选条件，当没有条件的时候不显示下面的DIV -->
+	</div>
+<div class="plist">
+	<div class="pl">	
+		<div class="toptitle">
+			<div class="ltype">
+				<div class="typeli select" onclick="window.location='/jobs/jobs_list.html';">所有职位</div>
+				<div class="typeli " onclick="window.location='/jobs/jobs_list/search_cont/setmeal.html';">名企招聘</div>
+				<div class="typeli " onclick="window.location='/jobs/jobs_list/search_cont/emergency.html';">紧急招聘</div>
+								<div class="clear"></div>
+			</div>
+			<div class="ts">
+		  		<div class="l1 "></div>
+					<div class="l2 ws ">
+					<div class="radio_group" onclick="window.location='/jobs/jobs_list/deliver/1.html'">
+							<div class="radiobox"></div>
+							<div class="radiotxt">过滤已投递</div>
+							<div class="clear"></div>
+						</div>			  </div>			
+				<div class="l2 wb ">
+					<div class="radio_group" onclick="window.location='/jobs/jobs_list/license/1.html';">
+						<div class="radiobox"></div>
+						<div class="radiotxt">营业执照已认证</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+								<div class="l5">
+									  	<div class="next" title="下一页" onclick="window.location='/jobs/jobs_list/page/2.html';">&gt;</div>					<span>1</span>/229页					<div class="clear"></div>
+				</div>				<div class="clear"></div>
+			</div>
+			<div class="sort">
+				<div class="sl1">排序方式：</div>
+									<a class="sl2 select" href="https://zhaopin.iluoyang.com/jobs/jobs_list.html">综合排序</a>				<a class="sl2 " href="https://zhaopin.iluoyang.com/jobs/jobs_list/sort/rtime.html">更新时间</a>
+				<div class="sl2_for"></div>
+				<div class="sl1_r">展示方式：</div>
+				<a href="javascript:;" class="J_detailList sl2_r de select" title="切换到详细列表">详细</a>
+				<a href="javascript:;" class="J_detailList sl2_r ls " title="切换到简易列表" show_type="1">列表</a>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!--列表 -->
+		<div class="listb J_allListBox">
+			<div class="J_jobsList yli" data-jid="22840">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/22840.html" target="_blank" title="洛龙&nbsp;|&nbsp;德祐房产关圣店诚聘房产销售">洛龙&nbsp;|&nbsp;德祐房产关圣店诚聘房产销售</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=3697" target="_blank">洛阳洛港房产经纪有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/25.png" title="限量全年">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">5K-10K/月</div>
+						<div class="td5">2小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：学历不限<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：10人<span>|</span>地点：洛龙</div>
+								<div class="dlabs">
+																			<div class="dl">包住</div><div class="dl">就近安排工作</div><div class="dl">每月发放奖金</div><div class="dl">员工生日会</div><div class="dl">节假日福利</div><div class="dl">团建旅游</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="22839">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/22839.html" target="_blank" title="涧西&nbsp;|&nbsp;德祐房产中侨店诚聘销售精英">涧西&nbsp;|&nbsp;德祐房产中侨店诚聘销售精英</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=3697" target="_blank">洛阳洛港房产经纪有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/25.png" title="限量全年">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">5K-10K/月</div>
+						<div class="td5">2小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：学历不限<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：10人<span>|</span>地点：涧西</div>
+								<div class="dlabs">
+																			<div class="dl">包住</div><div class="dl">就近安排工作</div><div class="dl">每月发放奖金</div><div class="dl">员工生日会</div><div class="dl">节假日福利</div><div class="dl">团建旅游</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="22838">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/22838.html" target="_blank" title="涧西&nbsp;|&nbsp;德祐房产联盟路店诚聘置业顾问">涧西&nbsp;|&nbsp;德祐房产联盟路店诚聘置业顾问</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=3697" target="_blank">洛阳洛港房产经纪有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/25.png" title="限量全年">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">5K-10K/月</div>
+						<div class="td5">2小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：学历不限<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：10人<span>|</span>地点：涧西</div>
+								<div class="dlabs">
+																			<div class="dl">五险一金</div><div class="dl">就近安排工作</div><div class="dl">每月发放奖金</div><div class="dl">员工生日会</div><div class="dl">节假日福利</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="22837">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/22837.html" target="_blank" title="高新区&nbsp;|&nbsp;贝壳网创业路店诚聘房产销售">高新区&nbsp;|&nbsp;贝壳网创业路店诚聘房产销售</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=3697" target="_blank">洛阳洛港房产经纪有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/25.png" title="限量全年">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">5K-10K/月</div>
+						<div class="td5">2小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：学历不限<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：10人<span>|</span>地点：高新区</div>
+								<div class="dlabs">
+																			<div class="dl">包住</div><div class="dl">就近安排工作</div><div class="dl">每月发放奖金</div><div class="dl">员工生日会</div><div class="dl">节假日福利</div><div class="dl">团建旅游</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="22659">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/22659.html" target="_blank" title="西工&nbsp;|&nbsp;贝壳网纱厂店急聘房产经纪人">西工&nbsp;|&nbsp;贝壳网纱厂店急聘房产经纪人</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=3697" target="_blank">洛阳洛港房产经纪有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/25.png" title="限量全年">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">5K-10K/月</div>
+						<div class="td5">2小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：学历不限<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：10人<span>|</span>地点：西工</div>
+								<div class="dlabs">
+																			<div class="dl">包住</div><div class="dl">就近安排工作</div><div class="dl">每月发放奖金</div><div class="dl">员工生日会</div><div class="dl">节假日福利</div><div class="dl">团建旅游</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="22653">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/22653.html" target="_blank" title="涧西&nbsp;|&nbsp;贝壳网急聘房产经纪人">涧西&nbsp;|&nbsp;贝壳网急聘房产经纪人</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=3697" target="_blank">洛阳洛港房产经纪有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/25.png" title="限量全年">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">5K-10K/月</div>
+						<div class="td5">2小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：学历不限<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：若干人<span>|</span>地点：涧西</div>
+								<div class="dlabs">
+																			<div class="dl">包住</div><div class="dl">话补</div><div class="dl">就近安排工作</div><div class="dl">员工生日会</div><div class="dl">节假日福利</div><div class="dl">团建旅游</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="22652">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/22652.html" target="_blank" title="涧西&nbsp;|&nbsp;贝壳网洛龙区急聘房产销售">涧西&nbsp;|&nbsp;贝壳网洛龙区急聘房产销售</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=3697" target="_blank">洛阳洛港房产经纪有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/25.png" title="限量全年">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">5K-10K/月</div>
+						<div class="td5">2小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：学历不限<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：若干人<span>|</span>地点：涧西</div>
+								<div class="dlabs">
+																			<div class="dl">就近安排工作</div><div class="dl">每月发放奖金</div><div class="dl">员工生日会</div><div class="dl">节假日福利</div><div class="dl">团建旅游</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="14833">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/14833.html" target="_blank" title="新都汇&nbsp;|&nbsp;德祐房产新都汇附近急聘人事专员">新都汇&nbsp;|&nbsp;德祐房产新都汇附近急聘人事专员</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=3697" target="_blank">洛阳洛港房产经纪有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/25.png" title="限量全年">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">2.5K-4K/月</div>
+						<div class="td5">2小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：大专<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：2人<span>|</span>地点：西工/新都汇</div>
+								<div class="dlabs">
+																			<div class="dl">包住</div><div class="dl">每月发放奖金</div><div class="dl">员工生日会</div><div class="dl">节假日福利</div><div class="dl">团建旅游</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="14828">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/14828.html" target="_blank" title="西工&nbsp;|&nbsp;贝壳、德祐西工店招聘人事专员">西工&nbsp;|&nbsp;贝壳、德祐西工店招聘人事专员</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=3697" target="_blank">洛阳洛港房产经纪有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/25.png" title="限量全年">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">2.5K-5K/月</div>
+						<div class="td5">2小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：大专<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：1人<span>|</span>地点：西工</div>
+								<div class="dlabs">
+																			<div class="dl">员工生日会</div><div class="dl">节假日福利</div><div class="dl">团建旅游</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="14676">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/14676.html" target="_blank" title="不限&nbsp;|&nbsp;贝壳网老城区急聘房产经纪人">不限&nbsp;|&nbsp;贝壳网老城区急聘房产经纪人</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=3697" target="_blank">洛阳洛港房产经纪有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/25.png" title="限量全年">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">5K-10K/月</div>
+						<div class="td5">2小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：学历不限<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：30人<span>|</span>地点：不限/不限</div>
+								<div class="dlabs">
+																			<div class="dl">包住</div><div class="dl">就近安排工作</div><div class="dl">员工生日会</div><div class="dl">节假日福利</div><div class="dl">团建旅游</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="24033">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/24033.html" target="_blank" title="不限&nbsp;|&nbsp;餐饮部储备干部">不限&nbsp;|&nbsp;餐饮部储备干部</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759" target="_blank">洛阳华阳广场国际大饭店有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/8.png" title="半年会员">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">3.8K-4.5K/月</div>
+						<div class="td5">5小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：本科<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：5人<span>|</span>地点：不限/不限</div>
+								<div class="dlabs">
+																			<div class="dl">包吃</div><div class="dl">员工生日会</div><div class="dl">五险</div><div class="dl">节假日福利</div><div class="dl">带薪年假</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="24031">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/24031.html" target="_blank" title="不限&nbsp;|&nbsp;蜀九香火锅餐厅厨工">不限&nbsp;|&nbsp;蜀九香火锅餐厅厨工</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759" target="_blank">洛阳华阳广场国际大饭店有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/8.png" title="半年会员">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">2.5K-3K/月</div>
+						<div class="td5">5小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：初中<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：3人<span>|</span>地点：不限/不限</div>
+								<div class="dlabs">
+																			<div class="dl">包吃</div><div class="dl">员工生日会</div><div class="dl">五险</div><div class="dl">节假日福利</div><div class="dl">带薪年假</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="24028">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/24028.html" target="_blank" title="万达广场&nbsp;|&nbsp;前台接待">万达广场&nbsp;|&nbsp;前台接待</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759" target="_blank">洛阳华阳广场国际大饭店有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/8.png" title="半年会员">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">3K-4K/月</div>
+						<div class="td5">5小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：大专<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：1人<span>|</span>地点：涧西/万达广场</div>
+								<div class="dlabs">
+																			<div class="dl">包吃</div><div class="dl">员工生日会</div><div class="dl">五险</div><div class="dl">节假日福利</div><div class="dl">带薪年假</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="24026">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/24026.html" target="_blank" title="不限&nbsp;|&nbsp;平面设计师">不限&nbsp;|&nbsp;平面设计师</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759" target="_blank">洛阳华阳广场国际大饭店有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/8.png" title="半年会员">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">3K-4K/月</div>
+						<div class="td5">5小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：大专<span>|</span>经验：经验不限<span>|</span>职位性质：全职<span>|</span>人数：1人<span>|</span>地点：不限/不限</div>
+								<div class="dlabs">
+																			<div class="dl">包吃</div><div class="dl">员工生日会</div><div class="dl">五险</div><div class="dl">节假日福利</div><div class="dl">带薪年假</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="24025">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/24025.html" target="_blank" title="不限&nbsp;|&nbsp;机场代表（C照司机）">不限&nbsp;|&nbsp;机场代表（C照司机）</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759" target="_blank">洛阳华阳广场国际大饭店有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/8.png" title="半年会员">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">3K-4K/月</div>
+						<div class="td5">5小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：高中<span>|</span>经验：3-5年<span>|</span>职位性质：全职<span>|</span>人数：2人<span>|</span>地点：不限/不限</div>
+								<div class="dlabs">
+																			<div class="dl">包吃</div><div class="dl">员工生日会</div><div class="dl">五险</div><div class="dl">节假日福利</div><div class="dl">带薪年假</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="24022">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/24022.html" target="_blank" title="不限&nbsp;|&nbsp;资管">不限&nbsp;|&nbsp;资管</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759" target="_blank">洛阳华阳广场国际大饭店有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/8.png" title="半年会员">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">3K-4K/月</div>
+						<div class="td5">5小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：大专<span>|</span>经验：1-2年<span>|</span>职位性质：全职<span>|</span>人数：1人<span>|</span>地点：不限/不限</div>
+								<div class="dlabs">
+																			<div class="dl">包吃</div><div class="dl">员工生日会</div><div class="dl">五险</div><div class="dl">节假日福利</div><div class="dl">带薪年假</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="24021">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/24021.html" target="_blank" title="不限&nbsp;|&nbsp;员工餐厅面点、切配厨工">不限&nbsp;|&nbsp;员工餐厅面点、切配厨工</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759" target="_blank">洛阳华阳广场国际大饭店有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/8.png" title="半年会员">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">3K-4K/月</div>
+						<div class="td5">5小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：学历不限<span>|</span>经验：1年以下<span>|</span>职位性质：全职<span>|</span>人数：1人<span>|</span>地点：不限/不限</div>
+								<div class="dlabs">
+																			<div class="dl">包吃</div><div class="dl">员工生日会</div><div class="dl">五险</div><div class="dl">节假日福利</div><div class="dl">带薪年假</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="24011">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/24011.html" target="_blank" title="不限&nbsp;|&nbsp;婚礼策划师">不限&nbsp;|&nbsp;婚礼策划师</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759" target="_blank">洛阳华阳广场国际大饭店有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/8.png" title="半年会员">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">3K-5K/月</div>
+						<div class="td5">5小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：中专<span>|</span>经验：1年以下<span>|</span>职位性质：全职<span>|</span>人数：1人<span>|</span>地点：不限/不限</div>
+								<div class="dlabs">
+																			<div class="dl">包吃</div><div class="dl">员工生日会</div><div class="dl">五险</div><div class="dl">节假日福利</div><div class="dl">带薪年假</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div><div class="J_jobsList yli" data-jid="24005">
+						<div class="td1"><div class="J_allList radiobox"></div></div>
+						<div class="td2 link_blue link_visited ">
+							<div class="td-j-name"><a href="https://zhaopin.iluoyang.com/jobs/24005.html" target="_blank" title="不限&nbsp;|&nbsp;总账会计">不限&nbsp;|&nbsp;总账会计</a></div>
+														<div class="td-j-img">
+															</div>
+							<div class="clear"></div>
+                        </div>
+						<div class="td3 link_gray6">
+							<a class="line_substring" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759" target="_blank">洛阳华阳广场国际大饭店有限公司</a>
+							<img src="invite/auth.png" title="认证企业">							<img src="invite/8.png" title="半年会员">																					<div class="clear"></div>
+						</div>
+
+						<div class="td4">3K-4K/月</div>
+						<div class="td5">5小时前</div>
+						<div class="td6"><div class="J_jobsStatus hide "></div> </div>
+						<div class="clear"></div>
+						<div class="detail">
+						  	<div class="ltx">
+								<div class="txt font_gray6">学历：本科<span>|</span>经验：3-5年<span>|</span>职位性质：全职<span>|</span>人数：2人<span>|</span>地点：不限/不限</div>
+								<div class="dlabs">
+																			<div class="dl">包吃</div><div class="dl">员工生日会</div><div class="dl">五险</div><div class="dl">节假日福利</div><div class="dl">带薪年假</div><div class="dl">带薪培训</div>									<div class="clear"></div>
+								</div>
+						  	</div>
+							<div class="rbtn ">
+								<div class="deliver J_applyForJob" data-batch="false" data-url="/ajax_personal/resume_apply.html">投递简历</div>
+							  	                                                                    <div class="favorites  J_collectForJob" data-batch="false" data-url="/ajax_personal/jobs_favorites.html">收藏</div>                                <div class="map-area"></div>
+                            </div>
+							<div class="clear"></div>
+						</div>
+					</div>								<!--投递按钮 -->
+				<div class="listbtn">
+					<div class="td1"><div class="radiobox J_allSelected"></div></div>
+					<div class="td2">
+						<div class="lbts J_applyForJob" data-batch="true" data-url="/ajax_personal/resume_apply.html">申请职位</div>
+						<div class="lbts J_collectForJobBatch" data-batch="true" data-url="/ajax_personal/jobs_favorites.html">收藏职位</div>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="qspage"> <a class="unable">上一页</a>  <span class="current">1</span> <a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=jobs_list&amp;page=2">2</a> <a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=jobs_list&amp;page=3">3</a> <a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=jobs_list&amp;page=4">4</a> <a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=jobs_list&amp;page=5">5</a> <a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=jobs_list&amp;page=2">下一页</a> <a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=jobs_list&amp;page=229">最后一页</a> </div>					</div>
+			</div>
+	<div class="pr">
+						<!--紧急招聘 -->
+		<div class="lisbox link_gray6">
+			<div class="t">最新职位</div>
+												<div class="eyl">
+							<div class="jname substring"><a href="https://zhaopin.iluoyang.com/jobs/24034.html">行政文员</a></div>
+							<div class="city substring">2K-3K/月</div>
+							<div class="clear"></div>
+							<div class="etxt substring"><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=8013">河南恒景信息技术有限公司</a></div>
+							<div class="etxt substring">洛龙/泉舜财富中心</div>
+						</div><div class="eyl">
+							<div class="jname substring"><a href="https://zhaopin.iluoyang.com/jobs/24033.html">餐饮部储备干部</a></div>
+							<div class="city substring">3.8K-4.5K/月</div>
+							<div class="clear"></div>
+							<div class="etxt substring"><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759">洛阳华阳广场国际大饭店有限公司</a></div>
+							<div class="etxt substring">不限/不限</div>
+						</div><div class="eyl">
+							<div class="jname substring"><a href="https://zhaopin.iluoyang.com/jobs/24032.html">应届毕业生</a></div>
+							<div class="city substring">3K-6K/月</div>
+							<div class="clear"></div>
+							<div class="etxt substring"><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=8023">河南大凡文化传媒有限公司</a></div>
+							<div class="etxt substring">涧西/涧西周边</div>
+						</div><div class="eyl">
+							<div class="jname substring"><a href="https://zhaopin.iluoyang.com/jobs/24031.html">蜀九香火锅餐厅厨工</a></div>
+							<div class="city substring">2.5K-3K/月</div>
+							<div class="clear"></div>
+							<div class="etxt substring"><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759">洛阳华阳广场国际大饭店有限公司</a></div>
+							<div class="etxt substring">不限/不限</div>
+						</div><div class="eyl">
+							<div class="jname substring"><a href="https://zhaopin.iluoyang.com/jobs/24030.html">公立小学辅导员老师</a></div>
+							<div class="city substring">2.3K-4.6K/月</div>
+							<div class="clear"></div>
+							<div class="etxt substring"><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=8039">太原万家学子教育科技有限公司</a></div>
+							<div class="etxt substring">涧西/万达广场</div>
+						</div><div class="eyl">
+							<div class="jname substring"><a href="https://zhaopin.iluoyang.com/jobs/24029.html">行政文员+无压力</a></div>
+							<div class="city substring">2.5K-3.5K/月</div>
+							<div class="clear"></div>
+							<div class="etxt substring"><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=6879">洛阳市涧西区小能猫电子经营部</a></div>
+							<div class="etxt substring">洛龙/洛龙周边</div>
+						</div><div class="eyl">
+							<div class="jname substring"><a href="https://zhaopin.iluoyang.com/jobs/24028.html">前台接待</a></div>
+							<div class="city substring">3K-4K/月</div>
+							<div class="clear"></div>
+							<div class="etxt substring"><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759">洛阳华阳广场国际大饭店有限公司</a></div>
+							<div class="etxt substring">涧西/万达广场</div>
+						</div><div class="eyl">
+							<div class="jname substring"><a href="https://zhaopin.iluoyang.com/jobs/24026.html">平面设计师</a></div>
+							<div class="city substring">3K-4K/月</div>
+							<div class="clear"></div>
+							<div class="etxt substring"><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759">洛阳华阳广场国际大饭店有限公司</a></div>
+							<div class="etxt substring">不限/不限</div>
+						</div><div class="eyl">
+							<div class="jname substring"><a href="https://zhaopin.iluoyang.com/jobs/24025.html">机场代表（C照司机）</a></div>
+							<div class="city substring">3K-4K/月</div>
+							<div class="clear"></div>
+							<div class="etxt substring"><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=7759">洛阳华阳广场国际大饭店有限公司</a></div>
+							<div class="etxt substring">不限/不限</div>
+						</div><div class="eyl">
+							<div class="jname substring"><a href="https://zhaopin.iluoyang.com/jobs/24024.html">销售主管</a></div>
+							<div class="city substring">8K-15K/月</div>
+							<div class="clear"></div>
+							<div class="etxt substring"><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=com_show&amp;id=8040">洛阳懿皇宅房产经纪有限公司</a></div>
+							<div class="etxt substring">洛龙/大学城</div>
+						</div>			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+<input type="hidden" class="map-lng" value="112.362712">
+<input type="hidden" class="map-lat" value="34.660452">
+<div class="new-footer">
+    <div class="footer-txt-group nl">
+        <div class="ftg-main">
+            <div class="ftg-left">
+                <div class="ftg-a-group">
+                                        <a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=10" target="_blank" class="fag-link-cell">服务条款</a><span class="hl">|</span><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=9" target="_blank" class="fag-link-cell">隐私声明</a><span class="hl">|</span><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=7" target="_blank" class="fag-link-cell">联系我们</a><span class="hl">|</span><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=6" target="_blank" class="fag-link-cell">推广合作</a><span class="hl">|</span>                    <span class="tel">联系电话：15515361075</span>
+                </div>
+                <p class="copyright">联系地址：洛阳市涧西区龙裕路1号国家大学科技园3号楼B座5层 &nbsp;&nbsp;网站备案：<a href="http://www.beian.miit.gov.cn/" target="_blank">豫ICP备14000715号-1</a></p>
+                <p class="copyright">©2017 洛阳魅力网络信息服务有限公司 版权所有 &nbsp;&nbsp;Powered by <a href="http://www.74cms.com/">74cms</a> v6.0.18 <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8066e845122dbe9036ea4784109213e2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</p>
+            </div>
+            <div class="ftg-right">
+                <div class="qr-box">
+                    <div class="img"><img src="invite/5d23e2f8425a1.png"></div>
+                    <div class="qr-txt">公众号</div>
+                </div>
+                <div class="qr-box">
+                        <div class="img"><img src="invite/index.png"></div>
+                        <div class="qr-txt">触屏端</div>
+                    </div>                            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="floatmenu">
+    <div class="item mobile">
+            <a class="blk"></a>
+                        <div class="popover">
+                    <div class="popover-bd">
+                        <label class="wx">企业微信</label>
+                        <span class="img-qrcode img-qrcode-wechat"><img src="invite/5d23e2f8425a1.png" alt=""></span>
+                    </div>
+                    <div class="popover-arr"></div>
+                </div>        </div>    <div class="item ask"><a class="blk" target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=suggest&amp;a=index"></a></div>
+    <div id="backtop" class="item backtop" style="display: none;"><a class="blk"></a></div>
+</div>
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/Application/Home/View/default/public/js/PIE.js"></script>
+<script type="text/javascript">
+    (function ($) {
+        $.pie = function (name, v) {
+            // 如果没有加载 PIE 则直接终止
+            if (!PIE) return false;
+            // 是否 jQuery 对象或者选择器名称
+            var obj = typeof name == 'object' ? name : $(name);
+            // 指定运行插件的 IE 浏览器版本
+            var version = 9;
+            // 未指定则默认使用 ie10 以下全兼容模式
+            if (typeof v != 'number' && v < 9) {
+                version = v;
+            }
+            // 可对指定的多个 jQuery 对象进行样式兼容
+            if ($.browser.msie && obj.size() > 0) {
+                if ($.browser.version * 1 <= version * 1) {
+                    obj.each(function () {
+                        PIE.attach(this);
+                    });
+                }
+            }
+        }
+    })(jQuery);
+    if ($.browser.msie) {
+        $.pie('.pie_about');
+    }
+</script>
+<![endif]-->
+<script type="text/javascript" src="invite/jquery_005.js"></script><div class="disappear_tooltip pie_about" style="left: 691px; top: 312px;"><div class="icon"></div><div class="content"></div></div>
+<script type="text/javascript">
+  var global = {
+    h: $(window).height(),
+    st: $(window).scrollTop(),
+    backTop: function () {
+      global.st > (global.h * 0.5) ? $("#backtop").show() : $("#backtop").hide();
+    }
+  }
+  $('#backtop').on('click', function () {
+    $("html,body").animate({"scrollTop": 0}, 500);
+  });
+  global.backTop();
+  $(window).scroll(function () {
+    global.h = $(window).height();
+    global.st = $(window).scrollTop();
+    global.backTop();
+  });
+  $(window).resize(function () {
+    global.h = $(window).height();
+    global.st = $(window).scrollTop();
+    global.backTop();
+  });
+  // 客服QQ
+  var app_qq = "";
+  var qq_open = "";
+  if(app_qq != '' && qq_open == 1){
+    var QQFloatUrl = "/qqfloat/index/index.html";
+    $.getJSON(QQFloatUrl, function (result) {
+      if (result.status == 1) {
+        //$(".qq-float").html(result.data);
+        $("body").append(result.data);
+      }
+    });
+  }
+</script>
+<div id="mapShowC" style="display: none"></div>
+<script type="text/javascript">
+	var ajaxLoginDiaUrl = "/ajax_common/ajax_login.html";
+</script>
+<script type="text/javascript" src="invite/jquery_007.js"></script>
+<script type="text/javascript" src="invite/jquery.js"></script>
+<script type="text/javascript" src="invite/jquery_004.js"></script>
+<script type="text/javascript" src="invite/jquery_008.js"></script>
+<script type="text/javascript" src="invite/jquery_010.js"></script>
+<script type="text/javascript" src="invite/jquery_011.js"></script>
+<script type="text/javascript" src="invite/api"></script><script type="text/javascript" src="invite/getscript"></script>
+<script type="text/javascript" src="invite/jquery_002.js"></script>
+<script type="text/javascript" src="invite/jquery_009.js"></script>
+<script type="text/javascript">
+	var isVisitor = "32760";
+	$('.get-money-fail-suc').css({
+        left: ($(window).width() - $('.get-money-fail-suc').outerWidth())/2,
+        top: ($(window).height() - $('.get-money-fail-suc').outerHeight())/2 + $(document).scrollTop()
+    });
+    $('.gm-fs-group .gm-fs-clo').die().live('click', function () {
+        $(this).closest('.get-money-fail-suc').remove();
+        $('.modal_backdrop').remove();
+    });
+    // 搜索类型切换
+	$('.J_sli_jc').click(function() {
+		$(this).addClass('select').siblings().removeClass('select');
+		var indexValue = $('.J_sli_jc').index(this);
+		var typeValue = $.trim($(this).data('type'));
+		if (typeValue == 'company') {
+	        $('#ajax_search_location').attr('action', "/ajax_common/ajax_search_location/type/QS_companylist.html");
+	    } else {
+	        $('#ajax_search_location').attr('action', "/ajax_common/ajax_search_location/type/QS_jobslist.html");
+	    }
+		$('input[name="search_type"]').val(typeValue);
+	});
+	
+	
+	if ($('.J_selected .slist').length) {
+		$('.J_selected').show();
+	}
+
+	$('.J_jobConditions .wli').each(function(index, el) {
+		if (index > 6) {
+			$(this).addClass('for_up');
+		};
+	});
+
+	// 关键字高亮
+	var keyWords = $('input[name="key"]').val();
+	if (keyWords.length) {
+		$('.J_jobsList').highlight(keyWords);
+	}
+    var qsMapUrl = "/index.php?m=&c=jobs&a=jobs_list&lng=lngVal&lat=latVal&ldLng=ldLngVal&ldLat=ldLatVal&ruLng=ruLngVal&ruLat=ruLatVal&range=20";
+	var isMapSearch = "";
+	if (isMapSearch.length) {
+        var map = new BMap.Map("mapShowC");
+        map.enableScrollWheelZoom();
+        map.addControl(new BMap.NavigationControl());
+        var point = new BMap.Point($('#lng').val(),$('#lat').val());
+        map.centerAndZoom(point, 15);
+        var myGeo = new BMap.Geocoder();
+        var position;
+        function geocodeSearch(pt){
+            myGeo.getLocation(pt, function(rs){
+                var addComp = rs.addressComponents;
+                // 街道、区、市逐层向上找
+                if (addComp.street.length) {
+                    position = addComp.street;
+                } else if (addComp.district.length) {
+                    position = addComp.district;
+                } else {
+                    position = addComp.city;
+                }
+                var thisMapText =  '';
+                if (position.length > 4) {
+                    thisMapText = position.substring(0,4) + "...";
+                } else {
+                    thisMapText = position;
+                }
+                $('.J_sub_s').hide();
+                //$('.J_map_some').addClass('link_yellow');
+                $('.cur-map-pos').text('位置：' + thisMapText).attr('title', position).show();
+                $('#popupBox').text('修改');
+                $('.J_map_some .map-clear').show();
+                $('#mapShowC').remove();
+            });
+        }
+        geocodeSearch(point);
+    }
+    // 关键字联想
+    var hotKey = $('#autoKeyInput').autocomplete({
+        serviceUrl:"/ajax_common/hotword.html",
+        minChars:1,
+        maxHeight:400,
+        width:276,
+        zIndex: 1,
+        deferRequestBy: 0
+    });
+        $('#J_login').click(function(){
+    	var qsDialog = $(this).dialog({
+    		loading: true,
+			footer: false,
+			header: false,
+			border: false,
+			backdrop: false
+		});
+    	var loginUrl = qscms.root+"?m=Home&c=AjaxCommon&a=ajax_login";
+            $.getJSON(loginUrl, function(result){
+                if(result.status==1){
+                    qsDialog.hide();
+                    var qsDialogSon = $(this).dialog({
+                        header: false,
+                        content: result.data.html,
+                        footer: false,
+                        border: false
+                    });
+                    qsDialogSon.setInnerPadding(false);
+                } else {
+                    qsDialog.hide();
+                    disapperTooltip('remind',result.msg);
+                }
+            });
+    });
+    $('#J_reg').click(function(){
+    	var qsDialog = $(this).dialog({
+    		loading: true,
+			footer: false,
+			header: false,
+			border: false,
+			backdrop: false
+		});
+		var regResume = "0";
+		if(regResume == 1){
+		    	var creatsUrl = qscms.root + '?m=Home&c=AjaxPersonal&a=resume_add_dig';
+		        $.getJSON(creatsUrl, {no_apply:1},function(result){
+		            if(result.status==1){
+		                qsDialog.hide();
+		                var qsDialogSon = $(this).dialog({
+		                    content: result.data.html,
+		                    footer: false,
+		                    header: false,
+		                    border: false
+		                });
+		                qsDialogSon.setInnerPadding(false);
+		            } else {
+		                qsDialog.hide();
+		                disapperTooltip("remind", result.msg);
+		            }
+		        });
+		}else{
+            var loginUrl = qscms.root+"?m=Home&c=AjaxCommon&a=ajax_login";
+            $.getJSON(loginUrl, function(result){
+                if(result.status==1){
+                    qsDialog.hide();
+                    var qsDialogSon = $(this).dialog({
+                        header: false,
+                        content: result.data.html,
+                        footer: false,
+                        border: false
+                    });
+                    qsDialogSon.setInnerPadding(false);
+                } else {
+                    qsDialog.hide();
+                    disapperTooltip('remind',result.msg);
+                }
+            });
+
+		}        
+	});
+</script><div id="AutocompleteContainter_2c54b" style="position: absolute; z-index: 10000; top: 232.8px; left: 323.2px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_2c54b" style="display: none; width: 276px; max-height: 400px;"></div></div></div>
+
+</body></html>

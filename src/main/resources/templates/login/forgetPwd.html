@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>会员登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="骑士CMS">
+    <meta name="copyright" content="74cms.com">
+    <link rel="shortcut icon" href="../loginstyle/favicon.ico">
+    <script src="../loginstyle/hm.js"></script><script src="../loginstyle/jquery_002.js"></script>
+    <script src="../loginstyle/htmlspecialchars.js"></script>
+    <script src="../loginstyle/gt.js"></script>
+    <script src="../loginstyle/jquery.js" type="text/javascript" language="javascript"></script>
+    <script type="text/javascript">
+        var qscms = {
+            regularMobile: /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$|16[0-9]{9}$|19[0-9]{9}$/
+        };
+        $(function () {
+            //发送验证码
+            $('#getVerfyCode').click(function () {
+                $('#getVerfyCode').prop("disabled", !0);
+                $('#getVerfyCode').addClass('btn_disabled');
+                $('#getVerfyCode').val('发送中...');
+                var mobileValue = $.trim($('input[name=mobile]').val());
+                var verfyCodeValue = $.trim($('input[name=verfy_code]').val());
+                //alert(mobileValue);
+                $.ajax({
+                    url: "../CustomerCon/sendAuthCode",
+                    dataType: "json",
+                    type: "post",
+                    data: {cus_phone: mobileValue},
+                    success: function (result) {
+                        if (result!=null) {
+                            disapperTooltip("success", "验证码已发送，请注意查收");
+                            // 开始倒计时
+                            var countdown = 60;
+                            function settime() {
+                                if (countdown == 0) {
+                                    $('#getVerfyCode').prop("disabled", 0);
+                                    $('#getVerfyCode').removeClass('btn_disabled');
+                                    $('#getVerfyCode').val('获取验证码');
+                                    countdown = 60;
+                                    return;
+                                } else {
+                                    $('#getVerfyCode').prop("disabled", !0);
+                                    $('#getVerfyCode').addClass('btn_disabled');
+                                    $('#getVerfyCode').val('重发' + countdown + '秒');
+                                    countdown--;
+                                    if(countdown==0){
+                                        $.ajax({
+                                            url: "../CustomerCon/clearMobileCode",
+                                            dataType: "json",
+                                            type: "post"
+                                        })
+                                    }
+                                }
+                                setTimeout(function() {
+                                    settime()
+                                },1000)
+                            }
+                            settime();
+                        }
+                    },
+                    error: function (data) {
+                        disapperTooltip('remind', "请求出错");
+                    }
+                });
+            })
+            //手机动态码登录
+            $('#J_dologinByMobile').die().live('click', function() {
+                var mobileValue = $.trim($('input[name=mobile]').val());
+                var verfyCodeValue = $.trim($('input[name=verfy_code]').val());
+                var cus_pwd=$("#newPwd").val();
+                if (cus_pwd == "") {
+                    disapperTooltip('remind', '请输入新密码');
+                    //$('input[name=mobile]').focus();
+                    return false;
+                }
+                if (mobileValue == "") {
+                    disapperTooltip('remind', '请输入手机号');
+                    //$('input[name=mobile]').focus();
+                    return false;
+                }
+                if (mobileValue != "" && !qscms.regularMobile.test(mobileValue)) {
+                    disapperTooltip('remind', '手机号码格式不正确');
+                    //$('input[name=mobile]').focus();
+                    return false;
+                }
+                if (verfyCodeValue == "") {
+                    disapperTooltip('remind', '请填写验证码');
+                    //$('input[name=verfy_code]').focus();
+                    return false;
+                }
+                $.ajax({
+                    url: "../CustomerCon/loginPhone",
+                    dataType: "text",
+                    type: "post",
+                    data: {cus_phone: mobileValue, securityCode: verfyCodeValue},
+                    success: function (result) {
+                        if(result=="success"){
+                            $.ajax({
+                                url: "../CustomerCon/updatePwd",
+                                dataType: "text",
+                                type: "post",
+                                data: {cus_pwd:cus_pwd,cus_phone:mobileValue},
+                                success:function (result) {
+                                    if(result!='success'){
+                                        disapperTooltip('remind', "修改失败，请重试");
+                                    }else{
+                                        //disapperTooltip('success', "修改成功");
+                                        alert("修改成功");
+                                        location.href="../login/login.html";
+                                    }
+                                }
+                            })
+                        }else{
+                            disapperTooltip('remind', result);
+                        }
+                    },
+                    error: function (data) {
+                        disapperTooltip('remind', "请求出错");
+                    }
+                });
+            });
+        })
+    </script>
+    <link href="../loginstyle/common.css" rel="stylesheet" type="text/css">
+    <link href="../loginstyle/common_002.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="header_min" id="header">
+</div>
+
+<div class="user_head_bg">
+    <div class="user_head">
+        <div class="logobox">
+            <a href="https://zhaopin.iluoyang.com/"><img style="width: 290px;" src="../loginstyle/logo_home.png" border="0"></a>
+        </div>
+        <div class="logotxt">
+            <!-- |&nbsp;&nbsp;
+            会员登录
+             -->
+        </div>
+        <div class="reg">
+            还没有账号？ <a id="J_site_reg" href="../login/register.html" class="btn_blue J_hoverbut btn_inline">立即注册</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="nl_con_box">
+    <div class="nl_con">
+        <div class="nc_tit">重置密码</div>
+        <div class="nc_box">
+            <div class="ncb_t">
+                <div class="ncb_tc"><a class="J_sw_dt" href="javascript:;"></a></div>
+                <div class="clear"></div>
+            </div>
+            <div class="ty_box J_ty_box active">
+                <div class="ncb_ib">
+                    <input type="text" class="ncb_ibr mob J_for_focus" name="mobile" id="mobile" placeholder="请输入手机号">
+                    <input type="button" class="ncb_ibb" id="getVerfyCode" value="获取验证码">
+                </div>
+                <div class="ncb_ib">
+                    <input type="text" class="ncb_ibr J_loginword J_for_focus" name="verfy_code" id="verfy_code" placeholder="请输入手机验证码">
+                </div>
+                <div class="ncb_ib last">
+                    <input type="text" class="ncb_ibr J_loginword J_for_focus" name="verfy_code" id="newPwd" placeholder="请输入新密码">
+                </div>
+            </div>
+            <div class="ncb_ot link_gray9">
+                <div class="not_l">
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="ncb_bx">
+                <input class="ncb_bx_bt J_ncb_bx_bt active" type="button" id="J_dologinByMobile" value="立即登录">
+            </div>
+            <!--<div class="ncb_hz">
+                <div class="nhz_tx">合作账号登录</div>
+            </div>-->
+            <div class="ncb_au_box">
+                <div class="nab">
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="new-footer">
+    <div class="footer-txt-group nl">
+        <div class="ftg-main">
+            <div class="ftg-left">
+                <div class="ftg-a-group">
+                    <a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=10" target="_blank" class="fag-link-cell">服务条款</a><span class="hl">|</span><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=9" target="_blank" class="fag-link-cell">隐私声明</a><span class="hl">|</span><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=7" target="_blank" class="fag-link-cell">联系我们</a><span class="hl">|</span><a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=explain&amp;a=explain_show&amp;id=6" target="_blank" class="fag-link-cell">推广合作</a><span class="hl">|</span>                    <span class="tel">联系电话：15515361075</span>
+                </div>
+                <p class="copyright">联系地址：洛阳市涧西区龙裕路1号国家大学科技园3号楼B座5层 &nbsp;&nbsp;网站备案：<a href="http://www.beian.miit.gov.cn/" target="_blank">豫ICP备14000715号-1</a></p>
+                <p class="copyright">©2017 洛阳魅力网络信息服务有限公司 版权所有 &nbsp;&nbsp;Powered by <a href="http://www.74cms.com/">74cms</a> v6.0.18
+                </p>
+            </div>
+            <div class="ftg-right">
+                <div class="qr-box">
+                    <div class="img"><img src="../loginstyle/5d23e2f8425a1.png"></div>
+                    <div class="qr-txt">公众号</div>
+                </div>
+                <div class="qr-box">
+                    <div class="img"><img src="../loginstyle/index.png"></div>
+                    <div class="qr-txt">触屏端</div>
+                </div>                            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="floatmenu">
+    <div class="item mobile">
+        <a class="blk"></a>
+        <div class="popover">
+            <div class="popover-bd">
+                <label class="wx">企业微信</label>
+                <span class="img-qrcode img-qrcode-wechat"><img src="../loginstyle/5d23e2f8425a1.png" alt=""></span>
+            </div>
+            <div class="popover-arr"></div>
+        </div>        </div>    <div class="item ask"><a class="blk" target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=suggest&amp;a=index"></a></div>
+    <div id="backtop" class="item backtop" style="display: none;"><a class="blk"></a></div>
+</div>
+<script type="text/javascript" src="../loginstyle/jquery_003.js"></script><div class="disappear_tooltip pie_about" style="left: 719.5px; top: 329px;"><div class="icon"></div><div class="content"></div></div>
+<input type="hidden" id="verify_userlogin" value="0">
+<input type="hidden" id="J_captcha_varify_send" value="0">
+<input type="hidden" id="J_captcha_open" value="0">
+<input type="button" id="btnCheck" style="display:none;">
+<input type="button" id="btnCheckLoginMobile" style="display:none;">
+<input type="button" id="btnCheckLoginName" style="display:none;">
+<input type="hidden" id="J_sendVerifyType" value="0">
+<div id="popup-captcha"></div>
+</body></html>

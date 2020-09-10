@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.CustomerDao">
+    <select id="queryAllCus" resultType="map" parameterType="com.aaa.entity.Customer">
+        select *  from customer
+        <where>
+            <if test="cus_name!=null and cus_name!=''">
+                and cus_name=#{cus_name}
+            </if>
+            <if test="cus_phone!=null and cus_phone!=''">
+                and cus_phone=#{cus_phone}
+            </if>
+            <if test="cus_id!=null and cus_id!=''">
+                and cus_id=#{cus_id}
+            </if>
+        </where>
+    </select>
+    <select id="queryEnt" resultType="map" parameterType="com.aaa.entity.Customer">
+        select cu.*,e.*
+        from customer cu
+        join entreprenenur e
+        on cu.ent_id=e.ent_id
+        <where>
+            and cus_type=2
+            <if test="cus_name!=null and cus_name!=''">
+                and cus_name=#{cus_name}
+            </if>
+            <if test="cus_phone!=null and cus_phone!=''">
+                and cus_phone=#{cus_phone}
+            </if>
+        </where>
+    </select>
+</mapper>

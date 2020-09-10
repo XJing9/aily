@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<script type="text/javascript" src="personal/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css"/>
+<script src="bootstrap/js/bootstrap.js"></script>
+<script src="layer/layer.js" type="text/javascript"></script>
+
+<script>
+    $(function () {
+        $("#btn").click(function () {
+            $.ajax({
+                url: "CustomerCon/customer_login",
+                dataType: "json",
+                type: "post",
+                data: {cus_name: 'zs', cus_pwd: '123'},
+                success: function (result) {  //这里就是我出错的地方
+                   laydate.msg("成功",{icon: 6,time:1000});
+                },
+                error: function (data) {
+                    layer.msg("成功",{icon: 6,time:1000});
+                    /*alert("请求出错");
+                    alert(data);*/
+                }
+            });
+        });
+    })
+</script>
+<body>
+<button id="btn">登录</button>
+<li class="jno_item" th:each="i:${induList}">
+    <div class="jno_item_text" th:text="${i.ind_name}">生活 | 服务业</div>
+    <!--<div class="jno_item_pop" style="top: -10px;">
+        <div class="jno_item_pop_container" th:each="ind:${i.indList}">
+            <div class="jno_item_pop_title" th:text="${ind.ind_name}">餐饮</div>
+            <div class="jno_item_pop_list" th:each="p:${ind.posList}">
+                <a href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=jobs&amp;a=jobs_list&amp;jobcategory=fuwuyuan" target="_blank" class="jno_item_pop_href" th:text="p.pos_name">服务员</a>
+            </div>
+        </div>
+    </div>-->
+</li>
+
+
+<!-- 按钮：用于打开模态框 -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    打开模态框
+</button>
+
+<!-- 模态框 -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">模态框头部</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                模态框内容..
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

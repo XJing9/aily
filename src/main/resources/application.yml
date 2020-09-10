@@ -1,3 +1,5 @@
+prop:
+  filepath: D:/photo/
 server:
   port: 8088
   servlet:
@@ -13,8 +15,7 @@ spring:
     date-format: 'yyyy-MM-dd'
 
   resources: # 静态资源路径
-    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/
-
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/static/loginstyle/,classpath:/static/layer/,classpath:/static/js/,classpath:/static/entData/,classpath:/static/jobApp/,classpath:/static/resInter/,classpath:/static/setResume/,classpath:/static/bootstrap/,classpath:/static/personal/,classpath:/static/comPosList/,classpath:/static/posDetail/,classpath:/static/companyDetail/,classpath:/static/mainstyle/,classpath:/static/recruitmentList/,classpath:/static/vita/,classpath:/static/invite/,classpath:/static/resumeList/,classpath:/public/,classpath:/templates/
   thymeleaf:
     cache: false  # 使用模板缓存
     suffix: .html

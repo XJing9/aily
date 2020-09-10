@@ -1,0 +1,524 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>创建简历-个人会员中心-爱洛阳人才网</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="骑士CMS">
+<meta name="copyright" content="74cms.com">
+<link rel="shortcut icon" href="https://zhaopin.iluoyang.com/favicon.ico">
+<link rel="canonical" href="https://zhaopin.iluoyang.com/personal/resume_add/points/50/first/1.html"><script src="../setResume/jquery_005.js"></script>
+<script src="../setResume/htmlspecialchars.js"></script>
+<script src="../setResume/gt.js"></script><script type="text/javascript">
+	var app_spell = "1";
+	var qscms = {
+		base : "",
+		keyUrlencode:"0",
+		domain : "http://zhaopin.iluoyang.com",
+		root : "/index.php",
+		companyRepeat:"0",
+		regularMobile: /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$|16[0-9]{9}$|19[0-9]{9}$/,
+		district_level : "2",
+		smsTatus: "1",
+		captcha_open:"0",
+		varify_mobile:"0",
+		varify_suggest:"0",
+        varify_user_login:"",
+		is_login:"1",
+		default_district : "1",
+		default_district_spell : "jianxiqu",
+        subsite: "0"
+	};
+</script>
+    <style type="text/css">
+        #frame2 {
+            height: 40px;
+        }
+        #frame1 {
+            height: 95px;
+        }
+    </style>
+    <link href="../setResume/common.css" rel="stylesheet" type="text/css">
+    <link href="../setResume/personal_resume.css" rel="stylesheet" type="text/css">
+    <link href="../setResume/personal_ajax_dialog.css" rel="stylesheet" type="text/css">
+    <script src="../setResume/jquery_002.js" type="text/javascript" language="javascript"></script>
+    <script src="../layer/layer.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../setResume/6f557ceaff36b5f87598d5441e0a6ba3.js"></script></head>
+    <script type="text/javascript">
+        $(function () {
+            /*显示地址信息*/
+            $("#clickAddModel").click(function () {
+                $.ajax({
+                    url: "../areaCon/queryArea",
+                    dataType: "json",
+                    type: "post",
+                    success:function (result) {
+                        for(var i=1;i<result.length;i++){
+                            $("#areaId").append("<li><a class=\"J_listitme\" href=\"javascript:landmark("+result[i].are_id+");\">"+result[i].are_name+"</a></li>")
+                        }
+                    }
+                })
+                layer.open({
+                    type:1,//类型
+                    area:['680px','450px'],//定义宽和高
+                    title:'查看详细信息',//题目
+                    shadeClose:false,//点击遮罩层关闭
+                    content: $('#addressModel'), //打开的内容
+                    btn:['确定','取消'],
+                    yes:function (index) {
+                        var addData=$("#sel_jilian_1").children("option:selected");
+                        /*赋值地址id*/
+                        $("#district").val(addData.val());
+                        /*赋值内容*/
+                        $(".J_resuletitle_city").html(addData.html());
+                        //$("[name='district']").val($("#sel_jilian_1").children("option:selected").val())
+                        layer.close(index);
+                    }
+                });
+            })
+            /*显示行业信息*/
+            $("#showmodal_trade").click(function () {
+                $.ajax({
+                    url: "../IndustryCon/indQueryAll",
+                    dataType: "json",
+                    type: "post",
+                    success:function (result) {
+                        for(var i=1;i<result.length;i++){
+                            $(".list_nav1").append('<li><input id="ind_id" type="hidden" value="'+result[i].ind_id+'"/><label onclick="clickPosData(this)" class="J_list_trade" type="checkbox" data-code="1">'+result[i].ind_name+'</label></li>');
+                        }
+                    }
+                });
+                layer.open({
+                    type:1,//类型
+                    area:['680px','450px'],//定义宽和高
+                    title:'查看详细信息',//题目
+                    shadeClose:false,//点击遮罩层关闭
+                    content: $('#posModel') //打开的内容
+                });
+            })
+
+            /*显示职位信息*/
+            $("#showmodal_jobs").click(function () {
+                $.ajax({
+                    url: "../IndustrysCon/queryAllInd",
+                    dataType: "json",
+                    type: "post",
+                    success:function (result) {
+                        for(var i=1;i<result.length;i++){
+                            $("#indusData").append("<li class=\"J_list_jobs_parent\"><input type='hidden' value='"+result[i].indu_id+"'/><label onclick='clickIndData(this)'>"+result[i].indu_name+"</label></li>\n" +
+                                "                    ")
+                        }
+                    }
+                })
+                layer.open({
+                    type:1,//类型
+                    area:['680px','450px'],//定义宽和高
+                    title:'请选择期望的职位',//题目
+                    shadeClose:false,//点击遮罩层关闭
+                    content: $('#posAllModel') //打开的内容
+                });
+            })
+
+            /*保存简历信息*/
+            $("#J_saveresume").click(function () {
+                var cus_truename=$("#fullname").val();
+                var cus_sex=$(".sex_radio_list").children(".checked").html()
+                var cus_birthday=$("#birthday").html();
+
+                var res_education=$("#education").html();
+                var cus_workyear=$("#experience").html();
+
+                /*求职意向*/
+                var res_jobstate=$("#current").html();
+                var res_workcategory=$("#res_workcategory").children(".checked").html();
+
+                var res_job=$(".J_resuletitle_jobs").html();
+
+                var res_pay=$("#wage").html();
+
+                var res_workaddress=$(".J_resuletitle_city").html();
+
+                var res_industry=$(".J_resuletitle_trade").html();
+                var cus_id=$("#cus_id").val();
+
+                $.ajax({
+                    url: "../CustomerCon/reg_updateCus",
+                    dataType: "json",
+                    type: "post",
+                    data:{cus_truename:cus_truename,cus_sex:cus_sex,cus_birthday:cus_birthday,
+                        cus_workyear:cus_workyear,res_education:res_education,res_jobstate:res_jobstate,
+                        res_workcategory:res_workcategory,res_industry:res_industry,res_job:res_job,
+                    res_pay:res_pay,res_workaddress:res_workaddress,cus_id:cus_id},
+                    success:function (result) {
+                        if(result>=1){
+                            //disapperTooltip('remind', '保存成功');
+                            layer.open({
+                                title:'请选择期望的职位',//题目
+                                btn:["<=继续完善资料","找工作=>"],
+                            });
+                            layer.confirm('保存成功！', {
+                                btn: ['<=继续完善资料', '找工作=>']
+                            }, function(index, layero){
+                                //按钮【按钮一】的回调
+                                location.href="../CustomerCon/showResinter?cus_type=1"
+                            }, function(index){
+                                //按钮【按钮二】的回调
+                                location.href="../areaCon/queryAre?are_id=1"
+                            });
+
+                        }
+                    }
+                })
+            })
+        })
+        /*
+        * 点击行业类型，显示行业信息
+        * */
+        function clickIndData(obj){
+            $("#indData").empty();
+            $("#posDataId").empty();
+            $(obj).parent("li").siblings().removeClass("current");
+            $(obj).parent("li").addClass("current");
+            $(obj).parent("li").siblings().removeClass("current");
+            var indu_id=$(obj).siblings("input").val();
+            //
+            $.ajax({
+                url: "../IndustryCon/queryInd",
+                dataType: "json",
+                type: "post",
+                data:{indu_id:indu_id},
+                success:function (result) {
+                    for(var i=1;i<result.length;i++){
+                        $("#indData").append("<li class=\"J_list_jobs_parent1\"><input type='hidden' value='"+result[i].ind_id+"'><label onclick='posIdData(this)'>"+result[i].ind_name+"</label></li>")
+                    }
+                }
+            })
+        }
+        /*赋值*/
+        function clickPosData(obj){
+            $("#showmodal_trade").val($(obj).siblings("#ind_id").val())
+            //赋值内容
+            $(".J_resuletitle_trade").html($(obj).html());
+            layer.closeAll();
+        }
+        /*
+        * 点击行业显示对应职位信息
+        * */
+        function posIdData(obj){
+            $("#posDataId").empty();
+            $(obj).parent("li").siblings().removeClass("current");
+            $(obj).parent("li").addClass("current");
+            var ind_id=$(obj).siblings("input").val();
+            $.ajax({
+                url: "../IndustryCon/posDataAll",
+                dataType: "json",
+                type: "post",
+                data:{ind_id:ind_id},
+                success:function (result) {
+                    for(var i=1;i<result.length;i++){
+                        $("#posDataId").append("<li><input type='hidden' value='"+result[i].pos_id+"'/><label onclick='addPosData(this)'>"+result[i].pos_name+"</label></li>")
+                    }
+                }
+            })
+        }
+        /*
+        * 点击职位，赋值文本框
+        * */
+        function addPosData(obj){
+            /*赋值id*/
+            $("#intention_jobs_id").val($(obj).siblings("input").val());
+            $(".J_resuletitle_jobs").html($(obj).html());
+            layer.closeAll();
+        }
+
+        /*点击地区，显示地表地段*/
+        function landmark(obj){
+            $.ajax({
+                url: "../areaCon/landmarkQuery",
+                dataType: "json",
+                type: "post",
+                data:{are_id:obj},
+                success:function (result) {
+                    for(var i=1;i<result.length;i++){
+                        $("#sel_jilian_1").append("<option value="+result[i].are_id+">"+result[i].are_name+"</option>")
+                    }
+                }
+            })
+        }
+    </script>
+<body>
+<input type="hidden" id="cus_id" th:value="${cus_id}"/>
+<!--职位模态框开始-->
+<div id="posAllModel" style="display: none;">
+    <div class="modal_body">
+        <div class="J_modal_content">
+            <div class="modal_body_box modal_body_box2">
+                <div class="item">
+                    <ul class="list_nav" style="display: block;" id="indusData">
+                    </ul>
+                </div>
+                <div class="item">
+                    <ul class="list_nav J_list_jobs_group1" id="indData" style="display: block;">
+                    </ul>
+                </div>
+                <div class="item">
+                    <ul class="list_nav J_list_jobs_group2" id="posDataId" style="display: block;">
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--职位模态框结束-->
+
+<!--地址数据-->
+<div id="addressModel" style="display: none;">
+    <div class="item_val select_input select_205_34 J_hoverinput J_dropdown J_listitme_parent">
+        <span class="J_listitme_text">请选择地区</span>
+        <div class="dropdowbox8 J_dropdown_menu">
+            <div class="dropdow_inner8">
+                <ul class="nav_box" id="areaId" style="">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body" style="width:870px;">
+        <select multiple="multiple" style="width:380px;height: 180px" id="sel_jilian_1">
+        </select>
+    </div>
+</div>
+<!--结束-->
+
+<!--行业模态框开始-->
+<div id="posModel" style="display: none">
+    <div class="modal_body">
+        <div class="J_modal_content">
+            <div class="modal_body_box modal_body_box1">
+                <ul class="list_nav1">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--结束-->
+
+
+<iframe id="frame2" src="../CustomerCon/topData" name="frame_top" frameborder="0" height="100%" width="100%" scrolling="auto"></iframe>
+<iframe id="frame1" src="../CustomerCon/show_head" name="frame_name" frameborder="0" height="100%" width="100%" scrolling="auto"></iframe>
+
+<script type="text/javascript" src="../setResume/jquery_003.js"></script>
+
+<div class="res_add_title font_blue">简历是求职的利器，好的简历才能更快找到好工作！</div>
+<div class="res_addbox">
+    <form id="resume_add" class="" action="/personal/resume_save.html" parent="post">
+        <div class="addmain J_focus no_border_top">
+            <div class="txt_title">基本信息</div>
+            <table width="200" cellspacing="0" cellpadding="0" border="0" align="center">
+                <tbody><tr>
+                    <td class="w1"><span>&nbsp;</span>姓名：</td>
+                    <td>
+                        <div class="input_245_34_div2">
+                            <input name="fullname" id="fullname" type="text" dir="no_focus" class="inputst r_inputst">
+
+                            <div class="clear"></div>
+                        </div>
+                    </td>
+                    <td class="w1"><span>&nbsp;</span>性别：</td>
+                    <td>
+                    <div class="sex_radio_list J_radioitme_parent">
+                        <div class="n checked J_radioitme" data-code="男">男</div>
+                        <div class="w  J_radioitme" data-code="女">女</div>
+                        <div class="clear"></div>
+        <!--<input class="J_radioitme_code" name="sex" id="sex" type="hidden" value="1">-->
+                    </div>
+
+</td>
+</tr>
+<tr>
+    <td class="w1"><span>&nbsp;</span>出生年份：</td>
+    <td>
+        <div class="input_245_34_div J_hoverinput J_dropdown J_listitme_parent">
+            <span class="J_listitme_text" id="birthday">请选择</span>
+            <div class="dropdowbox5 J_dropdown_menu">
+                <div class="dropdow_inner5">
+                    <ul class="nav_box J_birthdy">
+                        <div class="J_birthday_box active"><li><a class="J_listitme" href="javascript:;" data-code="2004">2004</a></li><li><a class="J_listitme" href="javascript:;" data-code="2003">2003</a></li><li><a class="J_listitme" href="javascript:;" data-code="2002">2002</a></li><li><a class="J_listitme" href="javascript:;" data-code="2001">2001</a></li><li><a class="J_listitme" href="javascript:;" data-code="2000">2000</a></li><li><a class="J_listitme" href="javascript:;" data-code="1999">1999</a></li><li><a class="J_listitme" href="javascript:;" data-code="1998">1998</a></li><li><a class="J_listitme" href="javascript:;" data-code="1997">1997</a></li><li><a class="J_listitme" href="javascript:;" data-code="1996">1996</a></li><li><a class="J_listitme" href="javascript:;" data-code="1995">1995</a></li><li><a class="J_listitme" href="javascript:;" data-code="1994">1994</a></li><li><a class="J_listitme" href="javascript:;" data-code="1993">1993</a></li><li><a class="J_listitme" href="javascript:;" data-code="1992">1992</a></li><li><a class="J_listitme" href="javascript:;" data-code="1991">1991</a></li><li><a class="J_listitme" href="javascript:;" data-code="1990">1990</a></li><li><a class="J_listitme" href="javascript:;" data-code="1989">1989</a></li><li><a class="J_listitme" href="javascript:;" data-code="1988">1988</a></li><li><a class="J_listitme" href="javascript:;" data-code="1987">1987</a></li><li><a class="J_listitme" href="javascript:;" data-code="1986">1986</a></li><li><a class="J_listitme" href="javascript:;" data-code="1985">1985</a></li></div>
+                        <div class="J_birthday_box"><li><a class="J_listitme" href="javascript:;" data-code="1984">1984</a></li><li><a class="J_listitme" href="javascript:;" data-code="1983">1983</a></li><li><a class="J_listitme" href="javascript:;" data-code="1982">1982</a></li><li><a class="J_listitme" href="javascript:;" data-code="1981">1981</a></li><li><a class="J_listitme" href="javascript:;" data-code="1980">1980</a></li><li><a class="J_listitme" href="javascript:;" data-code="1979">1979</a></li><li><a class="J_listitme" href="javascript:;" data-code="1978">1978</a></li><li><a class="J_listitme" href="javascript:;" data-code="1977">1977</a></li><li><a class="J_listitme" href="javascript:;" data-code="1976">1976</a></li><li><a class="J_listitme" href="javascript:;" data-code="1975">1975</a></li><li><a class="J_listitme" href="javascript:;" data-code="1974">1974</a></li><li><a class="J_listitme" href="javascript:;" data-code="1973">1973</a></li><li><a class="J_listitme" href="javascript:;" data-code="1972">1972</a></li><li><a class="J_listitme" href="javascript:;" data-code="1971">1971</a></li><li><a class="J_listitme" href="javascript:;" data-code="1970">1970</a></li><li><a class="J_listitme" href="javascript:;" data-code="1969">1969</a></li><li><a class="J_listitme" href="javascript:;" data-code="1968">1968</a></li><li><a class="J_listitme" href="javascript:;" data-code="1967">1967</a></li><li><a class="J_listitme" href="javascript:;" data-code="1966">1966</a></li><li><a class="J_listitme" href="javascript:;" data-code="1965">1965</a></li></div>
+                        <div class="J_birthday_box"><li><a class="J_listitme" href="javascript:;" data-code="1964">1964</a></li><li><a class="J_listitme" href="javascript:;" data-code="1963">1963</a></li><li><a class="J_listitme" href="javascript:;" data-code="1962">1962</a></li><li><a class="J_listitme" href="javascript:;" data-code="1961">1961</a></li><li><a class="J_listitme" href="javascript:;" data-code="1960">1960</a></li><li><a class="J_listitme" href="javascript:;" data-code="1959">1959</a></li><li><a class="J_listitme" href="javascript:;" data-code="1958">1958</a></li><li><a class="J_listitme" href="javascript:;" data-code="1957">1957</a></li><li><a class="J_listitme" href="javascript:;" data-code="1956">1956</a></li><li><a class="J_listitme" href="javascript:;" data-code="1955">1955</a></li></div>
+                    </ul>
+                    <a href="javascript:;" class="prev J_birthday_prev" style="display: none;"></a>
+                    <a href="javascript:;" class="next J_birthday_next"></a>
+                </div>
+            </div>
+        </div>
+    </td>
+    <td class="w1"><span>&nbsp;</span>最高学历：</td>
+    <td>
+        <div class="input_245_34_div J_hoverinput J_dropdown J_listitme_parent">
+            <span class="J_listitme_text" id="education">请选择</span>
+            <div class="dropdowbox4 J_dropdown_menu">
+                <div class="dropdow_inner4">
+                    <ul class="nav_box">
+                        <li><a class="J_listitme" href="javascript:;" data-code="初中">初中</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="高中">高中</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="中技">中技</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="中专">中专</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="大专">大专</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="本科">本科</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="硕士">硕士</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="博士">博士</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="博后">博后</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="不限">不限</a></li>                    </ul>
+                </div>
+            </div>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="w1"><span>&nbsp;</span>工作经验：</td>
+    <td>
+        <div class="input_245_34_div J_hoverinput J_dropdown J_listitme_parent">
+            <span class="J_listitme_text" id="experience">请选择</span>
+            <div class="dropdowbox4 J_dropdown_menu">
+                <div class="dropdow_inner4">
+                    <ul class="nav_box">
+                        <li><a class="J_listitme" href="javascript:;" data-code="不限">不限</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="1年以下">1年以下</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="1-2年">1-2年</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="3-5年">3-5年</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="6-7年">6-7年</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="8-10年">8-10年</a></li>
+                        <li><a class="J_listitme" href="javascript:;" data-code="10年以上">10年以上</a></li>                    </ul>
+                </div>
+            </div>
+        </div>
+    </td>
+    <td class="w1"><span>&nbsp;</span>手机号：</td>
+    <td id="mobileWrap">
+        <input name="telephone" id="telephone" type="text" disabled="disabled" class="input_245_34" th:value="${cus_phone}">
+    </td>
+</tr>
+
+</tbody></table>
+<div class="txt_title">求职意向</div>
+<table width="200" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody><tr>
+        <td class="w1"><span>&nbsp;</span>目前状态：</td>
+        <td>
+            <div class="input_245_34_div J_hoverinput J_dropdown J_listitme_parent">
+                <span class="J_listitme_text" id="current">请选择</span>
+                <div class="dropdowbox4 J_dropdown_menu">
+                    <div class="dropdow_inner4">
+                        <ul class="nav_box">
+                            <li><a class="J_listitme" href="javascript:;" data-code="我目前已离职，可快速到岗">我目前已离职，可快速到岗</a></li>
+                            <li><a class="J_listitme" href="javascript:;" data-code="我目前在职，但考虑换个新环境">我目前在职，但考虑换个新环境</a></li>
+                            <li><a class="J_listitme" href="javascript:;" data-code="观望有好的机会再考虑">观望有好的机会再考虑</a></li>
+                            <li><a class="J_listitme" href="javascript:;" data-code="目前暂无跳槽打算">目前暂无跳槽打算</a></li>
+                            <li><a class="J_listitme" href="javascript:;" data-code="应届毕业生">应届毕业生</a></li>                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </td>
+        <td class="w1"><span>&nbsp;</span>工作性质：</td>
+        <td>
+            <div class="radio_list J_radioitme_parent" id="res_workcategory">
+                <div class="rli checked J_radioitme" data-code="62">全职</div>
+                <div class="rli  J_radioitme" data-code="63">兼职</div>
+                <div class="rli  J_radioitme" data-code="64">实习</div>
+                <div class="clear"></div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="w1"><span>&nbsp;</span>期望职位：</td>
+        <td>
+            <div class="input_245_34_div1 J_hoverinput" id="showmodal_jobs" data-title="请选择期望职位">
+            <span title="" class="result J_resuletitle_jobs">请选择</span>
+            <input class="J_resultcode_jobs" name="intention_jobs_id" id="intention_jobs_id" type="hidden" value="">
+            <div class="clear"></div>
+            </div>
+        </td>
+        <td class="w1"><span>&nbsp;</span>期望薪资：</td>
+        <td>
+            <div class="input_245_34_div J_hoverinput J_dropdown J_listitme_parent">
+                <span class="J_listitme_text" id="wage">请选择</span>
+                <div class="dropdowbox4 J_dropdown_menu">
+                    <div class="dropdow_inner4">
+                        <ul class="nav_box">
+                            <li><a class="J_listitme" href="javascript:;" data-code="1K~1.5K/月">1K~1.5K/月</a></li>
+                            <li><a class="J_listitme" href="javascript:;" data-code="1.5K~2K/月">1.5K~2K/月</a></li>
+                            <li><a class="J_listitme" href="javascript:;" data-code="2K~3K/月">2K~3K/月</a></li>
+                            <li><a class="J_listitme" href="javascript:;" data-code="3K~5K/月">3K~5K/月</a></li>
+                            <li><a class="J_listitme" href="javascript:;" data-code="5K~10K/月">5K~10K/月</a></li>
+                            <li><a class="J_listitme" href="javascript:;" data-code="10K以上/月">10K以上/月</a></li>
+                            <li><a class="J_listitme" href="javascript:;" data-code="薪资面议">薪资面议</a></li>                        </ul>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="w1"><span>&nbsp;</span>工作地区：</td>
+        <td>
+
+            <div class="input_245_34_div1 J_hoverinput" id="clickAddModel" data-title="请选择工作地区">
+                <span title="" class="result J_resuletitle_city">请选择</span>
+                <input class="J_resultcode_city" name="district" id="district" type="hidden" value="" keep="">
+                <div class="clear"></div>
+            </div>
+        </td>
+        <td class="w1">意向行业：</td>
+        <td>
+            <div class="input_245_34_div1 J_hoverinput" id="showmodal_trade" data-title="请选择期望行业">
+                <span title="" class="result J_resuletitle_trade">请选择</span>
+                <input class="J_resultcode_trade" name="trade" id="trade" type="hidden" value="">
+                <div class="clear"></div>
+            </div>
+        </td>
+    </tr>
+</tbody></table>
+<div class="res_add_but">
+    <div class="butlist w180">
+        <input type="button" id="J_saveresume" class="but_blue_180 J_hoverbut" value="保存">
+    </div>
+    <div class="clear"></div>
+</div>
+</div>
+</form>
+</div>
+<div class="user_foot font_gray9" id="footer">©2017 洛阳魅力网络信息服务有限公司 版权所有</div>
+<div class="floatmenu">
+<div class="item mobile">
+    <a class="blk"></a>
+        <div class="popover">
+      <div class="popover-bd">
+        <label class="wx">企业微信</label>
+        <span class="img-qrcode img-qrcode-wechat"><img src="../setResume/5d23e2f8425a1.png" alt=""></span>
+      </div>
+      <div class="popover-arr"></div>
+    </div>  </div>  <div class="item ask">
+    <a class="blk" target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=suggest&amp;a=index"></a>
+  </div>
+  <div id="backtop" class="item backtop" style="display: none;"><a class="blk"></a></div>
+</div>
+<script type="text/javascript" src="../setResume/jquery_003.js"></script>
+<script type="text/javascript" src="../setResume/jquery_009.js"></script>
+<script type="text/javascript" src="../setResume/jquery_004.js"></script><div class="disappear_tooltip pie_about goldremind tip_anim tip_anim_close" style="left: 633px; top: 329px;"><div class="icon"></div><div class="content"><!--注册账号增加50积分--><!--<span class="point">+50</span>--></div></div>
+<script type="text/javascript" src="../setResume/jquery_006.js"></script>
+<script type="text/javascript" src="../setResume/jquery.js"></script>
+<!--[if lt IE 9]>
+	<script type="text/javascript" src="/Application/Home/View/default/public/js/PIE.js"></script>
+
+<![endif]-->
+<script type="text/javascript" src="../setResume/jquery_007.js"></script>
+<script type="text/javascript" src="../setResume/jquery_008.js"></script>
+
+</body></html>

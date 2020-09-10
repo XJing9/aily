@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>已申请的职位-个人会员中心-爱洛阳人才网</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="骑士CMS">
+	<meta name="copyright" content="74cms.com">
+	<link rel="shortcut icon" href="https://zhaopin.iluoyang.com/favicon.ico">
+	<link rel="canonical" href="https://zhaopin.iluoyang.com/personal/jobs_apply.html"><script src="../jobApp/jquery_004.js"></script>
+	<script src="../jobApp/htmlspecialchars.js"></script>
+	<script src="../jobApp/gt.js"></script><script type="text/javascript">
+		$(function () {
+			//接受
+			$(".accept").click(function () {
+				var del_state=2;
+				var del_id=$(this).siblings(".del_id").val();
+				var ent_id=$("#ent_id").val();
+				$.ajax({
+					url:"../DeliverCon/ent_udpateDelState",
+					dataType:"text",
+					type:"post",
+					data:{del_state:del_state,del_id:del_id},
+					success:function (result) {
+						location.href="../Entrepreneur/ent_applyInter?ent_id="+ent_id;
+					}
+				})
+			})
+		//	忽略
+			$(".ignore").click(function () {
+				var del_state=0;
+				var del_id=$(this).siblings(".del_id").val();
+				var ent_id=$("#ent_id").val();
+				$.ajax({
+					url:"../DeliverCon/ent_udpateDelState",
+					dataType:"text",
+					type:"post",
+					data:{del_state:del_state,del_id:del_id},
+					success:function (result) {
+						location.href="../Entrepreneur/ent_applyInter?ent_id="+ent_id;
+					}
+				})
+			})
+		})
+	</script>
+	<link href="../jobApp/common.css" rel="stylesheet" type="text/css">
+	<link href="../jobApp/personal_job.css" rel="stylesheet" type="text/css">
+	<link href="../jobApp/personal_ajax_dialog.css" rel="stylesheet" type="text/css">
+	<script src="../jobApp/jquery_002.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+<script>
+</script>
+<input type="hidden" id="ent_id" th:value="${session.sessionCusList[0].ent_id}"/>
+<div class="mainbox">
+	<!--职位切换卡 -->
+	<div class="tab">
+		<a class="li J_hoverbut" th:href="@{../Entrepreneur/ent_invInterview(ent_id=${session.sessionCusList[0].ent_id})}" target="frame_entData">面试邀请</a>
+		<a class="li select">面试申请</a>
+		<a class="li J_hoverbut" th:href="@{../IssCon/iss_queryPos(ent_id=${session.sessionCusList[0].ent_id})}" target="frame_entData">发布职位</a>
+		<a class="li J_hoverbut" href="https://zhaopin.iluoyang.com/personal/attention_jobs.html"></a>
+		<a class="li J_hoverbut" th:href="@{../Entrepreneur/ent_queryAdd(ent_id=${session.sessionCusList[0].ent_id})}" target="frame_entData">面试地址管理</a>
+		<div class="clear"></div>
+	</div>
+	<!--切换卡结束 -->
+
+	<!--<div class="resume_tip">
+		<div class="tiptit">小提示</div>
+		<div class="tiptxt link_blue">
+			如果投递简历后7天内没有得到反馈，说明你获得面试机会的几率很低！
+		</div>
+	</div>-->
+
+	<div class="apply_jobs_list_th">
+		<div class="th3">申请的职位</div>
+		<div class="th3">应聘者简历</div>
+		<!--<div class="th3">处理状态</div>-->
+		<div class="th4">投递时间</div>
+		<div class="th4">操作</div>
+		<div class="clear"></div>
+	</div>
+	<form id="form1" action="/personal/del_jobs_apply.html" method="post" class="J_allListBox">
+		<div class="apply_jobs_list J_hoverbut" th:if="${entList!=null}" th:each="e:${entList}">
+			<div class="td3 link_blue substring">
+				<input class="J_allList" name="y_id[]" type="checkbox" value="21415">
+				&nbsp;<a th:href="@{../IssCon/IssQuery(iss_id=${e.iss_id})}" target="_blank" th:text="${e.iss_name}">贝壳网洛龙区急聘房产销售</a>
+			</div>
+			<div class="td3 link_gray6 substring">
+				<a th:href="@{/vitaCon/vitaQuery(cus_id=${e.cus_id})}" target="_blank" th:text="${e.cus_truename}+'&nbsp;&nbsp;'+${e.res_education}">洛阳洛港房产经纪有限公司</a>
+			</div>
+			<!--<div class="td3 n" th:text="${e.del_state==1?'未查看':'已查看'}">企业未查看</div>-->
+			<div class="td4" th:text="${e.del_time}">2020-09-03</div>
+			<div class="td4" th:if="${e.del_state==1}">
+				<input type="hidden" class="del_id" th:value="${e.del_id}"/>
+				<!--<input type="hidden" class="res_id" th:value="${e.res_id}"/>-->
+				<a href="javascript:;" url="/personal/del_jobs_apply/y_id/21415.html" class="but2 J_hoverbut delete accept">接受</a>
+				<a href="javascript:;" url="/personal/del_jobs_apply/y_id/21415.html" class="but2 J_hoverbut delete ignore">忽略</a>
+				<div class="clear"></div>
+			</div>
+			<div class="td4" th:if="${e.del_state==2}">已接受</div>
+			<div class="td4" th:if="${e.del_state==0}">已忽略</div>
+			<div class="clear"></div>
+		</div>
+		<div class="apply_jobs_list_but">
+			<div class="td1">
+				<input class="J_allSelected" type="checkbox">
+			</div>
+			<div class="td2">
+				<div class="but_gray_80_32 J_hoverbut delall">删除</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</form>
+	<div class="qspage"> <a class="unable">上一页</a>  <span class="current">1</span> <a class="unable">下一页</a>  </div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="user_foot font_gray9" id="footer">©2017 洛阳魅力网络信息服务有限公司 版权所有</div>
+<div class="floatmenu">
+	<div class="item mobile">
+		<a class="blk"></a>
+		<div class="popover">
+			<div class="popover-bd">
+				<label class="wx">企业微信</label>
+				<span class="img-qrcode img-qrcode-wechat"><img src="../jobApp/5d23e2f8425a1.png" alt=""></span>
+			</div>
+			<div class="popover-arr"></div>
+		</div>  </div>  <div class="item ask">
+	<a class="blk" target="_blank" href="https://zhaopin.iluoyang.com/index.php?m=&amp;c=suggest&amp;a=index"></a>
+</div>
+	<div id="backtop" class="item backtop" style="display: none;"><a class="blk"></a></div>
+</div>
+<script type="text/javascript" src="../jobApp/jquery_003.js"></script>
+<script type="text/javascript" src="../jobApp/jquery_007.js"></script>
+<script type="text/javascript" src="../jobApp/jquery_006.js"></script><div class="disappear_tooltip pie_about" style="left: 719.5px; top: 329px;"><div class="icon"></div><div class="content"></div></div>
+<script type="text/javascript" src="../jobApp/jquery_005.js"></script>
+<script type="text/javascript" src="../jobApp/jquery.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/Application/Home/View/default/public/js/PIE.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../jobApp/jquery_008.js"></script>
+
+</body></html>

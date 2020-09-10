@@ -1,9 +1,6 @@
 package com.aaa.dao;
 
-import com.aaa.entity.Customer;
-import com.aaa.entity.Edu_experience;
-import com.aaa.entity.Resume;
-import com.aaa.entity.Work_experience;
+import com.aaa.entity.*;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -130,6 +127,13 @@ public interface CustomerDao extends tk.mybatis.mapper.common.Mapper<Customer> {
             "wor_dimission=#{wor_dimission},wor_workduty=#{wor_workduty}" +
             " where wor_id=#{wor_id}")
     Integer res_updateWork(Work_experience work_experience);
+//    添加项目经历
+    @Insert("insert into project_experience(pro_name,pro_role,pro_action,pro_finish,pro_describe,wor_id)" +
+            " values(#{pro_name},#{pro_role},#{pro_action},#{pro_finish},#{pro_describe},#{wor_id})")
+    Integer res_insertProject(Project_experience project_experience);
+//    修改项目经理--查询数据
+    @Select("select * from project_experience where pro_id=#{pro_id}")
+    List<Map<String,Object>> res_queryByIdProject(Integer pro_id);
 
 
     @Update("update resume set res_education=#{res_education} where res_id=#{res_id}")

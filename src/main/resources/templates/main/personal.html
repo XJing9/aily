@@ -610,7 +610,7 @@
 						<div class="il">项目经历</div>
 						<div class="ir"><div class="but_gray_70_res_add J_hoverbut J_showitems" id="J_clearinput_pro">添加</div></div>
 						<div class="clear"></div>
-						<div id="projectListBox" th:each="w:${worList}">
+						<div id="projectListBox" onmouseover="listHoveEdit()" th:each="w:${worList}">
 							<div class="course J_listhover_edit" data-id="91" th:each="p:${w.proList}">
 								<div class="td1" th:text="${p.pro_action}+'&nbsp;&nbsp;至&nbsp;&nbsp;'+${p.pro_finish}">
 									<!--&lt;!&ndash;2020-1 至 2020-6<br>[5个月]&ndash;&gt;-->
@@ -635,13 +635,33 @@
 						<div class="fbody J_focus">
 							<table class="b_table" cellspacing="0" cellpadding="0" border="0" align="center">
 								<input type="hidden" class="J_listid" value="">
-								  <tbody><tr>
+								  <tbody>
+								  <tr>
+									  <td class="w1"><span>&nbsp;</span>公司名称：</td>
+									  <td>
+										  <div class="input_205_34_div J_hoverinput J_dropdown J_listitme_parent">
+											  <span class="result J_listitme_text for_current chooseCom">请选择公司</span>
+											  <div class="dropdowbox10 J_dropdown_menu">
+												  <div class="dropdow_inner10">
+													  <ul class="nav_box">
+														  <li class="getWorId" th:if="${worList!=null}" th:each="w:${worList}">
+															  <input type="hidden" th:value="${w.wor_id}"/>
+															  <a class="J_listitme" href="javascript:;" data-code="我目前已离职，可快速到岗" th:text="${w.wor_companyname}">我目前已离职，可快速到岗</a>
+														  </li>
+													  </ul>
+												  </div>
+											  </div>
+											  <!--<input class="J_listitme_code" name="current" id="current" type="hidden" th:value="${perList[0].res_jobstate}">-->
+										  </div>
+									  </td>
+								  </tr>
+								  <tr>
 									<td class="w1"><span>&nbsp;</span>项目名称：</td>
-									<td><input name="projectname" id="projectname" type="text" class="input_245_34"></td>
+									<td><input name="projectname" id="pro_name" type="text" class="input_245_34"></td>
 								  </tr>
 								  <tr>
 									<td class="w1"><span>&nbsp;</span>担任角色：</td>
-									<td><input name="role" id="role" type="text" class="input_245_34"></td>
+									<td><input name="role" id="pro_role" type="text" class="input_245_34"></td>
 								  </tr>
 								   <tr>
 									<td class="w1"><span>&nbsp;</span>项目时间：</td>
@@ -650,7 +670,7 @@
 											<tbody><tr>
 												<td style="padding-left:0px;" width="100">
 													<div class="input_90_34_div J_hoverinput J_dropdown J_listitme_parent" style="">
-														<span class="J_listitme_text">年份</span>
+														<span class="J_listitme_text" id="PSY">年份</span>
 														<div class="dropdowbox9 J_dropdown_menu">
 												            <div class="dropdow_inner9">
 												                <ul class="nav_box J_birthdy_exp">
@@ -667,7 +687,7 @@
 												</td>
 												<td width="100">
 													<div class="input_90_34_div J_hoverinput J_dropdown J_listitme_parent" style="">
-														<span class="J_listitme_text">月份</span>
+														<span class="J_listitme_text" id="PSM">月份</span>
 														<div class="dropdowbox11 J_dropdown_menu">
 												            <div class="dropdow_inner11">
 												                <ul class="nav_box J_month">
@@ -681,7 +701,7 @@
 												<td class="J_fortonow" style="display: table-cell;" width="30">至</td>
 												<td class="J_fortonow" style="display: table-cell;" width="100">
 													<div class="input_90_34_div J_hoverinput J_dropdown J_listitme_parent" style="">
-														<span class="J_listitme_text">年份</span>
+														<span class="J_listitme_text" id="PLY">年份</span>
 														<div class="dropdowbox9 J_dropdown_menu">
 												            <div class="dropdow_inner9">
 												                <ul class="nav_box J_birthdy_exp">
@@ -698,7 +718,7 @@
 												</td>
 												<td class="J_fortonow" style="display: table-cell;" width="100">
 													<div class="input_90_34_div J_hoverinput J_dropdown J_listitme_parent" style="">
-														<span class="J_listitme_text">月份</span>
+														<span class="J_listitme_text" id="PLM">月份</span>
 														<div class="dropdowbox11 J_dropdown_menu">
 												            <div class="dropdow_inner11">
 												                <ul class="nav_box J_month">
@@ -709,14 +729,12 @@
 														<input class="J_listitme_code" type="hidden" name="endmonthTra" id="endmonthPro" value="">
 													</div>
 												</td>
-												<td width="100"><label><input class="J_tonow" name="tonowPro" id="tonowPro" type="checkbox" value="">&nbsp;至今</label>
-												</td>
 											</tr>
 										</tbody></table>
 									</td>
 							  </tr><tr>
 									<td class="w1"><span>&nbsp;</span>项目描述：</td>
-									<td><textarea name="descriptionpro" id="descriptionpro" class="textarea_438_34"></textarea></td>
+									<td><textarea name="descriptionpro" id="pro_describe" class="textarea_438_34"></textarea></td>
 							  </tr>
 							</tbody></table>
 							<div class="butbox">
@@ -1152,6 +1170,56 @@
 					$parentDom.find('.items').show();
 				});
 
+				var pro_id=0;
+				var wor_id=0;
+				//添加项目经历--获取公司id
+				$(".getWorId").click(function () {
+					wor_id=$(this).children("input").val()
+				})
+				//添加项目经历--清空数据
+				$("#J_clearinput_pro").click(function () {
+					$("#pro_name").val("");
+					$("#pro_role").val("");
+					$("#pro_action").val("");
+					$(".chooseCom").html("请选择公司");
+					$("#PSY").html("年份");
+					$("#PSM").html("月份");
+					$("#PLY").html("年份");
+					$("#PLM").html("月份");
+				})
+				//编辑项目经历
+				$(".J_saveitems_project").click(function(){
+					var pro_name=$("#pro_name").val();
+					var pro_role=$("#pro_role").val();
+					var pro_action=$("#pro_action").val();
+					var PSY=$("#PSY").html();
+					var PSM=$("#PSM").html();
+					var PLY=$("#PLY").html();
+					var PLM=$("#PLM").html();
+					var pro_finish=PSY+"-"+PSM;
+					var pro_describe=PLY+"-"+PLM;
+					if(pro_id!=0){
+						//修改
+					}else{
+						//添加
+						$.ajax({
+							url: "../CustomerCon/res_insertProject",
+							dataType: "json",
+							type: "post",
+							data:{pro_name:pro_name,pro_role:pro_role,
+								pro_action:pro_action,pro_finish:pro_finish,pro_describe:pro_describe,
+								wor_id:wor_id},
+							success:function (result) {
+								if(result<1){
+									alert("失败");
+								}else{
+									alert("成功");
+									window.location.reload();
+								}
+							}
+						})
+					}
+				})
 				// 修改通用
 				$('.S_edit').live('click', function(e) {
 					$('.J_itemsmenu').hide();
@@ -1160,7 +1228,18 @@
 					$(this).closest('.items').hide();
 					$parentDom.find('.J_itemsmenu').show();
 				});
-				//修改--显示数据信息
+				//添加工作经历--清空数据信息
+				$("#J_clearinput_exp").click(function () {
+					//清空数据
+					$("#wor_companyname").val("");
+					$("#wor_workname").val("");
+					$("#wor_workduty").val("");
+					$("#WSY").html("年份");
+					$("#WSM").html("月份");
+					$("#WLY").html("年份");
+					$("#WLM").html("月份");
+				})
+				//修改工作经历--显示数据信息
 				var wor_id=0;
 				$(".J_editexp").click(function () {
 					wor_id=$(this).siblings("input").val();
@@ -1196,7 +1275,7 @@
 					var wor_action=WSY+"-"+WSM;
 					var wor_dimission=WLY+"-"+WLM;
 					var res_id=$("#res_id").val();
-					if(wor_id!=null){
+					if(wor_id!=0){
 						//修改工作经历
 						$.ajax({
 							url: "../CustomerCon/res_updateWork",
@@ -1433,6 +1512,17 @@
 					})
 				})
 
+				//添加教育经历前，先清空内容
+				$("#J_clearinput_edu").click(function () {
+					$("#edu_schoolname").val("");
+					$("#edu_majorname").val("");
+					$("#edu_education").html("");
+
+					$('#SSY').html("年份");
+					$('#SSM').html("月份");
+					$('#SLY').html("年份");
+					$('#SLM').html("月份");
+				})
 				//	修改教育经历
 				//显示数据
 				var edu_id=0;
@@ -1462,7 +1552,7 @@
 							}
 						}
 					})
-				})
+				});
 			//	编辑教育经历
 				$(".J_saveitems_education").click(function () {
 
@@ -1479,7 +1569,7 @@
 					var edu_graduatetime=endyearEduValue+"-"+endmonthEduValue;
 					var edu_actiontime=startyearEduValue+"-"+startmonthEduValue;
 
-					if(edu_id!=null){
+					if(edu_id!=0){
 					//	修改教育经历
 						$.ajax({
 							url: "../CustomerCon/res_updateEdu",
@@ -1499,7 +1589,6 @@
 
 					}else{
 					//	添加教育经历
-
 						$.ajax({
 							url: "../CustomerCon/res_insertEdu",
 							dataType: "json",

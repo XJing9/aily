@@ -394,8 +394,6 @@ public class CustomerCon {
     @RequestMapping("res_updateIntro")
     @ResponseBody
     public Integer res_updateIntro(String cus_introduce,Integer cus_id){
-        System.out.println(cus_introduce);
-        System.out.println(cus_id);
         Integer count=customerDao.res_updateIntro(cus_introduce,cus_id);
         return count<1?0:1;
     }
@@ -452,6 +450,19 @@ public class CustomerCon {
     public Integer res_updateWork(Work_experience work_experience){
         Integer count=customerDao.res_updateWork(work_experience);
         return count<1?0:1;
+    }
+//    添加项目经历
+    @RequestMapping("res_insertProject")
+    @ResponseBody
+    public Integer res_insertProject(Project_experience project_experience){
+        Integer count=customerDao.res_insertProject(project_experience);
+        return count<1?0:1;
+    }
+//    修改项目经历--查询数据
+    @RequestMapping("res_queryByIdProject")
+    @ResponseBody
+    public List<Map<String,Object>> res_queryByIdProject(Integer pro_id){
+        return customerDao.res_queryByIdProject(pro_id);
     }
 
     /*导航栏信息*/
